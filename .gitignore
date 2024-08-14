@@ -5,5 +5,8 @@
 hs_err_pid*
 
 /.idea
-/out/
-/bin/
+/out
+
+/.idea_modules
+*.cmd.jar
+*.cmd.com
