@@ -1,0 +1,375 @@
+CIS 301. Logical Foundations of Programming.
+
+Julie Thornton.
+
+What is this class?
+- logical reasoning (basics, puzzles)
+- writing formal statements (propositional and predicate logic)
+- proofs (why?)
+- reasoning about code
+    - analyzing what we know
+    - identifying equivalent programs
+    - simplifying programs
+    - formally describing what programs do
+- basics of proving correctness of programs (why?)
+
+
+Syllabus
+
+Canvas setup - weekly class material
+
+Ed Discussion
+
+
+/////////////////////////////////////////////////////////////////
+
+HW 0 - due Thursday, August 22
+    --> see how to do it
+
+    make sure to extract to C:\ drive
+
+HW 1 - due Tuesday, August 27
+
+/////////////////////////////////////////////////////////////////
+
+Taking a step back...what is logic?
+
+- analysis of an argument according to a set of rules
+- given a set of premises (and sometimes a conclusion)
+
+
+- we determine a valid conclusion when we assume
+all the premises are true
+
+
+Note that the premises might make no sense!
+
+/////////////////////////////////////////////////////////////////
+
+Premise 1: If a person wears a red shirt, then they don’t
+    like pizza.
+Premise 2: Fred is wearing a red shirt.
+
+Conclusion: Fred doesn’t like pizza.
+
+--> Is this a valid argument?
+
+
+
+
+/////////////////////////////////////////////////////////////////
+
+Logical Arguments with ”OR”
+
+- can be ambiguous! Why?
+
+I order fries or I order chips.
+
+"or" can be inclusive or exclusive
+
+
+- in English, how do we interpret "or"?
+
+
+
+- in programming?
+
+
+
+
+"Or" in THIS class:
+
+
+
+Premise 1: I'll fold the laundry or I'll do the dishes.
+Premise 2: I don't fold the laundry.
+
+--> What can I conclude?
+
+
+
+
+/////////////////////////////////////////////////////////////////
+
+num = 5;
+if (num < 4 || x >= 10) {
+    statement;
+}
+
+
+
+Suppose we know "statement" is executed
+--> What can we conclude?
+
+
+
+
+
+
+/////////////////////////////////////////////////////////////////
+
+x = 9;
+if (num < 4 || x >= 10) {
+    if (num > 2) {
+        statement;
+    }
+}
+
+
+
+Suppose we know "statement" is executed
+--> What can we conclude?
+
+
+/////////////////////////////////////////////////////////////////
+
+What rule are we seeing with an ”or” statement,
+where we know that one of the statements is NOT true?
+
+
+
+
+/////////////////////////////////////////////////////////////////
+
+Logical Arguments with ”IF/THEN” (aka "implies" -> )
+
+If it is raining, then I will get wet.
+It is raining.
+
+--> What can I conclude?
+
+
+
+
+
+/////////////////////////////////////////////////////////////////
+
+When we have an ”if/then” statement,
+and we know that the ”if” part is true?
+
+    ...what can we always conclude?
+
+
+
+
+
+/////////////////////////////////////////////////////////////////
+
+If I don’t hear my alarm, then I will be late for class.
+I am late for class.
+
+--> What can I conclude?
+
+
+
+
+
+/////////////////////////////////////////////////////////////////
+
+If I don’t hear my alarm, then I will be late for class.
+I hear my alarm.
+
+--> What can I conclude?
+
+
+
+
+
+
+/////////////////////////////////////////////////////////////////
+
+If I don’t hear my alarm, then I will be late for class.
+I'm not late for class.
+
+--> What can I conclude?
+
+
+
+if (condition) {
+    statement
+}
+
+--> what if we know statement is NOT executed?
+
+
+
+
+If p Then q
+
+If not q then not p
+
+
+/////////////////////////////////////////////////////////////////
+
+More if/then logic in programming.
+
+
+
+if (num < 4 || x >= 10) {
+
+    y = 17;
+}
+
+--> suppose y is 17 here. What do we know?
+
+
+
+
+/////////////////////////////////////////////////////////////////
+
+y = 10;
+
+if (num < 4 || x >= 10) {
+
+    y = 17;
+}
+
+--> suppose y is 17 here. Can we conclude anything now?
+
+
+/////////////////////////////////////////////////////////////////
+
+if (num < 4 || x >= 10) {
+
+    y = 17;
+}
+
+--> suppose y is NOT 17 here. What do we know?
+
+
+
+
+/////////////////////////////////////////////////////////////////
+
+Logic puzzles.
+
+The puzzles in this lecture are all either from or inspired by:
+”What is the Name of This Book?”, by Raymond Smullyan
+
+/////////////////////////////////////////////////////////////////
+
+The first puzzles involve the island of Knights and Knaves.
+Each inhabitant is either a knight or a knave.
+
+Knights ALWAYS tell the truth, and knaves ALWAYS lie.
+
+/////////////////////////////////////////////////////////////////
+
+Who can say, "I'm a knave"?
+
+Can a knight?
+Can a knave?
+
+
+
+
+
+
+/////////////////////////////////////////////////////////////////
+
+You see two inhabitants, Ava and Bob.
+
+Ava says that Bob is a knave.
+Bob says, ”Neither Ava nor I are knaves.”
+
+What are Ava and Bob?
+
+
+
+
+Neither x nor y --> not x and not y
+not(x or y)
+
+
+
+
+
+/////////////////////////////////////////////////////////////////
+
+You see two different inhabitants, Eve and Fred.
+
+Eve says, ”I am a knave or Fred is a knight.”
+
+What are Eve and Fred?
+
+(what does the "or" mean?)
+
+
+
+
+
+/////////////////////////////////////////////////////////////////
+
+Lion always lies on Mondays, Tuesdays, and Wednesdays.
+Lion always tells the truth on other days.
+Unicorn always lies on Thursdays, Fridays, and Saturdays,
+    and always tells the truth on other days.
+
+On Sunday, everyone tells the truth.
+
+Lion says: ”Yesterday was one of my lying days.”
+Unicorn says: ”Yesterday was one of my lying days, too.”
+
+What day is it?
+
+
+
+
+
+
+
+
+/////////////////////////////////////////////////////////////////
+
+Tweedledee and Tweedledum are identical.
+You know that one of them lies Mon/Tues/Wed,
+and that the other lies Thurs/Fri/Sat.
+(They tell the truth on non-lying days.)
+
+You don’t know which is which.
+
+You see both of them together.
+
+
+First twin: Today is Monday or Wednesday
+Second twin: Today is Monday or Sunday
+
+What day of the week is it?
+
+(what kind of OR?)
+
+
+
+/////////////////////////////////////////////////////////////////
+
+You know that either Tweedledum or Tweedledee has
+    lost a rattle.
+You find it, and want to return it to the correct one.
+You don’t know what day it is, but are sure that it isn’t
+    Sunday.
+
+(one is lying, one is telling the truth)
+
+The first one says: "Tweedledee owns the rattle.”
+
+The second one says: ”I'm Tweedledee!”
+
+--> Who gets the rattle?
+
+
+
+
+/////////////////////////////////////////////////////////////////
+
+Homework 0: due Thursday, August 22
+    - get Sireum/IntelliJ + GitHub ready (do this now!)
+    - post something in Discord
+    - come to office hours or post in Discord if
+        you need software setup help!
+
+Homework 1: due Tuesday, August 27
+    - first page of homework is logical reasoning
+        (what we did today)
+    - second page is logic puzzles
+
+Next: finish logic puzzles, start truth tables
