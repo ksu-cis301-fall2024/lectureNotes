@@ -1,0 +1,76 @@
+HW 0 due tonight
+
+HW 1 due Tuesday, August 27
+
+////////////////////////////////////////////////////////
+
+Today:
+
+- More with logic puzzles
+- Begin logic gates and truth tables
+
+
+/////////////////////////////////////////////////////////
+
+Lion always lies on Mondays, Tuesdays, and Wednesdays.
+Lion always tells the truth on other days.
+Unicorn always lies on Thursdays, Fridays, and Saturdays,
+    and always tells the truth on other days.
+
+On Sunday, everyone tells the truth.
+
+Lion says: "Yesterday was one of my lying days."
+Unicorn says: "Yesterday was one of my lying days, too."
+
+What day is it?
+
+
+
+
+
+
+
+
+/////////////////////////////////////////////////////////
+
+Tweedledee and Tweedledum are identical.
+You know that one of them lies Mon/Tues/Wed,
+and that the other lies Thurs/Fri/Sat.
+(They tell the truth on non-lying days.)
+
+You don’t know which is which.
+
+You see both of them together.
+
+
+First twin: Today is Monday or Wednesday
+Second twin: Today is Monday or Sunday
+
+What day of the week is it?
+
+(what kind of OR?)
+
+
+
+//////////////////////////////////////////////////////////
+
+You know that either Tweedledum or Tweedledee has
+    lost a rattle.
+
+You find the rattle and want to return it.
+
+It isn't Sunday.
+
+
+
+
+The first one says: "Tweedledee owns the rattle."
+
+The second one says: "I'm Tweedledee!"
+
+--> Who gets the rattle?
+
+
+
+
+//////////////////////////////////////////////////////////

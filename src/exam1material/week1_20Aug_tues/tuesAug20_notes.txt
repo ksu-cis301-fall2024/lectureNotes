@@ -21,16 +21,14 @@ Canvas setup - weekly class material
 Ed Discussion
 
 
-/////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////
 
 HW 0 - due Thursday, August 22
     --> see how to do it
 
-    make sure to extract to C:\ drive
-
 HW 1 - due Tuesday, August 27
 
-/////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////
 
 Taking a step back...what is logic?
 
@@ -38,28 +36,33 @@ Taking a step back...what is logic?
 - given a set of premises (and sometimes a conclusion)
 
 
-- we determine a valid conclusion when we assume
-all the premises are true
+- a VALID conclusion is one that is always true
+    anytime all the premises are true
 
 
 Note that the premises might make no sense!
 
-/////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////
 
-Premise 1: If a person wears a red shirt, then they don’t
-    like pizza.
+Premise 1: If a person wears a red shirt,
+    then they don't like pizza.
+
 Premise 2: Fred is wearing a red shirt.
 
-Conclusion: Fred doesn’t like pizza.
+Conclusion: Fred doesn't like pizza.
 
 --> Is this a valid argument?
 
 
 
+(is there a hidden assumption we're making about Fred?)
 
-/////////////////////////////////////////////////////////////////
 
-Logical Arguments with ”OR”
+
+
+////////////////////////////////////////////////////////
+
+Logical Arguments with "OR"
 
 - can be ambiguous! Why?
 
@@ -89,7 +92,7 @@ Premise 2: I don't fold the laundry.
 
 
 
-/////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////
 
 num = 5;
 if (num < 4 || x >= 10) {
@@ -106,7 +109,7 @@ Suppose we know "statement" is executed
 
 
 
-/////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////
 
 x = 9;
 if (num < 4 || x >= 10) {
@@ -121,17 +124,17 @@ Suppose we know "statement" is executed
 --> What can we conclude?
 
 
-/////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////
 
-What rule are we seeing with an ”or” statement,
+What rule are we seeing with an "or" statement,
 where we know that one of the statements is NOT true?
 
 
 
 
-/////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////
 
-Logical Arguments with ”IF/THEN” (aka "implies" -> )
+Logical Arguments with "IF/THEN" (aka "implies" -> )
 
 If it is raining, then I will get wet.
 It is raining.
@@ -142,10 +145,10 @@ It is raining.
 
 
 
-/////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////
 
-When we have an ”if/then” statement,
-and we know that the ”if” part is true?
+When we have an "if/then" statement,
+and we know that the "if" part is true?
 
     ...what can we always conclude?
 
@@ -153,9 +156,9 @@ and we know that the ”if” part is true?
 
 
 
-/////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////
 
-If I don’t hear my alarm, then I will be late for class.
+If I don't hear my alarm, then I will be late for class.
 I am late for class.
 
 --> What can I conclude?
@@ -164,9 +167,9 @@ I am late for class.
 
 
 
-/////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////
 
-If I don’t hear my alarm, then I will be late for class.
+If I don't hear my alarm, then I will be late for class.
 I hear my alarm.
 
 --> What can I conclude?
@@ -176,9 +179,9 @@ I hear my alarm.
 
 
 
-/////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////
 
-If I don’t hear my alarm, then I will be late for class.
+If I don't hear my alarm, then I will be late for class.
 I'm not late for class.
 
 --> What can I conclude?
@@ -196,10 +199,10 @@ if (condition) {
 
 If p Then q
 
-If not q then not p
+... is equivalent to:
 
 
-/////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////
 
 More if/then logic in programming.
 
@@ -215,7 +218,7 @@ if (num < 4 || x >= 10) {
 
 
 
-/////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////
 
 y = 10;
 
@@ -227,7 +230,7 @@ if (num < 4 || x >= 10) {
 --> suppose y is 17 here. Can we conclude anything now?
 
 
-/////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////
 
 if (num < 4 || x >= 10) {
 
@@ -239,21 +242,21 @@ if (num < 4 || x >= 10) {
 
 
 
-/////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////
 
 Logic puzzles.
 
-The puzzles in this lecture are all either from or inspired by:
-”What is the Name of This Book?”, by Raymond Smullyan
+The puzzles in this lecture are from or inspired by:
+"What is the Name of This Book?", by Raymond Smullyan
 
-/////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////
 
-The first puzzles involve the island of Knights and Knaves.
+The island of Knights and Knaves.
 Each inhabitant is either a knight or a knave.
 
 Knights ALWAYS tell the truth, and knaves ALWAYS lie.
 
-/////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////
 
 Who can say, "I'm a knave"?
 
@@ -265,30 +268,31 @@ Can a knave?
 
 
 
-/////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////
 
 You see two inhabitants, Ava and Bob.
 
 Ava says that Bob is a knave.
-Bob says, ”Neither Ava nor I are knaves.”
+Bob says, "Neither Ava nor I are knaves."
 
 What are Ava and Bob?
 
 
 
 
-Neither x nor y --> not x and not y
-not(x or y)
+What does "neither" mean?
+    When is Bob's statement true?
+    When is Bob's statement false?
+    Is there another way to write Bob's statement?
 
 
 
 
-
-/////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////
 
 You see two different inhabitants, Eve and Fred.
 
-Eve says, ”I am a knave or Fred is a knight.”
+Eve says, "I am a knave or Fred is a knight."
 
 What are Eve and Fred?
 
@@ -296,75 +300,18 @@ What are Eve and Fred?
 
 
 
+///////////////////////////////////////////////////////
 
+Next time:
+- More with logic puzzles
+- Begin logic gates and truth tables
 
-/////////////////////////////////////////////////////////////////
-
-Lion always lies on Mondays, Tuesdays, and Wednesdays.
-Lion always tells the truth on other days.
-Unicorn always lies on Thursdays, Fridays, and Saturdays,
-    and always tells the truth on other days.
-
-On Sunday, everyone tells the truth.
-
-Lion says: ”Yesterday was one of my lying days.”
-Unicorn says: ”Yesterday was one of my lying days, too.”
-
-What day is it?
-
-
-
-
-
-
-
-
-/////////////////////////////////////////////////////////////////
-
-Tweedledee and Tweedledum are identical.
-You know that one of them lies Mon/Tues/Wed,
-and that the other lies Thurs/Fri/Sat.
-(They tell the truth on non-lying days.)
-
-You don’t know which is which.
-
-You see both of them together.
-
-
-First twin: Today is Monday or Wednesday
-Second twin: Today is Monday or Sunday
-
-What day of the week is it?
-
-(what kind of OR?)
-
-
-
-/////////////////////////////////////////////////////////////////
-
-You know that either Tweedledum or Tweedledee has
-    lost a rattle.
-You find it, and want to return it to the correct one.
-You don’t know what day it is, but are sure that it isn’t
-    Sunday.
-
-(one is lying, one is telling the truth)
-
-The first one says: "Tweedledee owns the rattle.”
-
-The second one says: ”I'm Tweedledee!”
-
---> Who gets the rattle?
-
-
-
-
-/////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////
 
 Homework 0: due Thursday, August 22
     - get Sireum/IntelliJ + GitHub ready (do this now!)
-    - post something in Discord
-    - come to office hours or post in Discord if
+    - post something in Ed Discussion
+    - come to office hours or post in Ed Discussion if
         you need software setup help!
 
 Homework 1: due Tuesday, August 27
