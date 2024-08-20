@@ -51,7 +51,10 @@ Premise 2: Fred is wearing a red shirt.
 
 Conclusion: Fred doesn't like pizza.
 
---> Is this a valid argument?
+
+
+--> Is this a valid argument? yes...but
+    (we are assuming that Fred is a person)
 
 
 
@@ -63,31 +66,33 @@ Conclusion: Fred doesn't like pizza.
 ////////////////////////////////////////////////////////
 
 Logical Arguments with "OR"
-
-- can be ambiguous! Why?
+    - can be ambiguous! Why?
 
 I order fries or I order chips.
+
+
 
 "or" can be inclusive or exclusive
 
 
-- in English, how do we interpret "or"?
+- in English, how do we interpret "or"? exclusive
 
 
 
-- in programming?
+- in programming? || is inclusive
 
 
 
 
-"Or" in THIS class:
+"Or" in THIS class: will be inclusive UNLESS there
+is additional wording (like A or B but not both)
 
 
 
 Premise 1: I'll fold the laundry or I'll do the dishes.
 Premise 2: I don't fold the laundry.
 
---> What can I conclude?
+--> What can I conclude? I do the dishes
 
 
 
@@ -102,7 +107,7 @@ if (num < 4 || x >= 10) {
 
 
 Suppose we know "statement" is executed
---> What can we conclude?
+--> What can we conclude? x >= 10
 
 
 
@@ -121,7 +126,7 @@ if (num < 4 || x >= 10) {
 
 
 Suppose we know "statement" is executed
---> What can we conclude?
+--> What can we conclude? num is 3 (assuming it is an integer)
 
 
 ////////////////////////////////////////////////////////
@@ -129,6 +134,8 @@ Suppose we know "statement" is executed
 What rule are we seeing with an "or" statement,
 where we know that one of the statements is NOT true?
 
+
+the other side is
 
 
 
@@ -139,7 +146,9 @@ Logical Arguments with "IF/THEN" (aka "implies" -> )
 If it is raining, then I will get wet.
 It is raining.
 
---> What can I conclude?
+--> What can I conclude? I will get wet
+
+p -> q
 
 
 
@@ -154,7 +163,7 @@ and we know that the "if" part is true?
 
 
 
-
+the then part is true
 
 /////////////////////////////////////////////////////////
 
@@ -163,16 +172,18 @@ I am late for class.
 
 --> What can I conclude?
 
+NOTHING (beyond that I am late for class)
 
 
 
+p <-> q is a bi-implication
 
 /////////////////////////////////////////////////////////
 
 If I don't hear my alarm, then I will be late for class.
 I hear my alarm.
 
---> What can I conclude?
+--> What can I conclude? NOTHING (except that I hear my alarm)
 
 
 
@@ -184,7 +195,9 @@ I hear my alarm.
 If I don't hear my alarm, then I will be late for class.
 I'm not late for class.
 
---> What can I conclude?
+--> What can I conclude? I DID hear my alarm
+
+
 
 
 
@@ -192,14 +205,14 @@ if (condition) {
     statement
 }
 
---> what if we know statement is NOT executed?
+--> what if we know statement is NOT executed? condition is false
 
 
 
 
 If p Then q
 
-... is equivalent to:
+... is equivalent to: If not q Then not p
 
 
 ////////////////////////////////////////////////////////
@@ -214,8 +227,9 @@ if (num < 4 || x >= 10) {
 }
 
 --> suppose y is 17 here. What do we know?
+    NOTHING - y might have been 17 before the if-statement
 
-
+If p then q
 
 
 /////////////////////////////////////////////////////////
@@ -228,6 +242,10 @@ if (num < 4 || x >= 10) {
 }
 
 --> suppose y is 17 here. Can we conclude anything now?
+    num < 4 || x >= 10
+
+    (we must have gone in the if-statement because y changed
+    from 10 to 17)
 
 
 //////////////////////////////////////////////////////////
@@ -239,7 +257,10 @@ if (num < 4 || x >= 10) {
 
 --> suppose y is NOT 17 here. What do we know?
 
+num < 4 || x >= 10 was false
 
+
+num >= 4 and x < 10
 
 
 ///////////////////////////////////////////////////////
@@ -260,8 +281,8 @@ Knights ALWAYS tell the truth, and knaves ALWAYS lie.
 
 Who can say, "I'm a knave"?
 
-Can a knight?
-Can a knave?
+Can a knight? NO - would be a lie
+Can a knave? NO - they are compelled to lie
 
 
 
@@ -275,14 +296,22 @@ You see two inhabitants, Ava and Bob.
 Ava says that Bob is a knave.
 Bob says, "Neither Ava nor I are knaves."
 
-What are Ava and Bob?
+    "Ava is a knight and I am a knight"
+
+What are Ava and Bob? (Ava is a knight, Bob is a knave)
+
+    Suppose Ava is a knight. Then Bob is a knave. Works.
+
+    Suppose instead that Ava is a knave. Then Bob must
+        be a knight. His statement would be a lie, so
+        this doesn't work.
 
 
 
 
 What does "neither" mean?
-    When is Bob's statement true?
-    When is Bob's statement false?
+    When is Bob's statement true? both knights
+    When is Bob's statement false? either Bob or Ava is a knave
     Is there another way to write Bob's statement?
 
 
@@ -294,9 +323,16 @@ You see two different inhabitants, Eve and Fred.
 
 Eve says, "I am a knave or Fred is a knight."
 
-What are Eve and Fred?
 
-(what does the "or" mean?)
+
+What are Eve and Fred? Eve: knight, Fred: knight
+
+Suppose Eve is a knight. Then Fred must be a knight.
+
+Suppose instead that Eve is a knave. Then her statement
+    is true because she is a knave, so this isn't possible.
+
+(what does the "or" mean?) inclusive
 
 
 
