@@ -5,6 +5,7 @@ HW 1 due Tuesday, August 27
 
 #7: "You know the thief was either Agatha, Ferdinand, or Carl."
     --> how to interpret?
+    there is exactly one thief
 
 
 Collaboration policy
@@ -22,7 +23,7 @@ AI policy
 
 - weekly review quizzes
 
-- what to do before each class
+- what to do before/after each class
 
 /////////////////////////////////////////////////////////
 
@@ -49,11 +50,24 @@ else {
 
 --> is it possible for "statements2" to execute?
 
+no - the if would have to be false, so
+    x >= 3 and y <= 4. Furthermore, the else if would
+    have to be true, so x < 5 and y == 7. It is not possible
+    for y to be both <= 4 and == 7.
+
 
 --> what if "y==7" becomes "y > 2"?
     What do we know if statements2 executes?
 
+    x >= 3 and y <=4 (because if condition was false)
+    x > 5 and y > 2 (because else if condition was true)
+
+    x must be either 3 or 4 and y must be either 3 or 4
+
 ////////////////////////////////////////////////////////
+
+Another knights and knaves example.
+
 
 You meet three inhabitants: Sarah, Bill and Mae.
 
@@ -65,6 +79,21 @@ What types are Sarah, Bill, and Mae?
 
 
 (How might we simplify everything?)
+
+Sarah: Bill is a knight
+Bill: Mae is a knight
+Mae: Bill would tell you that I am a knave
+
+
+Suppose Sarah is a knight. Then Bill must be a knight. Then
+    Mae must also be a knight. Mae's statement doesn't work
+    because Bill would say she is a knight.
+
+Suppose instead Sarah is a knave. Then Bill must be a knave and
+    Mae must be a knave. Mae's statement works because Bill
+    would lie and say Mae is a knight (and Mae knows this),
+    but Mae lies and says Bill would say the opposite -- that
+    she is a knave.
 
 ////////////////////////////////////
 
@@ -80,8 +109,15 @@ Unicorn says: "Yesterday was one of my lying days, too."
 
 What day is it?
 
+Sunday? Lion would not say he lied yesterday. NO
+Tuesday? NO. Lion DID lie yesterday, but would lie about it.
+    In a similar way, we eliminate Wed/Fri/Sat. In each case,
+    the creature who is lying to today also lied yesterday,
+    and should be lying about it.
 
-
+Thursday: Yes! Lion (correctly) tells the truth that yesterday
+    (Wed) was one of his lying days. Unicorn lies (correctly)
+    and says yesterday was one of his lying days (which it wasn't).
 
 
 
@@ -93,6 +129,8 @@ You know that one of them lies Mon/Tues/Wed,
 and that the other lies Thurs/Fri/Sat.
 (They tell the truth on non-lying days.)
 
+(So they both tell the truth on Sunday.)
+
 You don't know which is which.
 
 You see both of them together.
@@ -102,7 +140,10 @@ The second one says: "I'm Tweedledee."
 Which is which? What day is it?
 
 
+must be Sunday - they would give same name on any other day
+(one liar, one truth teller)
 
+they are who they say
 
 
 
@@ -115,8 +156,17 @@ Second twin: Today is Monday or Sunday
 
 What day of the week is it?
 
-(what kind of OR?)
+(what kind of OR?) inclusive
 
+
+can only be Mon, Wed, Sun (we know at least one is telling the truth)
+
+can't be Sun - first twin would be lying
+
+can't be Mon - both would be telling truth, and one should be lying
+
+
+That leaves Wednesday.
 
 
 
@@ -129,12 +179,28 @@ You don't know what day it is, but are sure that it isn’t
     Sunday.
 
 
+(we know one is lying, one is telling truth)
+
 The first one says: "Tweedledee owns the rattle."
 The second one says: "I'm Tweedledee!"
 
 Who gets the rattle?
 
+Only two cases -- first truth, second lie or vice versa.
 
+Suppose the first twin is telling the truth. Then Tweedledee really
+does own the rattle. In this case, the second twin must be lying.
+Then second twin must be Tweedledum and the first twin must be
+Tweedledee.
+
+Suppose instead the first twin is lying. Then Tweedledum must
+own the rattle. The second twin must be telling the truth and
+must be Tweedledee. Then the first twin is Tweedledum.
+
+In both cases, the first twin owns the rattle. We give it
+to the first twin.
+
+We DON'T know who is who.
 
 ///////////////////////////////////////////
 
@@ -152,8 +218,17 @@ Lead casket: "The portrait is not in the gold casket."
 
 Where is the portrait?
 
+Suppose in gold. Gold: T, Silver: T. NO. More than one message
+    is true.
+
+Suppose in silver. Gold: F, Silver: F. Don't need to check more
+    would still have at most one truth.
+
+Suppose in lead. Gold: F, Silver: T, Lead: T. NO. More than one
+    message is true.
 
 
+Answer: silver
 
 
 
@@ -185,12 +260,19 @@ Albert says: "I don't know when Cheryl's birthday is,
 Bernard says: "At first I didn't know when Cheryl's
     birthday is, but now I do."
 
+    (Bernard also knows it is not May or June)
+
 Albert says: "Then I also know when Cheryl's birthday is."
-    can't be Aug 15 or 17 or Albert wouldn't know
-
-When is Cheryl's birthday? .
 
 
+
+When is Cheryl's birthday? . July 16
+    (we worked this on the board)
+
+From first statement: can't be May/June as both have a unique day
+From second statement: can't be 14 as there is one in July and Aug
+From third statement: can't be August as there are still two
+    possible days remaining there
 
 ///////////////////////////////////
 
@@ -226,28 +308,28 @@ AND:
 
 p q  #  p ∧ q
 --------------
-T T  #
-T F  #
-F T  #
-F F  #
+T T  #    T
+T F  #    F
+F T  #    F
+F F  #    F
 
 
 OR:
 
 p q  #  p ∨ q
 --------------
-T T  #
-T F  #
-F T  #
-F F  #
+T T  #    T
+T F  #    T
+F T  #    T
+F F  #    F
 
 
 NOT:
 
 p  # ¬p
 --------
-T  #
-F  #
+T  # F
+F  # T
 
 ////////////////////////////////////////////////
 
@@ -265,10 +347,16 @@ Otherwise we have not.
 
 p q  #  p → q
 --------------
-T T  #
-T F  #
-F T  #
-F F  #
+T T  #    T
+T F  #    F
+F T  #    T
+F F  #    T
+
+/////////////////////////////////////////
+
+(stopped here, will continue on Tuesday)
+
+/////////////////////////////////////////
 
 How does the implies operator relate to programming?
 
@@ -308,7 +396,7 @@ Basic operations:
 
 ////////////////////////////////////////
 
-Consider ¬p ∧ q ∨ r.
+Consider ¬p ∨ q ∧ r.
 
 --> what operation do we do first?
 
@@ -328,11 +416,11 @@ From highest (happens first) to lowest (happens last) precedence:
 
 Given this statement:
 
-    ¬p ∧ q ∨ r
+    ¬p ∨ q ∧ r
 
 Add () to show the order of operations.
 
-¬p ∧ q ∨ r
+¬p ∨ q ∧ r
 
 
 Evaluate the above statement using these
