@@ -1,4 +1,5 @@
 Homework 1 due tonight
+    knights and knaves problems
 
 I'll post Homework 2 after class (due Tues Sep 3)
 
@@ -24,11 +25,16 @@ Design circuits for:
 
 p XOR q (with just the gates we've seen, not a specific XOR gate)
 
+
+(we drew these all on the board)
+
 /////////////////////////////////////
 
 How would we evaluate the output of these circuits with
 different inputs?
 
+
+Circuit drawing tool: https://logic.ly/demo/
 
 /////////////////////////////////////
 
@@ -42,14 +48,14 @@ q: I will study
 p → q
 
 It is false if we have BROKEN A PROMISE.
-Otherwise we have not.
+Otherwise, we have not.
 
 p q  #  p → q
 --------------
-T T  #
-T F  #
-F T  #
-F F  #
+T T  #    T
+T F  #    F
+F T  #    T
+F F  #    T
 
 //////////////////////////////////////
 
@@ -72,14 +78,17 @@ Consider ¬p ∨ q ∧ r.
 
 Order of operations
 
-In math?
+In math? 2 + 3 * 4
+(), exponent, mult/div, add/sub
 
 
 
-
-For logic statements:
+For logic statements (∧ ∨ ¬ →):
+    (), ¬, ∧, ∨, →
 
 From highest (happens first) to lowest (happens last) precedence:
+
+
 
 
 Given this statement:
@@ -88,7 +97,9 @@ Given this statement:
 
 Add () to show the order of operations.
 
-¬p ∨ q ∧ r
+    ((¬p) ∨ (q ∧ r))
+
+
 
 
 Evaluate the above statement using these
@@ -98,21 +109,27 @@ p is T
 q is F
 r is F
 
+((¬T) ∨ (F ∧ F))
+((F) ∨ (F ∧ F))
+((F) ∨ (F))
 
+output: false
 
 
 ////////////////////////////////////////////////
 
 Order of operations
     ¬ evaluates right to left
-        ¬¬p is equivalent to....
+        ¬¬p is equivalent to....¬(¬p)
+
 
     ∧ and ∨ evaluate left to right
-        p ∧ q ∧ r is equivalent to....
-        p ∨ q ∨ r is equivalent to....
+        p ∧ q ∧ r is equivalent to....(p ∧ q) ∧ r
+        p ∨ q ∨ r is equivalent to....(p ∨ q) ∨ r
+
 
     → evaluates right to left
-        p → q → r is equivalent to....
+        p → q → r is equivalent to....p → (q → r)
 
 
 
@@ -123,13 +140,14 @@ Order of operations
 Top-level operator (what happens LAST?)
 
 
-¬p ∧ q ∨ r
+((¬p) ∧ q) ∨ r
 
 
-top-level:
+top-level: ∨ (OR)
 
 
-How is this similar to a circuit?
+How is this similar to a circuit? the one right before the
+    output (the one we do last)
 
 
 
@@ -139,7 +157,10 @@ p ∧ q ∨ r ∧ p
 
 rewrite with ():
 
-top-level operator?
+    (p ∧ q) ∨ r ∧ p
+    (p ∧ q) ∨ (r ∧ p)
+
+top-level operator? OR
 
 
 
@@ -148,35 +169,81 @@ top-level operator?
 p ∧ q ∧ r ∧ s
 
 rewrite with ():
+    ((p ∧ q) ∧ r) ∧ s
 
 
-top-level operator?
+top-level operator? AND (the rightmost one)
+
+
 
 ////////////////////////////////////////////////////
 
-Classifying logical statements.
+Listing all truth assignments for a logical statement.
+
+
+
+If we have 2 variables, how many possible truth assignments?
+
+    p, q
+    4
+
+    T T
+    T F
+    F T
+    F F
+
+
+If we have 3 variables, how many possible truth assignments?
+
+    p, q, r
+
+    8
+
+If we have n variables, how many possible truth assignments?
+
+    2^n possible
+
+
+
+////////////////////////////////////////////////////
+
+Classifying logical statements based on truth assignments.
+
+
 
 Contingent, contradictory, tautology
 
 
-Definitions/examples
 
-contingent - the overall statements is true for
-    some truth assignments and false for others
+contingent - the output is true for some truth assignments
+    and is false for other truth assignments
+
+    Example?
+        p V p
+
+        p
+
+        p -> r
+
+
+contradictory - if for all possible truth assignments
+    the output is false
 
     Example?
 
+        (p V q) ^ !(p V q)
 
-contradictory - for all possible truth assignments,
-    the overall statement is false
-
-    Example?
+        p ^ !p
 
 
-tautology - for all possible truth assignments,
-    the overall statement is true
+tautology - for all possible truth assignments, the output
+    is true
 
     Example?
+
+        p -> p
+
+        p V !p
 
 
 ∧ ∨ ¬ →
@@ -185,16 +252,27 @@ tautology - for all possible truth assignments,
 
 Compound truth tables.
 
-
+->:
 
 Write a truth table for:
 
 (p ∧ r) → (r ∨ ¬q)
 
-
+                  *
 -----------------------------
 p q r  #  (p ∧ r) → (r ∨ ¬q)
 -----------------------------
+T T T  #     T    T    T F
+T T F  #     F    T    F F
+T F T  #     T    T    T T
+T F F  #     F    T    T T
+F T T  #     F    T    T F
+F T F  #     F    T    F F
+F F T  #     F    T    T T
+F F F  #     F    T    T T
+------------------------------
+
+Tautology
 
 
 --> top-level operator?
@@ -212,6 +290,14 @@ complete truth table in truth.logika
 
 --> what to type for different operators
 
+
+AND: &
+OR: |
+NOT: !
+IMPLIES: ->:
+
+alignment matters!
+
 --> order of operations in Logika
 
 //////////////////////////////////////
@@ -227,15 +313,23 @@ parse trees
 
 --> draw one for (p ∧ q) → ¬r
 
+    (we drew this on the board during class
+
+
+2 + 3 * 4
+
 --> draw one for p ∨ q ∧ r → ¬p → ¬q ∨ s
 
+    (we drew this on the board during class
 
 --> how do they relate to programming?
 
 --> what is the "top-level operator" here?
 
 
+////////////////////////////////////////
 
+<-- stopped here
 
 ////////////////////////////////////////
 
