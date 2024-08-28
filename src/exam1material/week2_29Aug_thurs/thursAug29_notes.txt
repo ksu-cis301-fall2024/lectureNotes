@@ -24,6 +24,8 @@ How do we deal with Lewis's statement?
 
 Today:
 - begin propositional logic
+- equivalent statements
+- satisfiability
 
 ////////////////////////////////////////
 
@@ -143,10 +145,7 @@ if (x <= 2 || y >= 0) {
     }
 }
 
-What are we promising about answer?
-
-
-
+How could we write what our if-statement is doing?
 
 Propositional atoms/translation?
 
@@ -186,7 +185,7 @@ Consider these two statements:
 
 --> could we PROVE it?
 
-equiv1.logika and equiv2.logika)
+(equiv1.logika and equiv2.logika)
 
 
 
@@ -279,37 +278,37 @@ Other equivalences (≡ means "is equivalent to").
 (If we wanted, how could we prove them?)
 
 
-¬(p ∧ q) ≡ ¬p ∨ ¬q      (DeMorgan's laws)
+¬(p ∧ q) ≡ ¬p ∨ ¬q              (DeMorgan's laws)
 ¬(p ∨ q) ≡ ¬p ∧ ¬q
 
 
-p ∧ T ≡ p               (identity laws)
+p ∧ T ≡ p                       (identity laws)
 p ∨ F ≡ p
 
 
-p ∨ p ≡ p               (idempotent laws)
+p ∨ p ≡ p                       (idempotent laws)
 p ∧ p ≡ p
 
-¬(¬p) ≡ p               (double negation law)
+¬(¬p) ≡ p                       (double negation law)
 
 
-p ∨ q ≡ q ∨ p               (commutative laws)
+p ∨ q ≡ q ∨ p                   (commutative laws)
 p ∧ q ≡ q ∧ p
 
-p ->q vs q -> p? NO! -> is not commutative
+p ->q vs q -> p?????
 
 
-(p ∨ q) ∨ r ≡ p ∨ (q ∨ r)         (associative laws)
+(p ∨ q) ∨ r ≡ p ∨ (q ∨ r)       (associative laws)
 (p ∧ q) ∧ r ≡ p ∧ (q ∧ r)
 
 
-p ∨ (q ∧ r) ≡ (p ∨ q) ∧ (p ∨ r)         (distributive laws)
+p ∨ (q ∧ r) ≡ (p ∨ q) ∧ (p ∨ r)     (distributive laws)
 p ∧ (q ∨ r) ≡ (p ∧ q) ∨ (p ∧ r)
 
 
 
-p → q ≡ ¬q → ¬p         (contrapositive)
-p → q ≡ ¬p ∨ q          (can turn implies into an or)
+p → q ≡ ¬q → ¬p                     (contrapositive)
+p → q ≡ ¬p ∨ q                      (can turn implies into an or)
 
 
 
