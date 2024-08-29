@@ -1,0 +1,26 @@
+//@Logika: --background type
+
+// (p ^ q) -> r
+
+
+//THIS TRUTH TABLE IS CORRECT BECAUSE OF THE PARENTHESES
+
+//we should get the same result for p & q -> r
+
+                *
+------------------------
+p q r # (p & q) ->: r
+------------------------
+T T T #    T    T
+T T F #    T    F
+T F T #    F    T
+T F F #    F    T
+F T T #    F    T
+F T F #    F    T
+F F T #    F    T
+F F F #    F    T
+------------------------
+
+Contingent
+T: [T T T] [T F T] [T F F] [F T T] [F T F] [F F T] [F F F]
+F: [T T F]

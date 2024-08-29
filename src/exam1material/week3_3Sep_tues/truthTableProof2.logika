@@ -1,0 +1,5 @@
+//@Logika: --background type
+
+//Given: p → ¬q, p → q, p ∨ q
+
+//Prove: q
