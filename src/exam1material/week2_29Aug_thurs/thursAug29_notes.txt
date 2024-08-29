@@ -8,17 +8,28 @@ HW 2 due Tuesday, September 3
 
 ////////////////////////////
 
-HW 1 (knights/knaves)
+Homework 1, knights and knaves.
+
 
 Gabby says: Lewis and I are both knights.
 Lewis says: Ellie would say I am a knight.
 Ellie says: Either I am a knight or Lewis is a knight, but not both of us.
 
+//type your solution (knight or knave) next to each question
+What type is Gabby? knave
+What type is Lewis? knave
+What type is Ellie? knight
 
-How do we deal with Lewis's statement?
 
+Why can't they all be knaves?
 
-
+Suppose they are all knaves.
+    Gabby's statement works - it is false that they are both knights.
+    Lewis's statement doesn't work - he knows that Ellie would
+        lie and say he is a knight, and he is lying about what she
+        would say
+    Ellie's statement works - neither Lewis nor Ellie are knights,
+        so it is a lie that exactly one is a knight.
 
 ////////////////////////////
 
@@ -36,6 +47,9 @@ Propositional logic.
     --> these will be our boolean variables in logic statements
     --> minimal (don't contain any logical operators)
 
+p: I am tired
+
+!p
 
 - connected by logical operators
 
@@ -51,31 +65,44 @@ Propositional logic.
 Which ones are propositions? Propositional atoms?
 
 Today is Thursday.
+    is a proposition
+    also a propositional atom
 
 
 What time is it?
+    not a proposition (or a propositional atom)
 
 
 x == 2
+    is a proposition
+    also a propositional atom
 
 
 x != 2
+    is a proposition
+    not a propositional atom (contains a NOT)
 
 
 Pigs can fly.
+    is a proposition
+    also a propositional atom
 
 
 z != 7 && str.contains(sub)
-
+    is a proposition
+    not a propositional atom (contains NOT and AND)
 
 Drive carefully.
-
+    not a proposition (or a propositional atom)
 
 y <= 4
+    is a proposition
+    also a propositional atom
 
 
 I am hungry and thirsty.
-
+    is a proposition
+    not propositional atom (contains AND)
 
 
 ////////////////////////////////////////
@@ -83,31 +110,31 @@ I am hungry and thirsty.
 Suppose we have these propositional atoms:
 
     p: It is below freezing.
-
     q: It is snowing.
-
     r: y <= 4
-
     s: x == 2
-
 
 How would we express these as English sentences?
 
     ¬p:
-
+        It is not below freezing
 
     p ∧ q:
-
+        It is below freezing and it is snowing.
 
     p → q :
-
+        If it is below freezing, then it is snowing.
 
     ¬p → ¬q:
+        If it is not below freezing, then it is not snowing.
 
 
     r ∨ s:
+        y <= 4 || x == 2
 
     ¬r:
+       !(y <= 4)
+       y > 4
 
 ////////////////////////
 
@@ -118,21 +145,26 @@ You can't enroll for the course if you haven't taken the prerequisite.
 
 --> what are the propositional atoms?
 
-
+    p: You can enroll in the course
+    q: You have taken the prerequisite
 
 --> translate to propositional logic:
 
-
+    ¬q → ¬p
 
 
 --> more translations:
 
 if you can enroll, you have taken the prereq
 
+    p → q
 
 
 
+They are equivalent because for every truth
+assignment, they have the same output.
 
+(equiv1.logika and equiv2.logika)
 
 
 /////////////
@@ -147,31 +179,49 @@ if (x <= 2 || y >= 0) {
 
 How could we write what our if-statement is doing?
 
+If I meet all my conditions, then answer is 25
+
 Propositional atoms/translation?
 
+p: x <= 2
+q: y >= 0
+r: z == 17
+s: answer == 25
 
+(p V q) ^ !r -> s
 
 
 
 
 --> what must be true if answer is NOT 25?
 
+!s -> (I didn't meet one of my conditions)
+
+!s -> !((p V q) ^ !r)
+
+!s -> (!(p V q) V r)
 
 
-
-
-
+!s -> ((!p ^ !q) V r)
 
 //////////////////////////////////
 
 Consider these two statements:
 
+p: I am at least 16 years old
+q: I can drive a car
 
 
 1) If I am at least 16 years old, then I can drive a car.
 
+    (only false when I am at least 16 but I can't drive)
+    p -> q
+
 2) I'm not at least 16 years old or I can drive a car.
 
+    (only false when I am at least 16 and I can't drive)
+
+    !p V q
 
 --> how could we translate them to propositional logic statements?
 
@@ -185,7 +235,8 @@ Consider these two statements:
 
 --> could we PROVE it?
 
-(equiv1.logika and equiv2.logika)
+with two truth tables - could show that for all
+    truth assignments, both statements have the same output
 
 
 
@@ -197,7 +248,8 @@ Consider these two statements:
 
 DeMorgan's Laws.
 
-...DeMorgan has so many laws...these are a couple of them.
+...DeMorgan has so many laws...
+    these are a couple of them.
 
 
 
@@ -209,6 +261,7 @@ if (a == 4 || a == 5) {
 How could we express the NEGATION
 (i.e., what condition would be true for the "else")?
 
+if (a != 4 && a != 5)
 
 
 
@@ -223,7 +276,7 @@ if (a == 4 && b == 5) {
 How could we express the NEGATION
 (i.e., what condition would be true for the "else")?
 
-
+if (a != 4 || b != 5)
 
 
 
@@ -231,9 +284,9 @@ How could we express the NEGATION
 
 DeMorgan's laws in propositional logic:
 
-¬(p ∨ q) is equivalent to...
+¬(p ∨ q) is equivalent to...¬p ∧ ¬q
 
-¬(p ∧ q) is equivalent to...
+¬(p ∧ q) is equivalent to...¬p ∨ ¬q
 
 
 --> how can we prove the first of DeMorgan's laws?
@@ -246,13 +299,15 @@ DeMorgan's laws in propositional logic:
 
 Another if-statement example.
 
-if (Character.isDigit(letter) == true || num < 10) {
+'a'
+
+if (Character.isDigit(letter) || num < 10) {
     statements
 }
 
 --> how would we negate it without using a ! operator?
 
-
+if (Character.isDigit(letter) == false && num >= 10)
 
 
 
@@ -267,9 +322,9 @@ if ((y >= 4 && num != 14) || x > 0) {
 
 negate it:
 
+if (!(y >= 4 && num != 14) && x <= 0)
 
-
-
+if ((y < 4 || num == 14) && x <= 0)
 
 
 ///////////////////////
@@ -295,8 +350,14 @@ p ∧ p ≡ p
 p ∨ q ≡ q ∨ p                   (commutative laws)
 p ∧ q ≡ q ∧ p
 
-p ->q vs q -> p?????
+p ->q vs q -> p????? NO!
+    p = F
+    q = T
 
+    so they are NOT equivalent
+    (to show statements aren't equivalent,
+    just need one truth assignment where they
+    outputs differ)
 
 (p ∨ q) ∨ r ≡ p ∨ (q ∨ r)       (associative laws)
 (p ∧ q) ∧ r ≡ p ∧ (q ∧ r)
@@ -312,28 +373,53 @@ p → q ≡ ¬p ∨ q                      (can turn implies into an or)
 
 
 
+--> you may still be asked to demonstrate these with
+    truth tables or prove them with natural deduction (coming soon)
+
 //////////////////////////
 
 What is equivalent to:
 
 ¬p → q
 
+p -> q is equivalent to !p V q
+
+
+p V q
 
 //////////////////////////
 
-are these equivalent?
+are these equivalent? NO!
 
     (p → q) → r
     p → (q → r)
 
+to show they are NOT equivalent, just need ONE
+truth assignment where the output differs
 
+    p = F
+    q = T
+    r = F
 
+For the above truth assignment, the first statement
+    is false:
+        (F -> T) -> F
+        T ->F
+        F
 
-
-
+    but the second is true:
+        F -> (T -> F)
+        F -> F
+        T
 
 
 In general, how to show statements are NOT equivalent?
+
+just need one truth assignment
+
+/////////////////////////
+
+(stopped here)
 
 /////////////////////////
 
