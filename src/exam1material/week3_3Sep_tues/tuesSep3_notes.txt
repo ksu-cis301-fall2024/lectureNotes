@@ -29,7 +29,9 @@ else {
     }
 }
 
-Just after the code fragment finishes, suppose we know that y is 17 but that x is NOT 20.
+Just after the code fragment finishes, suppose we know that
+y is 17 but that x is NOT 20.
+
 What can we conclude about a? Explain.
 
 --> what if we removed the "y=0"?
@@ -59,7 +61,7 @@ p ^ q -> r   vs   (p ^ q) -> r
 
 Satisfiability.
 
-- definition: a statement is satisfiable if there is at least
+Definition: a statement is satisfiable if there is at least
 one truth assignment that makes the statement true
 
 
@@ -112,27 +114,9 @@ I want to prove:
 
 --> How would we translate to propositional logic?
 
-p: I am in the CS department
-q: I'm in the ECE department
-r: I can log in to the CS lab computers
+
 
 Translations:
-
-1) I am in the CS department or I am in the ECE department
-    p ∨ q
-
-2) I am not in the ECE department.
-    ¬q
-
-3) I can log in to the CS lab computers if
-           I am in the CS department.
-
-   p → r
-
-4) I can log in to the CS lab computers
-           and I am in the CS department.
-
-     r ∧ p
 
 
 --> How might we prove this with truth tables?
@@ -151,13 +135,13 @@ variables | (premise1, premise2, ..., premiseN) |- conclusion
 ... fill in like a truth table for each premise and conclusion
 ---------------------------------------------------------------
 
-Valid [list truth assignments where all premises are true - conclusion should also be true]
+Valid [T assigns where all premises T - conc should also be T]
 
 
 
 ////////////////////////////
 
-Example: truthTableProof1.logik
+Example: truthTableProof1.logika
 
 /////////////////////////////
 
@@ -260,8 +244,10 @@ where *premises* is a comma-separated list.
 
 
 
-Same idea as truth tables -- want to prove that anytime the premises
-are all true, then the conclusion is also true.
+Same idea as truth tables.
+ --> want to prove that anytime the premises are all true,
+    then the conclusion is also true.
+
 
 --> but we will show the conclusion logically follows using
 a series of natural deduction rules instead of truth tables.
@@ -361,7 +347,7 @@ Proof(
 
 claim: a propositional logic statement
 justificaton: the rule justifying the corresponding claim
-    (along with line numbers as needed to reference previous claims)
+    (with line numbers to reference previous claims)
 
 
 
@@ -376,6 +362,12 @@ Justifications so far:
     AndE1(andNum)
 
     AndE2(andNum)
+
+
+--> what do these look like in programming?
+
+--> what do you think they're actually doing?
+
 
 
 ////////////////////////////////

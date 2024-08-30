@@ -1,17 +1,27 @@
 //@Logika: --background type
 
+
+//(premises separated by commas) |- conclusion
+
+//put * over top-level operator of each premise/conclusion
+
+//list Valid or Invalid afterwards
+//If Valid, put list of relevant truth assignments on same line
+
+//like Valid [T T T]
+//for example
+
+
            *    *     *            *
 ---------------------------------------
 p q r # (p | q, !q, p ->: r) |-  r & p
 ---------------------------------------
-T T T #    T    F     T            T
-T T F #    T    F     F            F
-T F T #    T    T     T            T
-T F F #    T    T     F            F
-F T T #    T    F     T            F
-F T F #    T    F     T            F
-F F T #    F    T     T            F
-F F F #    F    T     T            F
+T T T #
+T T F #
+T F T #
+T F F #
+F T T #
+F T F #
+F F T #
+F F F #
 ---------------------------------------
-
-Valid [T F T]

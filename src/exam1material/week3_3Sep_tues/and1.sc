@@ -11,15 +11,10 @@ import org.sireum.justification.natded.prop._
 
 @pure def and1(a: B, b: B, c: B): Unit = {
     Deduce(
-        //@formatter: off
-
         (a & b, c) |- (b & c)
         Proof(
-
             //PROOF GOES HERE
 
-
         )
-        //@formatter:on
     )
 }
