@@ -12,11 +12,24 @@ Homework 3 will be posted after class
 Homework 1: common mistakes
 
     - You'll stop eating at Chipotle if they raise their prices.
+    IF they raise their prices THEN I'll stop eating there
+
+    p: raise prices
+    q: stop eating there
+
+    p->q
+
+    contrapositive: !q -> !p
 
     - Chipotle doesn't raise their prices
 
+    !p
+
     (what is being promised?)
 
+
+can't conclude anything - might have stopped eating there
+for many reasons
 
 
 y = 0;
@@ -34,8 +47,17 @@ y is 17 but that x is NOT 20.
 
 What can we conclude about a? Explain.
 
+a > 10
+!(a > 10 && a < 20)
+!(a > 10) || !(a < 20)
+a <= 10 || a >= 20
+
+putting together: a >= 20
+
 --> what if we removed the "y=0"?
 
+I don't know if y was set to 17 in that else if or before.
+still know: a <= 10 || a >= 20
 
 ///////////////////////////
 
@@ -48,6 +70,14 @@ Today:
 ///////////////////////////
 
 Implies operator in Logika truth tables.
+
+    ()
+    !
+    ^
+    V
+    ->
+
+    order of operations: (), !, ^, V, ->
 
 --> operator precedence is incorrect
 
@@ -66,19 +96,28 @@ one truth assignment that makes the statement true
 
 
 - what kind of statement is satisfiable? what kind is not?
-
-
+satisfiable: contingent, tautology
+not satisfiable: contradictory
 
 
 Example: (p → ¬q) → r
 
 Is it satisfiable? How could we show it?
+Yes! It is satisfiable.
+    p = T
+    q = T
+    r = T
 
-
+(this is just one truth assignment that demonstrates)
+when I plug in those values, the overall statement is true
 
 
 
 Is (p V q) ^ ¬p ^ ¬q satisfiable?    How could we show it?
+
+Not satisfiable - the statement is contradiction
+
+would have to fill out full truth table, show it is contradictory
 
 
 /////////////////////////////////
@@ -92,6 +131,15 @@ Proving an argument.
 
 
 --> What do we want to show?
+
+every time all the premises are true, then the conclusion
+    is also true
+
+made a truth table for each premise
+found the list of truth assignments that made ALL premises true
+
+make sure every value in that list appears in the T list
+    for the conclusion
 
 ///
 
@@ -111,10 +159,28 @@ I want to prove:
 
 --> How would we translate to propositional logic?
 
+p: I am in the CS dept
+q: I am in the ECE dept
+r: I can login to the CS lab comps
 
 
 Translations:
 
+I am in the CS department or I am in the ECE department
+    p V q
+
+I am not in the ECE department.
+    !q
+
+I can log in to the CS lab computers if I am in the CS department.
+
+    p->r
+
+Conclusion:
+I can log in to the CS lab computers
+        and I am in the CS department.
+
+ r ^ p
 
 --> How might we prove this with truth tables?
 
@@ -169,24 +235,32 @@ Example:
 Premises:
 
     If it is sunny, then I wear sunscreen.
+        p -> q
 
     I wear sunscreen.
+        q
 
 
 Proposed conclusion:
 
     It is sunny.
+        p
 
 
 1) Translate to propositional logic
 
-
+    p: it is sunny
+    q: I wear sunscreen
 
 
 
 2) How can we show it is invalid?
 
+(p ->: q, q) |- p
 
+Invalid, consider truth assignment p = F, q = T.
+    Here, all premises are true (F->T and T) but the
+    conclusion p is false.
 
 
 
@@ -260,7 +334,8 @@ AND rules idea.
 
    --> in what situations do you think we could do that?
 
-
+P
+Q
 
 
 
@@ -268,6 +343,8 @@ AND rules idea.
 
     --> what new claims would make sense using that statement?
 
+P
+Q
 
 
 
@@ -371,6 +448,10 @@ Given premises:  a ∧ b, c
 Use natural deduction to prove: b ∧ c
 
 (and1.sc)
+
+/////////////////////////////////
+
+(stopped here -- will finish on Thursday
 
 /////////////////////////////////
 

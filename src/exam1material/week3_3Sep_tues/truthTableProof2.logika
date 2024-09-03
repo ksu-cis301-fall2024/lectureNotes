@@ -7,3 +7,15 @@
 
 //put * over atom itself if no operators
 //don't need to fill out column
+
+         *         *        *       *
+---------------------------------------
+p q # (p ->: !q, p ->: q, p | q) |- q
+---------------------------------------
+T T #    F   F     T        T       T
+T F #    T   T     F        T       F
+F T #    T   F     T        T       T
+F F #    T   T     T        F       F
+----------------------------------------
+
+Valid [F T]

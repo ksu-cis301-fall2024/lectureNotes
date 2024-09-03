@@ -2,8 +2,6 @@
 //@Logika: --manual --background type
 
 import org.sireum._
-import org.sireum.justification._
-import org.sireum.justification.natded.prop._
 
 //Prove the sequent:
 //p, q, r ⊢ r ∧ (q ∧ p)
