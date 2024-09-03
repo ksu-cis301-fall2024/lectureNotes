@@ -99,17 +99,14 @@ Proofs with truth tables.
 
 Suppose we know:
 
-    I am in the CS department or I am in the ECE department
-
-    I am not in the ECE department.
-
-    I can log in to the CS lab computers if
+    - I am in the CS department or I am in the ECE department
+    - I am not in the ECE department.
+    - I can log in to the CS lab computers if
         I am in the CS department.
-
 
 I want to prove:
 
-    I can log in to the CS lab computers
+    - I can log in to the CS lab computers
         and I am in the CS department.
 
 --> How would we translate to propositional logic?
@@ -130,7 +127,7 @@ Format for a truth table proof:
 
              (mark * for each premise/conclusion)
 --------------------------------------------------------------
-variables | (premise1, premise2, ..., premiseN) |- conclusion
+variables # (premise1, premise2, ..., premiseN) |- conclusion
 ---------------------------------------------------------------
 ... fill in like a truth table for each premise and conclusion
 ---------------------------------------------------------------
@@ -263,7 +260,6 @@ AND rules idea.
 
    --> in what situations do you think we could do that?
 
-if I already had P, and already had Q
 
 
 
@@ -272,7 +268,6 @@ if I already had P, and already had Q
 
     --> what new claims would make sense using that statement?
 
-    P, Q
 
 
 
@@ -331,8 +326,6 @@ What could we claim with AndI?
 //////////////////////////////////
 
 Natural deduction proof syntax.
-
-
 
 (premises) ⊢ (conclusion)
 Proof(
