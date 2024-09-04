@@ -1,0 +1,266 @@
+HW 3 is posted
+    (GitHub classroom issue should be fixed)
+
+Exam 1 is Thursday, September 12
+    take full time
+    closed notes
+    similar to HW problems
+    will post practice exam
+    will review on Tuesday
+
+//////////////////////////
+
+Today:
+- Continue natural deduction
+- Review proof syntax, AND rules
+- OR rules in natural deduction
+- Using natural deduction to prove two statements are equivalent
+- Equivalent if-statements
+
+//////////////////////////
+
+Want to prove a *sequent* (argument) of the form:
+
+    premises ⊢ conclusion
+
+where *premises* is a comma-separated list.
+
+
+In truth tables?
+
+
+Natural deduction?
+
+
+//////////////////////////
+
+AND rule summaries.
+
+         P   Q
+AndI : ---------
+         P ∧ Q
+
+///
+
+          P ∧ Q               P ∧ Q
+AndE1 : ---------   AndE2 : ---------
+           P                    Q
+
+//////////////////////////////////
+
+Reminder: natural deduction proof syntax:
+
+Natural deduction proof syntax.
+
+(premises) ⊢ (conclusion)
+Proof(
+    1 (  claim          ) by Justification,
+    2 (  claim          ) by Justification,
+    ...
+    10 (  conclusion    ) by Justification
+)
+
+
+--> what justifications so far?
+
+
+
+/////////////////////////////////
+
+Prove the following sequent (and2.sc)
+
+p, q, r ⊢ r ∧ (q ∧ p)
+
+
+
+////////////////////////////////
+
+Prove the following sequent (and3.sc)
+
+p ∧ q ∧ r ⊢ q
+
+
+////////////////////////////////
+
+Prove that ∧ is commutative
+
+--> what does "commutative" mean?
+
+(and4.sc)
+
+
+////////////////////////////////
+
+
+OR introduction
+
+          P                      Q
+OrI1 : ---------        OrI2 : ---------
+        P ∨ Q                   P ∨ Q
+
+
+
+
+Syntax:
+
+OrI1(lineWithLeft)
+OrI2(lineWithRight)
+
+///////////////////////////////////////////
+
+Example:
+
+(p ∧ q) ⊢ (p ∨ q)
+Proof(
+    1 ( p ∧ q   ) by Premise,
+    2 ( q       ) by AndE2(1),
+    3 ( p ∨ q   ) by OrI2(2)
+)
+
+Or, could have done:
+
+(p ∧ q) ⊢ (p ∨ q)
+Proof(
+    1 ( p ∧ q   ) by Premise,
+    2 ( p       ) by AndE1(1),
+    3 ( p ∨ q   ) by OrI1(2)
+)
+
+
+///////////////////////////////////////////
+
+OR elimination
+
+
+Idea:
+- If an OR statement is true, what do we know?
+
+p ∨ q
+
+
+
+
+
+- What if we can reach the same conclusion no matter which side
+    of the OR is true?
+
+
+
+
+
+
+Rule summary:
+
+
+               SubProof(          SubProof(
+                  Assume ( P ),      Assume ( Q ),
+      P ∨ Q       ...                ...
+                  R                  R
+               ),                  ),
+OrE : ---------------------------------------------
+                         R
+
+
+How does this relate to programming?
+
+
+
+
+
+
+if (condition) {
+    some result
+}
+else {
+    some result
+}
+
+--> what do we know is true here?
+
+
+///////////////////////////////
+
+Syntax for using OrE:
+
+(some line numbers are removed for ease of reading)
+
+a ( P ∨ Q   )   by Justification,
+b SubProof(
+    Assume(P),
+    ...
+    ( R   )   by Justification
+),
+c SubProof(
+    Assume(Q),
+    ...
+    ( R   )               (some justification)
+),
+d ( R   )   by OrE(a, b, c)
+
+
+////////////////////////////////
+
+Example: prove that OR is commutative (or1.sc)
+
+
+////////////////////////////////
+
+Do you think we could prove:
+
+p ∨ q ⊢ p ∧ q
+
+
+
+
+
+////////////////////////////////
+
+Proving equivalence.
+
+--> how do we prove two statements are equal in truth tables?
+
+    e.g., DeMorgan's laws:
+    ¬(p ∨ q) is equivalent to ¬p ∧ ¬q
+
+
+
+
+--> how do we do it with proofs?
+
+
+
+////////////////////////////////
+
+Example: prove one of the distributive laws
+
+p ∨ (q ∧ r)     is equivalent to       (p ∨ q) ∧ (p ∨ r)
+
+
+(orDist1.sc and orDist2.sc)
+
+
+////////////////////////////////
+
+Equivalence in if-statements.
+
+Consider this if-statement:
+
+if (grade >= 80 || extraCredit == true) {
+    if (grade <= 90 || extraCredit == true) {
+        //do stuff
+    }
+}
+
+--> translate to propositional logic
+
+
+
+--> what is an equivalent, simpler if-statement?
+
+
+
+///////////////////////////////////
+
+Next time:
+- Rules for implies operator (these WILL be on exam 1!)
+- Review for exam
