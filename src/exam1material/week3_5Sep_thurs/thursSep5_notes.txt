@@ -1,4 +1,4 @@
-HW 3 is posted
+HW 3 is posted, due Tues Sep 10
     (GitHub classroom issue should be fixed)
 
 Exam 1 is Thursday, September 12
@@ -27,6 +27,10 @@ where *premises* is a comma-separated list.
 
 
 In truth tables?
+    find the truth assignments that make EVERY SINGLE premise true
+    made sure the conclusion was also true for those
+
+    premises -> conclusion
 
 
 Natural deduction?
@@ -39,6 +43,14 @@ AND rule summaries.
          P   Q
 AndI : ---------
          P ∧ Q
+
+
+a V b
+r -> s
+
+(a V b) ^ (r -> s)
+
+AndI(lineNum1, lineNum2)
 
 ///
 
@@ -63,6 +75,11 @@ Proof(
 
 --> what justifications so far?
 
+Premise
+AndI
+AndE1
+AndE2
+
 
 
 /////////////////////////////////
@@ -72,6 +89,9 @@ Prove the following sequent (and2.sc)
 p, q, r ⊢ r ∧ (q ∧ p)
 
 
+////////////////////////////////
+
+Red error markings in proofs on homework?
 
 ////////////////////////////////
 
@@ -84,7 +104,11 @@ p ∧ q ∧ r ⊢ q
 
 Prove that ∧ is commutative
 
+2 + 3 = 3 + 2
+
 --> what does "commutative" mean?
+
+p ∧ q ⊢ q ∧ p
 
 (and4.sc)
 
@@ -137,7 +161,14 @@ Idea:
 
 p ∨ q
 
+maybe p is true
+maybe q is true
 
+at least one, maybe both are true
+
+
+assume that p is the one that's true --> conclusion
+assume that q is the one that's true --> conclusion
 
 
 
@@ -210,8 +241,40 @@ Do you think we could prove:
 p ∨ q ⊢ p ∧ q
 
 
+p = T
+q = F
 
 
+////////////////////////////////
+
+Order of operations:
+
+p ∨ q ∨ r
+
+(p ∨ q) ∨ r
+
+--> If I used OrE, what would be the two assumes in
+    the subproofs?
+
+SubProof(
+    Assume(p ∨ q),
+    ...
+
+),
+SubProof(
+    Assume(r)
+)
+
+////////////////////////////////
+
+<--- did the proof in orDist2.sc, that
+
+(p ∨ q) ∧ (p ∨ r) ⊢ p ∨ (q ∧ r)
+
+
+STOPPED HERE
+
+will finish the rest on Tuesday, September 10
 
 ////////////////////////////////
 
