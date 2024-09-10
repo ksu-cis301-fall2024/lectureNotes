@@ -1,0 +1,183 @@
+HW 3 due tonight - don't add parentheses
+
+
+p ∨ q ∨ r
+
+    What is the top-level operator?
+
+
+
+(p ^ q ^ r) ⊢ (p)
+
+    how many steps would this take?
+
+
+
+no new homework this week
+
+Exam 1 is Thursday, September 12
+
+////////////////////////////////
+
+Today:
+- Another natural deduction example with OR
+- Implies elimination
+- Exam 1 review
+
+
+
+HW 2 quick discussion:
+- check solution for more details on missed problems
+
+
+p: it is sunny
+q: I go hiking
+
+p -> q
+
+"It is sunny, so I go hiking"
+
+Is this correct?
+
+////////////////////////////////
+
+Proving equivalence.
+
+--> how do we prove two statements are equal in truth tables?
+
+
+
+
+
+
+--> how could we prove equivalence with proofs?
+
+
+
+////////////////////////////////
+
+Example: prove one of the distributive laws
+
+p ∨ (q ∧ r)     is equivalent to       (p ∨ q) ∧ (p ∨ r)
+
+Already did on Thursday:
+
+    p ∨ (q ∧ r) ⊢ (p ∨ q) ∧ (p ∨ r)
+
+
+
+
+What is left?
+
+
+
+
+(finish orDist2.sc)
+
+
+////////////////////////////////
+
+How could we prove two statements are NOT equivalent?
+
+p → q     vs    q → p
+
+
+////////////////////////////////
+
+Implies-elimination, ImplyE
+
+          P, P → Q
+ImplyE: -----------
+            Q
+
+
+
+(This rule is also called "modus ponens")
+
+Example:
+
+//Suppose we know x > 5. What can we conclude?
+
+if (x > 5) {
+    y = 17;
+}
+
+///////////////////////////////
+
+Syntax for using ImplyE:
+
+a ( P       )   by Justification,
+b ( P → Q   )   by Justification,
+c ( Q       )   by ImplyE(b, a)
+
+
+////////////////////////////////////////
+
+Example (imply1.logika):
+
+(p ∧ q) → r,  p → q,  p  ⊢ r
+
+
+
+Example (imply2.logika):
+
+p → r,  q → r,  p ∨ q  ⊢ r
+
+
+////////////////////////////////////////
+
+(This ends the new material for Exam 1)
+
+(We will do Implies-introduction after Exam 1)
+
+////////////////////////////////////////
+
+Exam 1 review.
+
+Covers everything we've done up to this point (including today).
+
+See Canvas announcement for list of topics.
+
+
+
+
+How to prove two propositional logic statements are equivalent?
+
+
+How to prove propositional logic statements are NOT equivalent?
+
+
+
+What is satisfiability?
+
+    how prove a statement is satisfiable?
+
+
+    how prove a statement is not satisfiable?
+
+
+
+- Determining whether an argument is valid or invalid
+    (what is an argument?)
+
+    how prove valid?
+
+    how prove invalid?
+
+
+
+/////////////////////////////////////////
+
+Closed notes/computers.
+
+
+All problems will be "open-ended" - similar in content/format
+to HW problems.
+
+
+Some problems will ask for a proof or explanation --
+    read carefully!
+
+////////////////////////////////////////
+
+See previous exam.

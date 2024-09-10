@@ -282,10 +282,6 @@ Proving equivalence.
 
 --> how do we prove two statements are equal in truth tables?
 
-    e.g., DeMorgan's laws:
-    ¬(p ∨ q) is equivalent to ¬p ∧ ¬q
-
-
 
 
 --> how do we do it with proofs?
