@@ -3,13 +3,44 @@ HW 3 due tonight - don't add parentheses
 
 p ∨ q ∨ r
 
-    What is the top-level operator?
+vs
+
+p ∨ (q ∨ r)   ??
+
+/////////////
+
+Remember order of operations in natural deduction.
+
+What's wrong here?
+
+1 ( p ∨ q ∨ r ) by Premise,
+2 SubProof(
+    3 Assume(p v q)
+    4 SubProof(
+        5 Assume(p)
+        ...
+        ( r v q v p )
+    ),
+    20 SubProof(
+        21 Assume(q),
+        ...
+        ( r v q v p )
+    ),
+    30 ( ( r v q v p ) ) by OrE(3, 40, 20)
+),
+5 SubProof(
+    6 Assume(r)
+    ...
+    7 ( r v q v p) by ...
+),
+40 ( r v q v p ) by OrE(1, 2, 5)
 
 
 
-(p ^ q ^ r) ⊢ (p)
 
-    how many steps would this take?
+1 ( p ^ q ^ r ) by Premise,
+2 ( p ^ q )         by AndE1(1)
+
 
 
 
@@ -37,6 +68,8 @@ p -> q
 
 "It is sunny, so I go hiking"
 
+should be: "If it is sunny, then I go hiking"
+
 Is this correct?
 
 ////////////////////////////////
@@ -52,7 +85,11 @@ Proving equivalence.
 
 --> how could we prove equivalence with proofs?
 
+first |- second
 
+AND
+
+second |- first
 
 ////////////////////////////////
 
@@ -62,9 +99,9 @@ p ∨ (q ∧ r)     is equivalent to       (p ∨ q) ∧ (p ∨ r)
 
 Already did on Thursday:
 
-    p ∨ (q ∧ r) ⊢ (p ∨ q) ∧ (p ∨ r)
+    (p ∨ q) ∧ (p ∨ r) ⊢  p ∨ (q ∧ r)
 
-
+p |- p v q
 
 
 What is left?
@@ -72,7 +109,7 @@ What is left?
 
 
 
-(finish orDist2.sc)
+(finish orDist1.sc)
 
 
 ////////////////////////////////
@@ -81,6 +118,13 @@ How could we prove two statements are NOT equivalent?
 
 p → q     vs    q → p
 
+find ONE truth assignment where the two statements
+have different outputs
+
+p = F
+q = T
+
+first statement would be true, second statement would be false
 
 ////////////////////////////////
 
@@ -102,6 +146,8 @@ if (x > 5) {
     y = 17;
 }
 
+y = 17
+
 ///////////////////////////////
 
 Syntax for using ImplyE:
@@ -110,6 +156,7 @@ a ( P       )   by Justification,
 b ( P → Q   )   by Justification,
 c ( Q       )   by ImplyE(b, a)
 
+__>:
 
 ////////////////////////////////////////
 
@@ -143,27 +190,61 @@ See Canvas announcement for list of topics.
 
 How to prove two propositional logic statements are equivalent?
 
+    Approach 1:
+    truth table for both statements
+    for every truth assignment, both statements have the same output
+
+    Approach 2:
+    statement1 |- statement2
+
+    and also
+
+    statement2 |- statement1
+
+    (do two natural deduction proofs)
 
 How to prove propositional logic statements are NOT equivalent?
 
+    find one truth assignment that has a different output
+    for the two statements
+
+    (can't prove NOT equivalent with natural deduction)
 
 
-What is satisfiability?
+What is satisfiability? a statement is satisfiable if I can
+    find at least one truth assignment that makes its output
+    true
 
     how prove a statement is satisfiable?
+        just one truth assignment
 
 
     how prove a statement is not satisfiable?
 
+        need full truth table. Show output is false for
+        every single truth assignment.
 
 
 - Determining whether an argument is valid or invalid
     (what is an argument?)
+    given a set of premises, see if a conclusion logically follows
 
     how prove valid?
 
-    how prove invalid?
+        Approach 1:
+        combined truth table with all premises/conclusion
 
+        show any time ALL premises are true then the conclusion
+            was also true
+
+         Approach 2: prove that sequent
+            premises |- conclusion
+
+            with natural deduction
+
+    how prove invalid?
+        just need ONE truth assignment where all premises
+        are true but conclusion is false
 
 
 /////////////////////////////////////////
