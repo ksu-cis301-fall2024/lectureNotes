@@ -36,7 +36,7 @@ import org.sireum.justification.natded.prop._
            14 (  q & r        ) by AndI(8, 13),
            15 (  p | (q & r)  ) by OrI2(14)
          ),
-         16 (  p | (q & r)    ) by OrE(3, 9, 12)
+         16 ( p | (q & r))  by OrE(3,9,12)
        ),
        17 (  p | (q & r)      ) by OrE(2, 4, 7)
     )

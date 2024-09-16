@@ -1,0 +1,199 @@
+Exam 1 results.
+
+Average: 83/100
+High: 100/100
+
+A (90-100): 36 students
+B (80-89): 30 students
+C (70-79): 17 students
+D (60-69): 7 students
+F (below 60): 6 students
+
+Briefly look at Exam 1.
+
+//////////////////////
+
+HW 4 will be posted after class today, due
+    Tues Sep 24
+
+--> this is one of the more challenging assignments of the course
+
+/////////////////////
+
+Today:
+- Logika updates
+- Continue implies rules
+- Begin negation rules
+
+/////////////////////
+
+Logika updates.
+
+Old mode:
+    //@Logika: --manual --background type
+
+New mode we'll be using
+    //@Logika: --manual --background disabled
+
+
+--> Difference?
+
+
+New release available.
+
+////////////////////////////
+
+Reminder: implies-elimination, ImplyE
+
+          P, P → Q
+ImplyE: -----------
+            Q
+
+
+////
+
+Implies-introduction, ImplyI
+
+        SubProof(
+            Assume( P ),
+            ...
+            Q
+        )
+ImplyI: -----------
+          P → Q
+
+
+
+Syntax for using ImplyI:
+
+a SubProof(
+    b Assume( P ),
+    ...
+    c ( Q ) by Justification
+)
+d ( P → Q ) by ImplyI(a)
+
+
+//////////////////////////
+
+Typing a → in Logika for natural deduction:
+
+    __>:
+
+OR: right-click, Insert, Implies
+
+//////////////////////////
+
+If you are trying to prove an implies statement, what should you
+always do?
+
+(imply1.sc)
+p → r, q → r ⊢ p ∧ q → r
+
+
+(imply2.sc)
+p → r, q → r ⊢ p ∨ q → r
+
+
+(imply3.sc)
+p → (q → r) ⊢ (p → q) → (p → r)
+
+
+//////////////////////////
+
+Strategy for proving →
+
+
+/////////////////////////
+
+Negation rules in propositional logic (we'll start with two of them).
+
+Negation-elimination:
+
+        P    ¬P
+NegE: ----------
+          F
+
+
+F here means contradiction
+
+
+Syntax:
+
+a ( p  ) by Justification,
+b ( ¬p ) by Justification,
+c ( F  ) by NegE(a, b)
+
+
+///
+
+Negation-introduction:
+
+        SubProof(
+            Assume( P ),
+          ... F
+        )
+NegI: ------------------
+              ¬P
+
+
+Syntax:
+
+a SubProof(
+    b Assume( p ),
+    ...
+    c ( F ) by Justification
+),
+d ( ¬p ) by NegI(a)
+
+///////////////////////////
+
+Pattern: if you are trying to prove a NOT statement
+
+
+Examples:
+
+(p → q, ¬q)  ⊢ ( ¬p )
+Proof(
+    1 ( p → q   ) by Premise,
+    2 ( ¬q      ) by Premise,
+
+)
+
+
+( p ) ⊢ ( ¬¬p )
+Proof(
+    1 ( p   ) by Premise,
+
+)
+
+
+//////////////////////////
+
+Other examples in separate files:
+
+
+(not1.sc)
+p → ¬q ⊢ ¬(p ∧ q)
+
+///////////////////
+
+(not2.sc)
+¬p ∧ ¬q ⊢ ¬(p ∨ q) (what is this? you'll prove the reverse
+                    on your HW)
+
+
+//////////////////////////
+
+
+(not3.sc)
+p → q ⊢ ¬q → ¬p (what is this?)
+
+/////////////////////////
+
+Next time:
+
+- remaining negation rules
+- applications to conditional statements
+- natural deduction proof strategies
+- soundness and completeness
