@@ -13,7 +13,16 @@ import org.sireum.justification.natded.prop._
       Proof(
       1 (  p __>: r   ) by Premise,
       2 (  q __>: r   ) by Premise,
+      3 SubProof(
+        4 Assume(p & q),
+        5 (p) by AndE1(4),
+        6 (q) by AndE2(4),
+        7 (r) by ImplyE(1, 5)
 
+        //goal: r
+      ),
+      8 (p & q __>: r) by ImplyI(3)
+      //goal: p & q __>: r
     )
     //@formatter:on
   )

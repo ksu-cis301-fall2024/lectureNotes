@@ -13,6 +13,10 @@ import org.sireum.justification.natded.prop._
       Proof(
         1 (  !p & !q ) by Premise,
 
+        //subproof
+          //assume p V q
+
+          //goal: F
     )
     //@formatter:on
   )
