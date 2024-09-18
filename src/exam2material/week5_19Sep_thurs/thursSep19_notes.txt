@@ -1,0 +1,183 @@
+HW 4 due Tues Sep 24
+
+/////////////////
+
+Today:
+- continue negation rules
+
+/////////////////
+
+Reminder: NegE and NegI.
+
+
+        P    ¬P
+NegE: ----------
+          F
+
+
+        SubProof(
+            Assume( P ),
+          ... F
+        )
+NegI: ------------------
+              ¬P
+
+//////////////////////////
+
+Review: finish not2.sc, not3.sc
+
+//////////////////////////
+
+Bottom-elimination:
+
+               F
+BottomE:  ----------
+               Q
+
+
+
+--> what is the idea?
+
+
+Proof by contradiction (reductio ad absurdum):
+
+        SubProof(
+            Assume(¬P),
+            ...
+            F
+        )
+PbC:  -------------------
+          P
+
+
+--> Difference between NegI and PbC?
+
+///////////////////////////////////
+
+First examples.
+
+( p, ¬p ) ⊢ ( q )
+Proof(
+    1 ( p )     by Premise,
+    2 ( ¬p )    by Premise,
+
+)
+
+
+    //how does this make logical sense?
+
+    (think about how we prove an argument with truth tables)
+
+
+( p ∨ q, ¬p ) ⊢ ( q )
+Proof(
+    1 ( p ∨ q )     by Premise,
+    2 ( ¬p )        by Premise,
+
+)
+
+
+
+( ¬¬p ) ⊢ ( p )
+Proof(
+    1 ( ¬¬p )   by Premise,
+
+)
+
+
+
+
+///////////////////////////////////
+
+In separate files:
+
+
+( ¬q → ¬p ) ⊢ ( p → q )         //not4.sc
+
+
+
+
+( ¬(¬p ∨ ¬q) ) ⊢ ( p ∧ q )     //not5.sc
+
+
+
+
+//////////////////
+
+A THEOREM in propositional logic is something that is
+always true with no need for premises. For example:
+
+
+Law of the excluded middle. (LEM)
+
+p ∨ ¬p
+
+
+
+What would a theorem be in a truth table? tautology
+
+
+Prove LEM:
+
+⊢ p ∨ ¬p                //lem.sc
+
+
+
+⊢ (theorem that you are trying to prove)
+
+//////////////////////////////////
+
+How do we approach proofs?
+
+1. Write out all the premises
+2. Extract all information from premises (∧e, →e)
+3. Look at what you are trying to prove (find its top level operator)
+
+    ∧ -
+
+    ∨ -
+
+    → -
+
+    ¬(something) -
+
+    just a propositional atom?
+        look for where that atom IS in your premises
+
+
+
+
+After each claim - see what we can extract that is new.
+
+Inside a subproof - think about top-level op for your goal
+    in that subproof
+
+
+
+Doesn't fit a pattern or doesn't work out from above:
+- Negation involved?
+
+- As a last resort, copy/paste LEM proof to have
+    (something) ∨ ¬(something).
+    Use OrE on it.
+
+
+
+--> when do we open a subproof?
+
+
+
+
+
+--> can we assume anything? yes....but, needs to fit
+    pattern of one of the 4 to finish the subproof.
+
+
+
+/////////////////////////////////
+
+Next time:
+- putting everything together
+- soundness and completeness
+- proving equivalence (more)
+- begin sets
