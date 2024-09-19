@@ -1,5 +1,8 @@
 HW 4 due Tues Sep 24
 
+--> remember to manually run Logika check
+--> consider getting new version of Sireum IVE
+
 /////////////////
 
 Today:
@@ -15,12 +18,15 @@ NegE: ----------
           F
 
 
+
         SubProof(
             Assume( P ),
           ... F
         )
 NegI: ------------------
               ¬P
+
+
 
 //////////////////////////
 
@@ -35,8 +41,13 @@ BottomE:  ----------
                Q
 
 
+//how does this make logical sense?
 
---> what is the idea?
+(think about what we are proving with an argument --
+    IF all the premises are true,
+    THEN we promise the conclusion is true)
+
+
 
 
 Proof by contradiction (reductio ad absurdum):
@@ -60,13 +71,20 @@ First examples.
 Proof(
     1 ( p )     by Premise,
     2 ( ¬p )    by Premise,
-
+    3 ( F )     by NegE(1, 2),
+    4 ( q )     by BottomE(3)
 )
 
 
-    //how does this make logical sense?
+p: I go for a walk
+q: I get coffee
 
-    (think about how we prove an argument with truth tables)
+Premises:
+p ∨ q: I go for a walk or I get coffee
+¬p: I don't go for a walk
+
+Conclusion:
+q: I get coffee
 
 
 ( p ∨ q, ¬p ) ⊢ ( q )
@@ -74,6 +92,22 @@ Proof(
     1 ( p ∨ q )     by Premise,
     2 ( ¬p )        by Premise,
 
+    //try OrE
+
+    3 SubProof(
+        4 Assume(p),
+        5 (F) by NegE(4, 2),
+        6 (q) by BottomE(5)
+        //goal: q
+    ),
+    7 SubProof(
+        8 Assume(q)
+
+        //goal: q
+    ),
+    9 (q) by OrE(1, 3, 7)
+
+    //goal: q
 )
 
 
@@ -82,6 +116,14 @@ Proof(
 Proof(
     1 ( ¬¬p )   by Premise,
 
+    2 SubProof(
+        3 Assume (¬p),
+        4 (F) by NegE(3, 1)
+        //goal: F
+    ),
+    5 (p) by PbC(2)
+
+    //want p, try PbC
 )
 
 
@@ -114,7 +156,8 @@ p ∨ ¬p
 
 
 
-What would a theorem be in a truth table? tautology
+What would a theorem be in a truth table?
+
 
 
 Prove LEM:
@@ -127,11 +170,15 @@ Prove LEM:
 
 //////////////////////////////////
 
+<-- stopped here, will continue on Tuesday
+
+/////////////////////////////////
+
 How do we approach proofs?
 
 1. Write out all the premises
 2. Extract all information from premises (∧e, →e)
-3. Look at what you are trying to prove (find its top level operator)
+3. Look at what you are trying to prove (find top level operator)
 
     ∧ -
 
@@ -149,6 +196,7 @@ How do we approach proofs?
 
 After each claim - see what we can extract that is new.
 
+
 Inside a subproof - think about top-level op for your goal
     in that subproof
 
@@ -156,6 +204,7 @@ Inside a subproof - think about top-level op for your goal
 
 Doesn't fit a pattern or doesn't work out from above:
 - Negation involved?
+
 
 - As a last resort, copy/paste LEM proof to have
     (something) ∨ ¬(something).
