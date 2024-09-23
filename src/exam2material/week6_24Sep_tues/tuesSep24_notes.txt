@@ -1,0 +1,413 @@
+HW 4 due tonight
+
+Hardest problems: proving equivalence on #6 and #7
+
+#6: p → q   equivalent to   ¬p ∨ q
+
+    p → q  ⊢  ¬p ∨ q
+
+
+
+   ¬p ∨ q   ⊢  p → q
+
+
+#7: ¬(p → q)    equivalent to   p ∧ ¬q
+
+    ¬(p → q)  ⊢  p ∧ ¬q
+
+
+    p ∧ ¬q   ⊢   ¬(p → q)
+
+
+
+HW 5 will be posted after class, due Tues Oct 1
+
+/////////////////////////////////
+
+Today:
+- How we approach proofs
+- Putting it all together
+- Soundness and completeness
+- Begin sets
+
+/////////////////////////////////
+
+How do we approach proofs?
+
+1. Write out all the premises
+2. Extract all information from premises (AndE, ImplyE)
+3. Look at what you are trying to prove (find top level operator)
+
+    ∧ -
+
+    ∨ -
+
+    → -
+
+    ¬(something) -
+
+    just a propositional atom?
+        look for where that atom IS in your premises
+
+
+
+
+After each claim - see what we can extract that is new.
+
+
+Inside a subproof - think about top-level op for your goal
+    in that subproof
+
+
+
+Doesn't fit a pattern or doesn't work out from above:
+- Negation involved?
+
+
+- As a last resort, copy/paste LEM proof to have
+    (something) ∨ ¬(something).
+    Use OrE on it.
+
+
+
+--> when do we open a subproof?
+
+
+
+
+
+--> can we assume anything? yes....but, needs to fit
+    pattern of one of the 4 to finish the subproof.
+
+
+
+/////////////////////////////////
+
+Bigger examples:
+
+big1.sc
+
+big2.sc
+
+demorgan.sc (just second part)
+
+//////////////////////////////////
+
+SOUNDNESS and COMPLETENESS of natural deduction in
+    propositional logic
+
+    "provable": prove using natural deduction
+    "true": demonstrate an argument with truth tables
+
+
+SOUNDNESS: everything that is provable is actually true
+
+p, q            p ^ q
+
+
+
+
+COMPLETENESS: everything that is true is provable
+
+How does this relate to our proof system?
+
+
+
+
+--> what would it mean if a proof system was unsound?
+
+
+
+
+--> what would it mean if a proof system was incomplete?
+
+
+
+
+Propositional logic is both SOUND and COMPLETE.
+
+
+Using natural deduction to prove the sequent:
+
+    P1, P2, ..., Pn ⊢ q
+
+Is equivalent to using truth tables to show that whenever
+
+    P1, P2, ..., Pn
+
+are true, then q is also true
+
+//////////////////////////////////////
+
+Sets.
+
+
+
+{1,1,3,5,7} = {1,3,5,7} = {7,3,1,5}
+
+
+- A set is an unordered collection of elements
+
+∈: is in, exists in
+
+    x ∈ A: x exists in set A, x is in A
+
+    x ∉ A: x does not exist in set A, x is not in A
+
+
+
+Example: A = {1,4,7,11,20}
+
+    1 ∈ A
+    2 ∉ A
+
+
+
+- Common sets in math:
+
+    ℕ: natural numbers (positive integers)
+
+    ℤ: integers (positive, negative, and 0)
+        (includes all natural numbers)
+
+    ℚ: rational numbers. p/q where p and q are integers and
+        q does not equal 0
+        includes all integers (because 4 is 4/1)
+
+    ℝ: real numbers (anything that is not complex)
+        includes all rational numbers
+        includes all numbers with decimals, even things like
+            pi, e, sqrt(2)
+
+    ℂ: complex
+        includes all real numbers
+        also includes a + bi (i is imaginary)
+
+    ∅: empty set, null set {}
+
+
+////////////////////////////////////
+
+Set builder notation.
+
+: means, where, such that
+| means the same thing
+
+{variable : conditions}
+
+
+{x : x ∈ ℕ, 5 ≤ x ≤ 10}
+
+
+
+{x : x is prime}
+
+
+
+
+{d : d is a weekday}
+
+
+
+
+{v : v is a vowel}
+
+
+
+
+{k : k is a letter in "abracadabra"}
+
+
+
+
+{x : x = 2k,  k ∈ ℕ}
+
+
+
+
+{n : n = k^2, k ∈ Z}
+
+
+
+
+{n : n = 3a + 1, a ∈ ℕ, 1 ≤ a ≤ 4}
+
+
+
+///////////////////////////////////////
+
+Describe these sets in set builder notation
+
+
+{5,10,15}
+
+
+
+{CIS 115, CIS 200, CIS 300, CIS 301}
+
+
+
+{2,4,8,16,32}
+
+
+///////////////////////////////////////
+∀ ∃     ∈ ∉     ∅ ⋂ ⋃ ⊂ ⊆   ⋀ ⋁ ¬ →     ℕ ℤ     ≠ ≤ ≥
+
+///////////////////////////////////////
+
+Set union, ⋃
+
+The union of the sets A and B, written A ⋃ B, is the set
+of all elements....?
+
+
+How could we express in set builder notation?
+
+A ⋃ B =
+
+
+//////////////////////////////////////
+⋃ ⋂ ⋁ ⋀ ∈ ∉
+///////////////////////////////////////
+
+Set intersection, ⋂
+
+The intersection of the sets A and B, written A ⋂ B, is the set
+of all elements that are...?
+
+
+How could we express in set builder notation?
+
+A ⋂ B =
+
+///////////////////////////////////////
+
+Set difference,
+
+/ or \ (means the same thing)
+
+The difference between the sets A and B, written A - B, is the set
+of all elements...?
+
+
+How could we express in set builder notation?
+
+A - B =
+
+//////////////////////////////////////
+⋃ ⋂ ⋁ ⋀ ∈ ∉
+///////////////////////////////////////
+
+A = {1,3,7,10,11,12}
+
+B = {2,3,4,5,6,7}
+
+
+Find:
+
+A ⋃ B =
+
+A ⋂ B =
+
+A - B =
+
+B - A =
+
+
+//////////////////
+
+Subset - A is a subset of B, written A ⊆ B, if
+    all elements in A are also in B.
+
+(We say A ⊂ B if A is a subset of B but A ≠ B.)
+
+
+
+
+Example:
+
+A = {1,3,4}
+
+B = {1,3,5,8}
+
+--> is A a subset of B?
+
+
+
+A = {8,1,3}
+
+B = {1,3,5,8}
+
+--> is A a subset of B?
+
+
+
+//////////////////////////////////
+
+
+Quantifiers - helps describe all or some elements in a set
+
+    ∀ - universal quantifier, read as "for all"
+
+    ∃ - existential quantifier, read as "there exists"
+
+
+
+
+
+∀ x ∈ A ...     means: for all x in A
+
+∃ x ∈ A ...     means:  there exist an x in A
+
+
+
+
+
+∀ x ∈ ℝ (x^2 ≥ 0)       //what is this saying? why is it true?
+
+
+
+
+∀ x ∈ ℝ (x^2 > 0)       //Is this true?
+
+
+
+
+∃ x ∈ ℤ (x^2 == 1)       //what is this saying? why is it true?
+
+
+
+
+∃ x ∈ ℤ ∀ y ∈ ℤ (x + y == 1)     //what is this saying? Is it true?
+
+
+
+
+∀ x ∈ ℤ ∃ y ∈ ℤ (x + y == 1)
+
+
+
+
+/////////////////////////////////////
+
+Can we define whether set A is a subset of set B using quantifiers?
+
+A ⊆ B means ??
+
+
+
+
+How could we define whether set A equals set B using quantifiers?
+
+
+
+
+∀ ∃     ∈ ∉     ∅ ⋂ ⋃ ⊂ ⊆   ⋀ ⋁ ¬ →     ℕ ℤ     ≠ ≤ ≥
+
+//////////////////////////////////////
+
+Next time:
+- proofs with sets
+- limitations of propositional logic
+- intro to predicate logic
+
