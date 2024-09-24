@@ -48,6 +48,28 @@ import org.sireum.justification.natded.prop._
       Proof(
         1 ( !(p & q) ) by Premise,
 
+        //doesn't fit a pattern, try pbc
+        2 SubProof(
+            3 Assume (!(!p | !q)),
+
+            //try to contradict with premise
+            // would need p & q
+
+            //try to prove p (try with pbc)
+            4 SubProof (
+                5 Assume (!p),
+                6 (!p | !q) by OrI1(5),
+                7 (F) by NegE(6, 3)
+                //goal: F
+            ),
+            8 (p) by PbC(4),
+
+            //try to prove q (would look very similar)
+
+            //then put p & q together, will contradict with premise
+
+            //goal: F
+        )
     )
     //@formatter:on
   )

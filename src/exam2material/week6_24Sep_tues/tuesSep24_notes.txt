@@ -2,23 +2,58 @@ HW 4 due tonight
 
 Hardest problems: proving equivalence on #6 and #7
 
+
+
 #6: p → q   equivalent to   ¬p ∨ q
 
     p → q  ⊢  ¬p ∨ q
+        try pbc
+        subproof - assume ¬(¬p ∨ q)
+            try pbc to get p
+            subproof - assume ¬p
+                use OrI to get ¬p ∨ q
+                have contradiction
+
+            goal: want p, which could give me q using premise
+            then use OrI to get ¬p ∨ q
+            goal: ¬p ∨ q to give me the contradiction
+            goal: contradiction
 
 
 
    ¬p ∨ q   ⊢  p → q
 
+        start by following pattern for ImplyI
+        subproof - assume p
+            use OrE on the premise
+            goal: q
+
+(remember BottomE!)
 
 #7: ¬(p → q)    equivalent to   p ∧ ¬q
 
     ¬(p → q)  ⊢  p ∧ ¬q
+        try pbc
+        subproof - assume ¬(p ∧ ¬q)
+            subproof with ImplyI
+                assume p
+
+                subproof with pbc
+                    assume ¬q
+                    put p and ¬q together
+                    goal: contradiction
+
+                goal: q
+
+            goal: p → q
+            goal: contradiction (with premise)
+
 
 
     p ∧ ¬q   ⊢   ¬(p → q)
 
-
+    follow pattern for NegI
+        assume p → q
 
 HW 5 will be posted after class, due Tues Oct 1
 
@@ -38,18 +73,31 @@ How do we approach proofs?
 2. Extract all information from premises (AndE, ImplyE)
 3. Look at what you are trying to prove (find top level operator)
 
-    ∧ -
+    ∧ - usually try to prove the two sides separately,
+        then AndI
 
-    ∨ -
+    ∨ - can you prove one side of goal OR by itself? Then use OrI
+        do you have an OR statement as a claim?
+            then try OrE on that statement to get goal conclusion
+            in both cases
 
-    → -
+        see anything with negation? try pbc
+            assume !(conclusion), try to get contradiction
 
-    ¬(something) -
+    → - ImplyI pattern
+        subproof - assume LHS
+            try to get RHS
+
+
+    ¬(something) - NegI pattern
+        subproof - assume something
+            try to get contradiction
+
 
     just a propositional atom?
         look for where that atom IS in your premises
 
-
+        think about what you'd need to extract for premises
 
 
 After each claim - see what we can extract that is new.
@@ -58,10 +106,16 @@ After each claim - see what we can extract that is new.
 Inside a subproof - think about top-level op for your goal
     in that subproof
 
+    always write down your goal for the end of the subproof
+
+    only 4 subproof rules - ImplyI, OrE, PbC, NegI
+        have one in mind when you open a subproof
+        only ONE rule (OrE) involves two subproofs in a row
 
 
 Doesn't fit a pattern or doesn't work out from above:
-- Negation involved?
+- Negation involved? try PbC on just  that goal
+
 
 
 - As a last resort, copy/paste LEM proof to have
@@ -76,10 +130,23 @@ Doesn't fit a pattern or doesn't work out from above:
 
 
 
---> can we assume anything? yes....but, needs to fit
-    pattern of one of the 4 to finish the subproof.
+--> can we assume anything?
+
+    Subproof
+        assume whatever we want
 
 
+        end with something (not F)
+    could only conclude assume -> conclusion
+
+
+ if you have:
+    subproof
+        assume something
+
+        end in F
+
+    can conclude opposition of something using either NegI or PbC
 
 /////////////////////////////////
 
@@ -104,27 +171,37 @@ SOUNDNESS: everything that is provable is actually true
 
 p, q            p ^ q
 
+    if I can prove an argument with natural deduction,
+    I can also demonstrate its truth with truth tables
 
 
 
 COMPLETENESS: everything that is true is provable
 
-How does this relate to our proof system?
+    If I can demonstrate that an argument is true with truth tables,
+    then I can prove it with natural deduction
 
 
 
 
 --> what would it mean if a proof system was unsound?
 
+    I could prove things that weren't actually true
+
+    would be bad
 
 
 
 --> what would it mean if a proof system was incomplete?
 
+    there might be arguments that were true in truth tables
+    that I was unable to prove with deduction
 
+    not really a problem
 
 
 Propositional logic is both SOUND and COMPLETE.
+
 
 
 Using natural deduction to prove the sequent:
@@ -144,6 +221,7 @@ Sets.
 
 
 {1,1,3,5,7} = {1,3,5,7} = {7,3,1,5}
+
 
 
 - A set is an unordered collection of elements
@@ -196,12 +274,16 @@ Set builder notation.
 {variable : conditions}
 
 
-{x : x ∈ ℕ, 5 ≤ x ≤ 10}
+{x: x ∈ ℕ, 5 ≤ x ≤ 10}
 
+the set of all x where x is a natural number between 5 and 10
+
+{5,6,7,8,9,10}
 
 
 {x : x is prime}
 
+{2,3,5,7,etc.}
 
 
 
@@ -217,22 +299,32 @@ Set builder notation.
 
 {k : k is a letter in "abracadabra"}
 
-
+{a, b, c, r, d}
 
 
 {x : x = 2k,  k ∈ ℕ}
 
+the positive even numbers
 
+{2,4,6,8,...}
 
 
 {n : n = k^2, k ∈ Z}
 
+all perfect squares
 
+{0, 1, 4, 9, ...}
 
 
 {n : n = 3a + 1, a ∈ ℕ, 1 ≤ a ≤ 4}
 
+all n where n is 1 more than a multiple of 3 that is 1-4
 
+{4, 7, 10, 13}
+
+///////////////////////////////////////
+
+<-- stopped here, will continue on Thursday
 
 ///////////////////////////////////////
 

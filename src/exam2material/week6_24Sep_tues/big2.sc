@@ -18,6 +18,8 @@ import org.sireum.justification.natded.prop._
         3 ( t ) by Premise,
         4 ( (!s & t) __>: q ) by Premise,
 
+        //can't do anything yet with premises
+        //would want to prove p-> q to use premise 1
     )
     //@formatter:on
   )
