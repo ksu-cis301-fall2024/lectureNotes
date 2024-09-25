@@ -1,0 +1,422 @@
+HW 5 due Tuesday, October 1
+
+////////////////////////
+
+Today:
+- more with sets
+- limitations of propositional logic
+- intro to predicate logic
+
+////////////////////////
+
+Reminder: set-builder notation
+
+{x : a condition involving x}
+
+
+{x : x = 2^k, k ∈ ℕ}
+
+////////////////////////
+
+Describe these sets in set builder notation
+
+
+{5,10,15}
+
+
+
+{CIS 115, CIS 200, CIS 300, CIS 301}
+
+
+
+{2,4,8,16,32}
+
+
+///////////////////////////////////////
+∀ ∃     ∈ ∉     ∅ ⋂ ⋃ ⊂ ⊆   ⋀ ⋁ ¬ →     ℕ ℤ     ≠ ≤ ≥
+
+///////////////////////////////////////
+
+Set union, ⋃
+
+The union of the sets A and B, written A ⋃ B, is the set
+of all elements....?
+
+
+How could we express in set builder notation?
+
+A ⋃ B =
+
+
+//////////////////////////////////////
+⋃ ⋂ ⋁ ⋀ ∈ ∉
+///////////////////////////////////////
+
+Set intersection, ⋂
+
+The intersection of the sets A and B, written A ⋂ B, is the set
+of all elements that are...?
+
+
+How could we express in set builder notation?
+
+A ⋂ B =
+
+///////////////////////////////////////
+
+Set difference,
+
+/ or \ (means the same thing)
+
+The difference between the sets A and B, written A - B, is the set
+of all elements...?
+
+
+How could we express in set builder notation?
+
+A - B =
+
+
+/////////////////////////////////////
+
+What do we know if A ⋂ B = A ⋃ B?
+
+
+
+What do we know if A - B = A?
+
+
+
+
+What do we know if A - B = B - A?
+
+
+
+
+
+
+//////////////////////////////////////
+⋃ ⋂ ⋁ ⋀ ∈ ∉
+///////////////////////////////////////
+
+A = {1,3,7,10,11,12}
+
+B = {2,3,4,5,6,7}
+
+
+Find:
+
+A ⋃ B =
+
+A ⋂ B =
+
+A - B =
+
+B - A =
+
+
+//////////////////
+
+Subset - A is a subset of B, written A ⊆ B, if
+    all elements in A are also in B.
+
+(We say A ⊂ B if A is a subset of B but A ≠ B.)
+
+
+
+
+Example:
+
+A = {1,3,4}
+
+B = {1,3,5,8}
+
+--> is A a subset of B?
+
+
+
+A = {8,1,3}
+
+B = {1,3,5,8}
+
+--> is A a subset of B?
+
+
+
+//////////////////////////////////
+
+
+Quantifiers - helps describe all or some elements in a set
+
+    ∀ - universal quantifier, read as "for all"
+
+    ∃ - existential quantifier, read as "there exists"
+
+
+
+Can we define whether set A is a subset of set B using quantifiers?
+
+A ⊆ B means ??
+
+
+
+
+How could we define whether set A equals set B using quantifiers?
+
+
+
+
+∀ ∃     ∈ ∉     ∅ ⋂ ⋃ ⊂ ⊆   ⋀ ⋁ ¬ →     ℕ ℤ     ≠ ≤ ≥
+
+//////////////////////////////////////
+
+(we will come back to sets in a couple of weeks to
+do proofs with them)
+
+//////////////////////////////////////
+
+A predicate is a boolean function that represents whether
+    an individual has a particular property
+
+
+Set builder notation: {x : P(x)}
+
+where P(x) is a statement (a predicate) involving x
+
+
+
+
+The set is all such x where P(x) is true
+
+//////////////////////////////////////
+
+Example:
+
+A = {x : x ∈ ℕ ⋀ x^2 ≥ 25 }
+
+
+
+P(x) = x ∈ ℕ ⋀ x^2 ≥ 25
+    so A = {x : P(x) is true }
+
+
+What are these saying? Are they true?
+
+P(2) =
+P(-6) =
+P(10) =
+
+Is 2 in A? Is -6? Is 10?
+
+
+
+//////////////////////////////////////
+
+Limitations of propositional logic:
+
+Premises:
+    All humans are mortal.
+    Socrates is human.
+
+Conclusion
+    Therefore, Socrates is mortal.
+
+
+
+How would we prove this in propositional logic?
+
+What propositional atoms?
+
+p: all humans are mortal
+q: Socrates is a human
+r: Socrates is mortal
+
+
+p, q ⊢ r
+
+
+
+///////////////
+
+Predicate logic:
+
+Instead of propositions, we will make claims about
+individuals in a domain (a set)
+
+
+These claims will involve predicates and quantifiers
+
+
+
+//////////////////
+
+More with predicates.
+
+Example:
+
+    Domain: {x : x is a student at K-State}
+    C(x): whether x is in CIS 301
+
+    Bob is taking: CIS 300, ECE 241, MATH 221, ENGL 200
+    Jill is taking: CIS 301, MATH 510, HIST 251, MUSIC 170
+
+
+    What is the value of C(Bob)?
+
+    What is the value of C(Jill)?
+
+    What is the value of C(Bob) ⋀ C(Jill)?
+
+
+////////////////
+
+Quantifiers and predicates
+
+Domain: {strawberry, blueberry, banana, orange, grapefruit, apple}
+
+Berry(x): x is a berry
+Citrus(x): x is a citrus fruit
+Peel(x): x has a peel (that needs to be removed before eating)
+Seeds(x): x contains inedible seeds
+Bite(x): f is bite-sized
+
+Berry(strawberry) -
+Citrus(strawberry) -
+Peel(strawberry) -
+Seeds(strawberry) -
+Bite(strawberry) -
+
+
+
+Write each statement in English. Is each one true or false?
+
+∀ x (Berry(x))
+
+
+
+    --> how could we express the same statement in our domain
+    WITHOUT a quantifier?
+
+
+
+
+///
+
+∃ x (Citrus(x) ⋀ Seeds(x))
+
+
+
+    --> how could we express the same statement in our domain
+    WITHOUT a quantifier?
+
+
+
+///
+
+∀ x (Berry(x) ⋀ Bite(x))
+
+
+
+
+///
+
+∀ x (Berry(x) → Bite(x))
+
+
+
+///
+
+¬(∀ x Peel(x))
+
+Can you think of another way to write the same thing?
+
+
+
+
+
+
+
+///
+
+¬(∀ x (Seeds(x) → Citrus(x)))
+
+
+
+Can you think of another way to write the same thing?
+
+///
+
+∀ x ¬Peel(x)
+
+
+
+
+///
+
+¬(∃ x Berry(x))
+
+
+
+
+///
+
+¬(∃ x (Peel(x) ⋀ Citrus(x)))
+
+
+
+
+///
+
+∃ x ¬(Peel(x) ⋀ Seeds(x))
+
+
+
+
+///
+
+∃ x (Citrus(x) → Berry(x))
+
+
+
+/////////////////
+
+For all: usually connect with...
+
+There exists: usually connect with...
+
+
+//////////////////
+
+Quantifiers and sets of numbers.
+
+
+∀ x ∈ ℝ (x^2 ≥ 0)       //what is this saying? why is it true?
+
+
+
+
+∀ x ∈ ℝ (x^2 > 0)       //Is this true?
+
+
+
+
+∃ x ∈ ℤ (x^2 == 1)       //what is this saying? why is it true?
+
+
+
+
+∃ x ∈ ℤ ∀ y ∈ ℤ (x + y == 1)     //what is this saying? Is it true?
+
+
+
+
+∀ x ∈ ℤ ∃ y ∈ ℤ (x + y == 1)
+
+/////////////////////////////
+
+Next time:
+- more with predicate logic translations
+- DeMorgan's laws for quantifiers
+- Natural deduction rules with quantifiers
+
+//////////////////////
