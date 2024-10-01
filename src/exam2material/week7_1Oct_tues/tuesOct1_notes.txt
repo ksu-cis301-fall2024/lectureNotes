@@ -54,6 +54,20 @@ Evaluating predicate logic statements
     true when:
     false when:
 
+//////////////////////
+
+Domain: steak, ice cream, pineapple, cheese, (vegan) crackers
+Predicates: IsSweet(x), IsPlant(x), IsVegan(x), IsMeat(x)
+
+
+Translate/evaluate:
+    ∀ x ¬IsSweet(x)
+
+    ¬(∀ x (IsVegan(x) → IsPlant(x)))
+
+    ¬(∃ x (IsSweet(x) ⋀ IsMeat(x)))
+
+    ∃ x ¬(IsSweet(x) ⋀ IsMeat(x))
 
 //////////////////////
 
