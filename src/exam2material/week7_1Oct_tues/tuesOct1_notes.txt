@@ -1,6 +1,8 @@
 HW 5 due today
     - double-check link: 5 pt deduction for incorrect format
 
+    .../tree/digital fingerprint
+
 HW 6 will be posted after class
 
 Exam 2 will be next Thursday, October 10
@@ -10,6 +12,12 @@ Exam 2 will be next Thursday, October 10
 
 Note: PbC rule
 
+SubProof(
+    Assume !p
+    ...
+    F
+)
+afterwards, p
 
 
 //////////////////////
@@ -25,34 +33,35 @@ Today:
 Evaluating predicate logic statements
 
 1) ∀ x P(x)
-    translation:
-    true when:
-    false when:
+    translation: all x's are P-ish
+    true when: we can show P(x) is true for EVERY element x in the domain
+    false when: we can find ONE individual k where P(k) is false
 
 2) ∃ x P(x)
-    translation:
-    true when:
-    false when:
+    translation: there exists an x that is P-ish
+    true when: we can find ONE individual k where P(k) is true
+    false when: we can show that P(x) is false for EVERY element x
+                    in the domain
 
 3) ¬(∀ x P(x))
-    translation:
-    true when:
-    false when:
+    translation: not all x's are P-ish
+    true when: we can find ONE individual k where P(k) is false
+    false when: we can show that P(x) is true for EVERY element x
 
 4) ¬(∃ x P(x))
-    translation:
-    true when:
-    false when:
+    translation: there does not exist an x that is P-ish
+    true when: we can show that P(x) is false for EVERY element x
+    false when: we can find ONE individual k where P(k) is true
 
 5) ∀ x ¬P(x)
-    translation:
-    true when:
-    false when:
+    translation: all x's are not P-ish
+    true when: we can show P(x) is false for EVERY element x
+    false when: we can find ONE individual k where P(k) is true
 
 6) ∃ x ¬P(x)
-    translation:
-    true when:
-    false when:
+    translation: there is an x that is not P-ish
+    true when: we can find ONE individual k where P(k) is false
+    false when: we can show P(x) is true for EVERY element x
 
 //////////////////////
 
@@ -62,12 +71,23 @@ Predicates: IsSweet(x), IsPlant(x), IsVegan(x), IsMeat(x)
 
 Translate/evaluate:
     ∀ x ¬IsSweet(x)
+        All foods are not sweet
+        False - ice cream is sweet
 
     ¬(∀ x (IsVegan(x) → IsPlant(x)))
+        Not all vegan foods are plants
+        True - crackers are vegan but are not plants
 
     ¬(∃ x (IsSweet(x) ⋀ IsMeat(x)))
+        There is not a meat that is sweet
+        true - there is no food that is both meat and also sweet
+            (the only meat is steak, and it is not sweet)
 
     ∃ x ¬(IsSweet(x) ⋀ IsMeat(x))
+        There exists a food that isn't both sweet and meat
+        True - crackers aren't both sweet and a meat
+
+
 
 //////////////////////
 
@@ -78,19 +98,27 @@ What do these mean in English? Are they true?
 
 
 ∀ n ∃ m (n^2 < m)
-
-
+    The square of all integers is less than some other integer
+    true - for n^2, n^2 +1 is an integer that is bigger
 
 ∀ x ∃ y (x == y^2)
 
+    All integers are a perfect square
+    false - 5 is an integer that is not a perfect square
 
 
-¬(∀ n ∃ m (n^2 < m))
 
+∀ n ∃ m (n^2 == m)
+    the square of each integer is another integer
+    (true -- integers are closed under multiplication,
+        meaning that n*n is also an integer)
 
+∃ m ∀ n (n^2 == m)
+    we can find an integer (the SAME integer in all cases)
+    that equals the square of all integers
 
-¬(∀ x ∃ y (x == y^2))
-
+    (false -- there is no one integer that is the square
+    of every integer)
 
 
 /////////////////////////
@@ -107,6 +135,9 @@ The sum of two negative integers is negative
 
 Domain: ℤ
 
+∀ x ∀ y (x < 0 ⋀ y < 0 → x + y < 0)
+    true - adding two negative numbers can't get bigger
+
 
 
 
@@ -115,8 +146,11 @@ not necessarily positive
 
     x - y
 
+true: 5 - 6
 
+∃ x ∃ y (x > 0 ⋀ y > 0 ⋀ x - y <= 0 )
 
+¬(∀ x ∀ y ( x > 0 ⋀ y > 0 → x - y > 0))
 
 
 /////////////////////////
@@ -129,12 +163,12 @@ Equivalence: DeMorgan's law (part 1).
 suppose our domain is k1 through kn
 
 
-¬(∃ x P(x)) is  equivalent to...
+¬(∃ x P(x)) is  equivalent to...¬(P(k1) V P(k2) V ... V P(Kn))
+        ¬P(k1) ⋀ ¬P(k2) ⋀ ... ⋀ ¬P(n)
+        ∀ x ¬P(x)
 
 
 
-
-∀ x (¬P(x)) is equivalent to...
 
 
 
@@ -150,8 +184,9 @@ suppose our domain is k1 through kn
 
 
 
-¬(∀ x P(x)) is equivalent to...?
-
+¬(∀ x P(x)) is equivalent to...
+    ¬(P(k1) ^ P(k2) ^ ... ^ P(kn))
+     ¬P(k1) V ¬P(k2) V ... V ¬P(kn)
 
 
 ∃ x (¬P(x)) is equivalent to...?
@@ -190,19 +225,29 @@ Domain: students
 A 5th grader won a prize
 
 
-Translation:
+Translation: ∃ x (in5th(x) ^ wonPrize(x))
 
-Negation:
+Negation: ¬(∃ x (in5th(x) ^ wonPrize(x)))
+    ∀ x ¬(in5th(x) ^ wonPrize(x))
+    ∀ x (¬in5th(x) V ¬wonPrize(x))
+    ∀ x (in5th(x) → ¬wonPrize(x))
 
+
+    All 5th graders didn't win a prize
 
 ///
 
 All prize-winners were 5th graders
 
-Translation:
+Translation: ∀ x (wonPrize(x) → in5th(x))
 
 Negation:
+    ¬(∀ x (wonPrize(x) → in5th(x)))
+    ∃ x ¬(wonPrize(x) → in5th(x))
+    ∃ x ¬(¬wonPrize(x) V in5th(x))
+    ∃ x (wonPrize(x) ^ ¬in5th(x))
 
+    There is a prize-winner who isn't in 5th grade
 
 
 ///
@@ -210,10 +255,15 @@ Negation:
 A 5th grader is friends with all prize winners
 
 Translation:
-
+    ∃ x ∀ y (in5th(x) ^ wonPrize(y) ^ friends(x, y))
 
 Negation:
+    ¬(∃ x ∀ y (in5th(x) ^ wonPrize(y) ^ friends(x, y)))
+    ∀ x ∃ y ¬((in5th(x) ^ wonPrize(y)) ^ friends(x, y))
+    ∀ x ∃ y (¬(in5th(x) ^ wonPrize(y)) V ¬friends(x, y))
+    ∀ x ∃ y ((in5th(x) ^ wonPrize(y)) → ¬friends(x, y))
 
+   All 5th graders have a prize winner that they're not friends with
 
 ////////////////////////////////////
 
@@ -238,7 +288,8 @@ Examples -- are the following arguments valid?
 Premises: ∀ x (P(x) → Q(x)), ∃ x P(x)
 Conclusion: ∃ x Q(x)
 
-Valid or not?
+Valid or not? valid - whichever individual P was true for,
+    Q will also be true for that individual
 
 
 ///
@@ -246,8 +297,8 @@ Valid or not?
 Premises: ∀ x P(x) : everyone in my domain is P-ish
 Conclusion: ∃ x P(x): there is someone in domain who is P-ish
 
-Valid or not?
-
+Valid or not? what if my domain is empty
+    not valid because it wouldn't hold in that case
 
 
 /////////////////////////////////
@@ -319,6 +370,9 @@ import org.sireum.justification.natded.pred._
     )
 }
 
+///////////////////////////////
+
+<-- stopped here, will continue on Thursday
 
 ///////////////////////////////
 
