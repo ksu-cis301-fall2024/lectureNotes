@@ -1,0 +1,260 @@
+HW 6 due Tuesday, October 8
+
+Exam 2 will be next Thursday, October 10
+
+--> will post review material by end of week
+--> will spend time reviewing on Tuesday, October 8
+
+//////////////////////////////////////////////////
+
+HW 5 comments:
+
+
+4. {x : x ∈ ℤ, x ≥ -5} ∪ {x : x ∈ ℤ, x ≤ 7}
+
+
+
+
+5. Suppose A ⋃ B = A for two sets A and B.
+What does that tell us about A and B?
+
+
+
+6. Suppose A ⋂ B = A for two sets A and B.
+What does that tell us about A and B?
+
+
+
+7 (a). If A ⋃ C = B ⋃ C, must A = B?
+
+
+
+7 (b). If A ⋂ C = B ⋂ C, must A = B?
+
+
+
+
+//////////////////////////////////////////////////
+
+Today:
+- One more example with quantifiers on sets of numbers
+- Natural deduction rules for universal quantifier
+- Begin deduction rules for existential quantifier
+
+/////////////////////////
+
+∀ ∃     ∈ ∉     ∅ ⋂ ⋃ ⊂ ⊆   ⋀ ⋁ ¬ →     ℕ ℤ     ≠ ≤ ≥
+
+/////////////////////////
+
+Order of quantifiers matters.
+Suppose our domain is all integers (ℤ).
+
+
+What does this say? Is it true?
+
+    ∀ x ∃ y (x^2 == y)
+
+
+What does this say? Is it true?
+
+    ∃ y ∀ x (x^2 == y)
+
+
+////////////////////////////////
+
+Writing predicate logic statements in Logika
+
+In Logika, ∀ x P(x) is written as:
+
+    ∀ ((x: T) => P(x))
+
+
+
+In Logika, ∃ x P(x) is written as:
+
+    ∃ ((x: T) => P(x))
+
+////////////////////////////////
+
+
+For-all elimination (AllE):
+
+           ∀ ((x: T) => P(x))
+AllE[T]:  ---------------------
+                   P(v)
+
+//where v is a particular individual in the domain
+//(i.e, v has type T)
+
+
+Idea:
+
+- if we know that a statement is true for ALL individuals in
+our domain
+
+
+...then what would we know about a specific individual
+in that domain?
+
+///////////////////////////////
+
+Syntax:
+
+(
+    ∀ ((x: T) => Human(x))
+)
+⊢
+( Human(Socrates) )
+
+Proof(
+    1 ( ∀ ((x: T) => Human(x)) )    by Premise,
+    2 Human(Socrates)               by ???
+)
+
+Note: This assumes "Socrates" and "Human" were both parameters
+to our proof function:
+
+
+@pure def Example[T](Human: T => B @pure, Socrates: T)
+
+
+
+///////////////////////////////
+
+Example (all1.sc)
+
+
+∀ x (inCIS301(x) → takenCIS200(x)), inCIS301(bob) ⊢ takenCIS200(bob)
+
+
+//////////////////////////////
+
+Next rule will be for all introduction.
+
+First: consider these two statements:
+
+
+∀ x (P(x) ⋀ Q(x))           (∀ x P(x)) ⋀ (∀ x Q(x))
+
+
+are they equivalent?
+
+how would we defend our position?
+
+
+//////////////////////////////////
+
+
+For-all introduction (AllI):
+
+            Let (   (a: T) => SubProof(
+                ...
+                P(a)
+            )),
+AllI[T] : -------------------------------
+                 ∀ ((x: T) => P(x))
+
+
+//"a" is an unused, "fresh" individual
+
+Idea:
+
+- We know a statement holds for some arbitrary individual
+- That individual could have been anything!
+
+...what can we say about that statement for all individuals?
+
+
+
+
+Syntax:
+
+4 Let ( (a: T) => SubProof(
+    ...
+    P(a)
+)),
+10 ( ∀ ((x: T) => P(x)) ) by AllI[T](4)
+
+
+//a could be any (fresh) individual name
+
+
+///////////////////////////////////
+
+Example:
+
+Prove these statements are equivalent:
+
+∀ x (P(x) ⋀ Q(x))           (∀ x P(x)) ⋀ (∀ x Q(x))
+
+
+all2.sc
+
+///////////////////////////////////
+
+Are these statements equivalent?
+
+∀ x (P(x) ⋁ Q(x))           (∀ x P(x)) ⋁ (∀ x Q(x))
+
+
+
+////////////////////////////////////////
+
+Idea behind exists-introduction (ExistsI):
+
+                  P(v)
+ExistsI[T]: ---------------------
+              ∃ ((x: T) => P(x) )
+
+//v is some individual of type T
+
+
+
+If we know that: Human(Socrates)
+
+Then we can conclude that: ∃ ((x: T) => (Human(x)))
+
+
+
+If we find ONE individual in a domain where a statement holds
+
+...then THERE EXISTS an individual in the domain where the
+    statement holds
+
+
+//////////////////////////////////////////
+
+Rule syntax:
+
+
+( Human(Socrates) ) ⊢ ( ∃ ((x: T) => Human(x) ))
+Proof(
+    1 ( Human(Socrates) ) by Premise,
+    2 ( ∃ ((x: T) => Human(x)) )  by ExistsI[T](1)
+)
+
+(assume "Socrates" was a parameter of type T)
+
+/////////////////////////////////////////
+
+Bigger example (exists1.sc):
+
+(
+    ∀ ((x: T) => (Human(x)->Mortal(x))),
+    Human(Socrates)
+)
+⊢ ( ∃ ((x: T) => Mortal(x) ))
+
+
+
+
+////////////////////////////////////////
+
+Putting things together: all3.sc
+
+/////////////////////////////////////////
+
+Next time:
+- more natural deduction with predicate logic
+- review for exam 2
