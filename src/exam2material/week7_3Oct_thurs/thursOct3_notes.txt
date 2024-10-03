@@ -12,25 +12,37 @@ HW 5 comments:
 
 4. {x : x ∈ ℤ, x ≥ -5} ∪ {x : x ∈ ℤ, x ≤ 7}
 
-
+all integers
 
 
 5. Suppose A ⋃ B = A for two sets A and B.
 What does that tell us about A and B?
 
+B is a subset of A
 
 
 6. Suppose A ⋂ B = A for two sets A and B.
 What does that tell us about A and B?
 
+A is a subset of B
 
 
 7 (a). If A ⋃ C = B ⋃ C, must A = B?
 
+A ⋃ C = B ⋃ C = {1, 2}
+C = {1}
+
+A = {2}
+B = {1,2}
 
 
 7 (b). If A ⋂ C = B ⋂ C, must A = B?
 
+A ⋂ C = B ⋂ C = empty set
+C = {1}
+
+A = {2}
+B = {3}
 
 
 
@@ -55,11 +67,21 @@ What does this say? Is it true?
 
     ∀ x ∃ y (x^2 == y)
 
+For all integers, their square equals some other integer
+
+(The square of an integer is an integer)
+
+True
+
 
 What does this say? Is it true?
 
     ∃ y ∀ x (x^2 == y)
 
+There is an integer that is equal to the square of every integer
+
+False - y has to be fixed, and there is no y that is the square
+    of everything
 
 ////////////////////////////////
 
@@ -116,7 +138,7 @@ Syntax:
 
 Proof(
     1 ( ∀ ((x: T) => Human(x)) )    by Premise,
-    2 Human(Socrates)               by ???
+    2 ( Human(Socrates) )           by AllE[T](1)
 )
 
 Note: This assumes "Socrates" and "Human" were both parameters
@@ -146,6 +168,11 @@ First: consider these two statements:
 
 
 are they equivalent?
+    ∀ x (P(x) ⋀ Q(x))  - for all individuals, P and Q are true for them
+    (∀ x P(x)) ⋀ (∀ x Q(x)) - for all individuals, P is true AND
+                        for all individuals, Q is true
+
+
 
 how would we defend our position?
 
@@ -258,7 +285,33 @@ Bigger example (exists1.sc):
 ⊢ ( ∃ ((x: T) => Mortal(x) ))
 
 
+/////////////////////////////
 
+Suppose you are trying to prove this conclusion:
+
+∀ ((x: T) => P(x) ^ Q(x) -> !R(x) )
+
+Let a: T in a subproof for AllI
+    subproof with ImplyI
+        assume P(a) ^ Q(a)
+
+        subproof with NegI
+            assume R(a)
+
+            goal: F
+
+        goal: !R(a)
+
+    goal: P(a) ^ Q(a) -> !R(a)
+
+
+(This is not a complete proof, as we are missing the premises
+    we would need in order to finish each subproof. It just
+    shows the structure of how we would build such a conclusion.)
+
+////////////////////////////////////////
+
+Stopped here, will continue on Tuesday
 
 ////////////////////////////////////////
 
