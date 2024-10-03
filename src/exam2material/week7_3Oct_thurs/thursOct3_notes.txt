@@ -77,16 +77,7 @@ In Logika, ∃ x P(x) is written as:
 
 ////////////////////////////////
 
-
-For-all elimination (AllE):
-
-           ∀ ((x: T) => P(x))
-AllE[T]:  ---------------------
-                   P(v)
-
-//where v is a particular individual in the domain
-//(i.e, v has type T)
-
+For-all elimination (AllE).
 
 Idea:
 
@@ -96,6 +87,22 @@ our domain
 
 ...then what would we know about a specific individual
 in that domain?
+
+
+
+///
+
+Rule definition:
+
+
+           ∀ ((x: T) => P(x))
+AllE[T]:  ---------------------
+                   P(v)
+
+//where v is a particular individual in the domain
+//(i.e, v has type T)
+
+
 
 ///////////////////////////////
 
@@ -145,8 +152,22 @@ how would we defend our position?
 
 //////////////////////////////////
 
+For-all introduction (AllI).
 
-For-all introduction (AllI):
+Idea:
+
+- Suppose we show statement holds for some arbitrary individual
+    in our domain
+- That individual could have been anyone!
+
+...what can we say about that statement for all individuals in
+    our domain?
+
+
+
+///
+
+Rule definition:
 
             Let (   (a: T) => SubProof(
                 ...
@@ -158,17 +179,9 @@ AllI[T] : -------------------------------
 
 //"a" is an unused, "fresh" individual
 
-Idea:
-
-- We know a statement holds for some arbitrary individual
-- That individual could have been anything!
-
-...what can we say about that statement for all individuals?
 
 
-
-
-Syntax:
+Rule syntax:
 
 4 Let ( (a: T) => SubProof(
     ...
@@ -203,24 +216,22 @@ Are these statements equivalent?
 
 Idea behind exists-introduction (ExistsI):
 
+If we find ONE individual in a domain where a statement holds
+
+...then THERE EXISTS an individual in the domain where the
+    statement holds
+
+
+
+///
+
+Rule definition:
+
                   P(v)
 ExistsI[T]: ---------------------
               ∃ ((x: T) => P(x) )
 
 //v is some individual of type T
-
-
-
-If we know that: Human(Socrates)
-
-Then we can conclude that: ∃ ((x: T) => (Human(x)))
-
-
-
-If we find ONE individual in a domain where a statement holds
-
-...then THERE EXISTS an individual in the domain where the
-    statement holds
 
 
 //////////////////////////////////////////
