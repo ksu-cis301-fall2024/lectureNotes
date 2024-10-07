@@ -1,0 +1,57 @@
+HW 6 due tonight
+
+Exam 2 is Thursday, October 10
+
+///////////////////////
+
+Today:
+- A little more with AllE, AllI, ExistsI
+- Review for Exam 2
+
+///////////////////////
+
+Putting things together: all3.sc
+
+///////////////////////
+
+Exam 2:
+- Thursday, October 10 9:30-10:45
+- Closed notes, closed computers
+- All "open-ended" problems - similar to HW 4-6
+
+- Natural deduction proofs in propositional logic, esp. with:
+    ImplyI, NegE, NegI, BottomE, PbC
+--> still expected to be familiar with all other rules
+
+Sets, including:
+    - set builder notation
+    - N (natural, all positive), Z (integers), R (reals)
+    - union, intersection, difference, subsets
+    - general reasoning about sets
+
+Predicate logic statements, including:
+    - quantifiers
+    - interpreting predicate logic statements in English
+    - translating English statements to predicate logic
+    - evaluating predicate logic statements in a domain
+    - working with predicate logic statements involving sets
+        of numbers
+    - DeMorgan's laws
+    - negating predicate logic statements
+
+- Natural deduction proofs in predicate logic
+    using: AllE, AllI, ExistsI
+
+- Using natural deduction to prove two statements are equivalent
+
+
+--> how to prepare?
+    get out paper
+    work through old homework problems
+    work through old lecture example
+
+--> homework solutions
+
+///////////////////////////////////////
+
+Work through practice exam (will post solution after class)
