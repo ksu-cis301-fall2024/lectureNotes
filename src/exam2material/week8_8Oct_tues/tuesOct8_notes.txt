@@ -12,6 +12,8 @@ Today:
 
 Putting things together: all3.sc
 
+bothQuant.sc
+
 ///////////////////////
 
 Exam 2:
@@ -22,11 +24,15 @@ Exam 2:
 - Natural deduction proofs in propositional logic, esp. with:
     ImplyI, NegE, NegI, BottomE, PbC
 --> still expected to be familiar with all other rules
+--> may be more emphasis here than previous semesters,
+    as more of these rules are on Exam 2 than in the past
 
 Sets, including:
     - set builder notation
-    - N (natural, all positive), Z (integers), R (reals)
-    - union, intersection, difference, subsets
+    - N (natural, all positive, starts at 1), Z (integers),
+            R (reals - includes whole numbers, fractions,
+            numbers with decimals)
+    - union, intersection, difference (-), subsets
     - general reasoning about sets
 
 Predicate logic statements, including:
@@ -43,12 +49,27 @@ Predicate logic statements, including:
     using: AllE, AllI, ExistsI
 
 - Using natural deduction to prove two statements are equivalent
+    I would complete two proofs:
+
+    statement1 |- statement2
+
+    and also:
+
+    statement2 |- statement1
+
+
+--> what about predicate logic proof syntax?
+    don't care about getting all the ()
+    don't care about putting : T or [T]
+    in AllI subproof, be sure to name your random individual
+    can write ∀((x: T) => (P(x) -> Q(x))) like
+        ∀ x (P(x) -> Q(x))
 
 
 --> how to prepare?
     get out paper
     work through old homework problems
-    work through old lecture example
+    work through old lecture examples
 
 --> homework solutions
 
