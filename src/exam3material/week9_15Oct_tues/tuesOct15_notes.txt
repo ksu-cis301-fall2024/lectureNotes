@@ -1,0 +1,206 @@
+Exam 2 discussion.
+
+High: ??/100
+Average: ??/100
+
+A (90-100): ?? students
+B (80-89): ?? students
+C (70-79): ?? students
+D (60-69): ?? students
+F (below 60): ?? students
+
+Briefly discuss exam.
+
+Exam grades in Canvas
+- drops lowest among Exam 1, Exam 2, Exam 3,
+    *midterm equivalent from final*
+
+- what does this mean with the final exam?
+
+////////////////////////////////////////////////////
+
+HW 7 will be posted after class, due Tues Oct 22
+
+////////////////////////////////////////////////////
+
+Today:
+
+- exists elimination rule
+- proving DeMorgan's laws for quantifiers
+- soundness and completeness in predicate logic
+- begin mathematical induction, if time
+
+/////////////////////////////////
+
+Exists elimination - ExistsE[T]
+
+Idea: we know a statement is true for *some* individual
+Create an alias for that anonymous individual
+
+If we can reach a conclusion that does NOT use that alias
+    ...we know that conclusion is valid, since
+    there WAS such an individual
+
+
+Rule summary:
+
+                                 Let ((a: T) => SubProof(
+                                    Assume( P(a) ),
+            ∃((x: T) => P(x))       ...
+                                    Q
+                                 )),
+ExistsE[T]: ----------------------------------------------------
+                     Q
+
+"a" is our alias for the x where P(x) held
+"a" needs to be a "fresh" name (unused before)
+Q CANNOT include anything about "a"
+
+
+
+Syntax:
+
+1 ( ∃((x: T) => P(x)) )         by Justification,
+2 Let ((a: T) => SubProof(
+    3 Assume ( P(a) ),
+    ...
+    4 ( Q )                     by Justification
+)),
+5 ( Q )                         by ExistsE[T](1, 2)
+
+
+
+--> Think of ExistsE like OrE
+    ∃ x P(x) means: P(n1) V P(n2) V ... V P(nk)
+
+
+**If you have an ∃ statement as a claim, it is a good strategy
+to start with a block where you create an alias (e.g. a)
+and plug it into your ∃ statement, as above
+
+Use ExistsE in the SAME situations you would use OrE
+
+
+//////////////////////////////
+
+Examples:
+
+(exists1.sc)
+∀ x (Human(x) → Mortal(x)), ∃ x (Human(x)) ⊢ ∃ x (Mortal(x))
+
+
+(exists2.sc)
+¬(∃ x (P(x) ^ Q(x))) ⊢ ∀ x (P(x) → ¬Q(x))
+
+x is students
+
+    P(x): student x attends K-State
+    Q(x): student x attends KU
+
+    --> what is this argument saying?
+
+¬(∃ x (P(x) ^ Q(x))):
+
+ ∀ x (P(x) → ¬Q(x)):
+
+////////////////////////////
+
+Proof tactics for predicate logic
+
+- see if you can do anything right away with the premises
+    Which rules?
+
+- look at top-level operator for what you are trying to prove
+    trying to prove a "for all" statement with ∀?
+
+
+    trying to prove a "there exists" statement with ∃?
+
+
+    trying to prove an implies?
+
+
+    trying to prove ¬(something)
+
+
+    trying to prove an OR
+
+
+    trying to prove an AND
+
+    when you are in a subproof?
+
+
+
+Unsure what to do?
+
+/////////////////////////////////////////
+
+Proving DeMorgan's laws
+
+//demorgan1.sc
+∀ x ¬P(x)       equivalent to       ¬(∃ x P(x))
+
+/////////////////////////////////////
+
+//demorgan2.sc
+∃ x ¬P(x)       equivalent to       ¬(∀ x P(x))
+
+////////////////////////////////////////
+
+//////////////////////////////
+
+Soundness and completeness of predicate logic.
+
+
+Soundness: definition?
+
+    propositional:
+
+    predicate logic:
+
+
+
+
+Completeness: definition?
+
+    propositional:
+
+    predicate logic:
+
+
+
+///////////////////////////////////
+
+Same argument might be VALID in one domain and INVALID in another
+
+- deduction can only prove arguments that are valid in ANY domain
+- we can't prove all valid arguments
+
+
+Domain with integers with operations like +
+
+
+All integers? 2 + 3 = ?
+
+
+Subset (0,1,2,3,4) of integers. 2 + 3 = ?
+
+
+
+////////////////////////////////////
+
+
+Godel's Incompleteness Theorem.
+
+Any consistent formal system where integer arithmetic is
+carried out is incomplete -- there will be true statements
+that cannot be proved.
+
+(depends on interpretations)
+
+/////////////////////
+
+Next time:
+- mathematical induction
+
