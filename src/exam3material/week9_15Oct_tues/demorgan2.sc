@@ -13,14 +13,14 @@ import org.sireum.justification.natded.prop._
     //@formatter: off
 
     (
-      !(∃((x: T) => !P(x)))
+      ∃((x: T) => !P(x))
     )
       |-
     (
         !(∀((x: T) => P(x)))
     )
     Proof(
-      1 ( !(∃((x: T) => !P(x))) ) by Premise,
+      1 ( ∃((x: T) => !P(x))) by Premise,
 
     )
     //@formatter:on
@@ -36,7 +36,7 @@ import org.sireum.justification.natded.prop._
     )
       |-
     (
-      !(∃((x: T) => !P(x)))
+      ∃((x: T) => !P(x))
     )
     Proof(
       1 ( !(∀((x: T) => P(x))) ) by Premise,

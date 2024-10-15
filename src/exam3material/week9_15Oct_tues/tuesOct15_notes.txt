@@ -1,13 +1,13 @@
 Exam 2 discussion.
 
-High: ??/100
-Average: ??/100
+High: 100/100 (4 students)
+Average: 78/100
 
-A (90-100): ?? students
-B (80-89): ?? students
-C (70-79): ?? students
-D (60-69): ?? students
-F (below 60): ?? students
+A (90-100): 33 students (great job!)
+B (80-89): 20 students
+C (70-79): 22 students
+D (60-69): 13 students
+F (below 60): 8 students
 
 Briefly discuss exam.
 
@@ -75,7 +75,7 @@ Syntax:
 
 
 **If you have an ∃ statement as a claim, it is a good strategy
-to start with a block where you create an alias (e.g. a)
+to start with a subproof where you create an alias (e.g. a)
 and plug it into your ∃ statement, as above
 
 Use ExistsE in the SAME situations you would use OrE
@@ -90,7 +90,7 @@ Examples:
 
 
 (exists2.sc)
-¬(∃ x (P(x) ^ Q(x))) ⊢ ∀ x (P(x) → ¬Q(x))
+∀ x (P(x) → ¬Q(x)) ⊢ ¬(∃ x (P(x) ^ Q(x)))
 
 x is students
 
@@ -99,23 +99,41 @@ x is students
 
     --> what is this argument saying?
 
-¬(∃ x (P(x) ^ Q(x))):
+∀ x (P(x) → ¬Q(x)): All students that attend K-State don't attend KU
 
- ∀ x (P(x) → ¬Q(x)):
+¬(∃ x (P(x) ^ Q(x))): There is no student that attends K-State and Ku
+
+
 
 ////////////////////////////
 
 Proof tactics for predicate logic
 
 - see if you can do anything right away with the premises
-    Which rules?
+    Which rules? AndE, ImplyE, AllE, ExistsI
 
 - look at top-level operator for what you are trying to prove
     trying to prove a "for all" statement with ∀?
-
+        subproof with let, introduce random individual
+            try to prove our goal about that random individual
+        (AllI)
 
     trying to prove a "there exists" statement with ∃?
+        need to show it's true for one
+        do I have that statement about a particular individual?
 
+        could I use AllE about a particular individual with an all statement?
+
+        do I have a "there exists" statement as a premise?
+            try ExistsE on that premise to get your conclusion
+
+        really can't find anything? try PbC
+
+////////////////
+
+<--- stopped here, will continue Thursday
+
+////////////////
 
     trying to prove an implies?
 
@@ -128,11 +146,16 @@ Proof tactics for predicate logic
 
     trying to prove an AND
 
-    when you are in a subproof?
+
+    what should you do when you open a subproof?
+
 
 
 
 Unsure what to do?
+
+
+
 
 /////////////////////////////////////////
 
@@ -147,8 +170,6 @@ Proving DeMorgan's laws
 ∃ x ¬P(x)       equivalent to       ¬(∀ x P(x))
 
 ////////////////////////////////////////
-
-//////////////////////////////
 
 Soundness and completeness of predicate logic.
 
@@ -203,4 +224,4 @@ that cannot be proved.
 
 Next time:
 - mathematical induction
-
+--> what have you done before?
