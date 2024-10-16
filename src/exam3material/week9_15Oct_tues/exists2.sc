@@ -8,7 +8,7 @@ import org.sireum.justification.natded.prop._
 
 // ∀ x (P(x) __>: ¬Q(x)) ⊢ !(∃ x (P(x) & Q(x)))
 
-@pure def exists1[T](P: T=>B @pure, Q: T=>B @pure): Unit = {
+@pure def exists2[T](P: T=>B @pure, Q: T=>B @pure): Unit = {
   Deduce(
     //@formatter: off
 

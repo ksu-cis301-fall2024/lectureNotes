@@ -1,0 +1,226 @@
+HW 7 due Tuesday, October 22
+
+//////////////////////////
+
+Today:
+- Finish proof tactics
+- Prove DeMorgan's laws for quantifiers
+- Soundness and completeness issues
+- Begin mathematical induction
+
+//////////////////////////
+
+Proof tactics for predicate logic
+
+- see if you can do anything right away with the premises
+    Which rules? AndE, ImplyE, AllE, ExistsI
+
+- look at top-level operator for what you are trying to prove
+    trying to prove a "for all" statement with ∀?
+        subproof with let, introduce random individual
+            try to prove our goal about that random individual
+        (AllI)
+
+    trying to prove a "there exists" statement with ∃?
+        need to show it's true for one
+        do I have that statement about a particular individual?
+
+        could I use AllE about a particular individual with
+            an all statement?
+
+        do I have a "there exists" statement as a premise?
+            try ExistsE on that premise to get your conclusion
+
+        really can't find anything? try PbC
+
+////////////////
+
+<--- stopped here, will continue Thursday
+
+////////////////
+
+    trying to prove an implies?
+
+
+    trying to prove ¬(something)
+
+
+    trying to prove an OR
+
+
+    trying to prove an AND
+
+
+    what should you do when you open a subproof?
+
+
+
+
+Unsure what to do?
+
+
+
+
+/////////////////////////////////////////
+
+Proving DeMorgan's laws
+
+//demorgan1.sc
+∀ x ¬P(x)       equivalent to       ¬(∃ x P(x))
+
+/////////////////////////////////////
+
+//demorgan2.sc
+∃ x ¬P(x)       equivalent to       ¬(∀ x P(x))
+
+////////////////////////////////////////
+
+Soundness and completeness of predicate logic.
+
+
+Soundness: definition?
+
+    propositional:
+
+    predicate logic:
+
+
+
+
+Completeness: definition?
+
+    propositional:
+
+    predicate logic:
+
+
+
+///////////////////////////////////
+
+Same argument might be VALID in one domain and INVALID in another
+
+- deduction can only prove arguments that are valid in ANY domain
+- we can't prove all valid arguments
+
+
+Domain with integers with operations like +
+
+
+All integers? 2 + 3 = ?
+
+
+Subset (0,1,2,3,4) of integers. 2 + 3 = ?
+
+
+
+////////////////////////////////////
+
+
+Godel's Incompleteness Theorem.
+
+Any consistent formal system where integer arithmetic is
+carried out is incomplete -- there will be true statements
+that cannot be proved.
+
+(depends on interpretations)
+
+//////////////////////////////////
+
+Mathematical induction.
+
+Tool for proving something involving natural numbers
+    1 and up
+
+Base case: prove the statement is true for the first element in
+    our domain.
+
+Inductive step: Assume the statement is true for some k in
+    our domain. Given that, prove the statement is true for k+1.
+
+--> how will this prove the statement for our entire domain?
+
+
+** the process of proving the correctness of loops is similar **
+
+
+
+/////////////////////////////////
+
+Example:
+
+We want to prove that for any positive integer n:
+
+    1 + 2 + ... + n = n*(n+1)/2
+
+
+Try it out first.
+    n = 1?
+    n = 2?
+    n = 3?
+
+
+Let P(n) be the claim that...?
+
+LHS(n) = ?
+RHS(n) = ?
+
+So to show P(n) holds, we can show that...?
+
+
+
+///
+
+Proof by induction.
+
+
+Base case:
+
+Inductive step:
+
+
+
+/////////////////////////////////
+
+Do you think induction can be used to prove properties for
+    ALL integers?
+
+
+
+/////////////////////////////////
+
+Example: Prove that the sum of the first n odd numbers is n^2.
+
+    (what is our domain?)
+
+
+Let P(n) be the claim that... ?
+
+LHS(n) = 1 + 3 + ... + (nth odd number?)
+RHS(n) = n^2
+
+
+
+Proof by induction.
+
+
+/////////////////////////////////
+
+Example: 3^n - 1 is even for all positive integers n.
+
+Let P(n) be the claim ???
+
+
+n = 3?
+
+
+what does "even" mean?
+
+
+
+
+//////////////////////////////////
+
+Next:
+- more with induction
+- induction process as a predicate logic statement
+- survey of other proof techniques
