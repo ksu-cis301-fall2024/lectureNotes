@@ -8,7 +8,7 @@ import org.sireum.justification.natded.prop._
 
 // ∃ x ¬P(x)   equivalent to    ¬(∀ x P(x))
 
-@pure def demogan2A[T](P: T=>B @pure): Unit = {
+@pure def demorgan2A[T](P: T=>B @pure): Unit = {
   Deduce(
     //@formatter: off
 
@@ -44,7 +44,7 @@ import org.sireum.justification.natded.prop._
   )
 }
 
-@pure def demogan2B[T](P: T=>B @pure): Unit = {
+@pure def demorgan2B[T](P: T=>B @pure): Unit = {
   Deduce(
     //@formatter: off
 
