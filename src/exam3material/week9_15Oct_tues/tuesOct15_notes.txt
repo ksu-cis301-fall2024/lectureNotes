@@ -133,33 +133,56 @@ Proof tactics for predicate logic
 
 <--- stopped here, will continue Thursday
 
+(filled in rest of proof tactics section below
+    after class)
+
 ////////////////
 
-    trying to prove an implies?
+    trying to prove -> subproof with ImplyI
+                assume LHS, try to get RHS
+
+                SubProof(
+                    Assume(LHS),
+
+                    //goal: RHS
+                )
+                (LHS->RHS)      by ImplyI
+
+        trying to prove ¬(something)
+            use NegI subproof
+
+            SubProof(
+                Assume(something),
+
+                //goal: F
+            )
+            (¬something) by NegI
+
+        trying to prove an OR
+            can you get one side? use OrI
+
+            do you have an OR statement already? do OrE
+
+            do you have an "exists" statement? do ExistsE
+
+        trying to prove an AND
+            try to prove both statements separately, then AndI
+
+            no luck? try PbC
+
+        when you are in a subproof?
+            the goal IN THAT SUBPROOF
 
 
-    trying to prove ¬(something)
+    Unsure what to do?
+        use OrE if you have an OR
+        use ExistsE if you have a "there exists" statement
+        if all else fails, try PbC
 
 
-    trying to prove an OR
+////////////////////////////////////////
 
-
-    trying to prove an AND
-
-
-    what should you do when you open a subproof?
-
-
-
-
-Unsure what to do?
-
-
-
-
-/////////////////////////////////////////
-
-Proving DeMorgan's laws
+Proving DeMorgan's laws (will do Thurs)
 
 //demorgan1.sc
 ∀ x ¬P(x)       equivalent to       ¬(∃ x P(x))
