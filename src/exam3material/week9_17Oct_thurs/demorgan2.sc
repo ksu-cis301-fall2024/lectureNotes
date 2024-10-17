@@ -56,35 +56,39 @@ import org.sireum.justification.natded.prop._
       ∃((x: T) => !P(x))
     )
     Proof(
-      1 (  !(∀((x: T) => P(x)))              ) by Premise,
+      1 ( !(∀((x: T) => P(x)) )              ) by Premise,
 
       //no obvious approach, try PbC
       2 SubProof(
-        3 Assume(  !(∃((x: T) => !P(x)))  ),
+        3 Assume( !(∃((x: T) => !P(x))) ),
 
         //use AllI to prove ∀((x: T) => P(x))
         4 Let ((a: T) => SubProof(
 
           //no obvious way to get P(a), try PbC
           5 SubProof(
-            6 Assume(  !P(a)  ),
-            7 (  ∃((x: T) => !P(x))          ) by ExistsI[T](6), //why is there an error?
-            8 (  F                           ) by NegE(7, 3)
+            6 Assume( !P(a) ),
+
+            //error on proof step 7 in lecture
+            //was a bug in Logika. It is fixed in the
+            //newest release.
+            7 ( ∃((x: T) => !P(x)) ) by ExistsI[T](6),
+            8 ( F ) by NegE(7, 3)
 
             //goal: F
           ),
-          9 (  P(a)                          ) by PbC(5)
+          9 ( P(a) ) by PbC(5)
           //afterward, use Pbc to conclude P(a)
 
           //goal: P(a) (prove our goal for all with random indiv)
         )),
-        10 (  ∀((x: T) => P(x))              ) by AllI[T](4),
-        11 (  F                              ) by NegE(10, 1)
+        10 ( ∀((x: T) => P(x)) ) by AllI[T](4),
+        11 ( F ) by NegE(10, 1)
 
         //if we got ∀((x: T) => P(x)), would contradict with premise
         //goal: contradiction
       ),
-      12 (  ∃((x: T) => !P(x))               ) by PbC(2)
+      12 ( ∃((x: T) => !P(x)) ) by PbC(2)
 
       //conclude ∃((x: T) => !P(x)) using PbC
     )
