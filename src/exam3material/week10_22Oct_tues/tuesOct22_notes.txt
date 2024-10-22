@@ -1,12 +1,48 @@
 Homework 7 due tonight
+    #1: ∃ x (ksu(x) ∨ ku(x)), ¬(∃ x ku(x)) ⊢ ∃ x ksu(x)
+        use exists elimination on ∃ x (ksu(x) ∨ ku(x))
+        introduce an alias for that there exists statement
+        assume ksu(alias) ∨ ku(alias)
+        then OrE
+        (hint: BottomE)
+
+
+    #2: ∀ x (student(x) → csharp(x)), ∃ x ¬csharp(x) ⊢ ∃ x ¬student(x)
+        use exists elimination on ∃ x ¬csharp(x)
+        introduce an alias
+        assume ¬csharp(alias)
+        use for all elimination with our alias
+
+
+    #3: ∀ x (P(x) → ¬Q(x)) ⊢ ¬(∃ x (P(x) ∧ Q(x)))
+        outer subproof: use NegI
+        assume ∃ x (P(x) ∧ Q(x))
+        then do exists elimination on that assumption
+
+
     #5: prove that if n is a positive integer, then
         n^5 - n is divisible by 5
 
+        hint: you will need to expand out the polynomial
+
+        ...eventually looking at
+            (k+1)^5 - (k+1)
 
 
     #6: prove that if n is natural number, then:
 
             1*1! + 2*2! + ... + n*n! = (n+1)! - 1
+
+        5! = 5*4*3*2*1
+
+        6! = 6*5*4*3*2*1
+            = 6*5!
+
+        n! = n*(n-1)*...*2*1
+
+        (n+1)! = (n+1)*n!
+
+        (n+2)! = (n+2)*(n+1)!
 
 
 Homework 8 will be posted today
@@ -40,13 +76,16 @@ The induction domino effect:
 
 What is this saying?
 
-    P(1)?
+    P(1)? base case (show it is true for first element in
+        our domain)
 
-    ∀ k (P(k) → P(k+1))?
+    ∀ k (P(k) → P(k+1))? inductive step
         (how do we prove this kind of thing?)
 
+        pick a random individual in our domain
 
-
+        prove P(k) → P(k+1) about that random individual
+        assume P(k), try to get to P(k+1)
 
 
 
@@ -64,14 +103,17 @@ How to prove it with mathematical induction?
 
 
 
-Base case? proving P(1) -- that our claim for the first
+Base case? Prove P(n) is true for the smallest n in our domain.
 
-Inductive step? Assume that P(k) holds where k is a fixed
-(whatever our domain is). We must prove that P(k+1) hold.
+Inductive step? Assume the inductive hypothesis -- that
+P(k) is true for some k in our domain. We must prove that P(k+1)
+is true.
 
 
 
-Conclusion? ∀ n P(n) (for all n in our domain, P(n) holds)
+
+
+Conclusion? P(n) holds for all n in our domain.
 
 
 
@@ -84,19 +126,53 @@ your argument and follow what you are doing.
 
 //////////////////////////////////////
 
-Example: Prove that the sum of the first n odd numbers is n^2.
+Example: Prove that the sum of the first n odd integers is n^2.
 
-    (what is our domain?)
+    (what is our domain?) positive integers (we are adding
+    some positive number of odds)
+
+    first n: 1
 
 
-Let P(n) be the claim that... ?
 
-LHS(n) = sum of first n odd numbers?
-RHS(n) = ?
+Let P(n) be the claim that...
+    1 + 3 + ... + (2n-1)  = n^2
 
+
+LHS(n) = 1 + 3 + ... + (2n-1)
+RHS(n) = n^2
+
+To prove P(n) is true for some positive integer n,
+we can show that LHS(n) = RHS(n).
 
 
 Proof by induction.
+
+Base case. We must prove that P(n) holds for the smallest
+positive integer n -- that is, we must prove P(1). We have
+that:
+    LHS(1) = 1
+    RHS(1) = 1^2 = 1
+Thus LHS(1) = RHS(1), so the base case holds.
+
+Inductive step. We assume the inductive hypothesis -- that
+P(k) is true for some positive integer k. If P(k) is true,
+then LHS(k) = RHS(k). We must must show that P(k+1) is true,
+or that LHS(k+1) = RHS(k+1). We have that:
+    LHS(k+1) = 1 + 3 + ... + (2(k+1))-1)
+            = LHS(k) + 2(k+1)-1
+            = RHS(k) + 2(k+1) - 1
+            = k^2 + 2k + 1
+            = (k+1)(k+1)
+            = (k+1)^2
+            = RHS(k+1)
+
+We have that LHS(k+1) = RHS(k+1), so P(k+1) holds. We have
+proved the inductive step.
+
+
+We have proved using induction that the sum of the first
+n odd integers is n.
 
 
 ////////////////////////////////
@@ -105,13 +181,34 @@ Let P(n) be the claim that for all nonnegative integers n:
     2^0 + 2^1 + ... + 2^n = 2^(n+1) - 1
 
 We write:
-    LHS(n) = ?
-    RHS(n) = ?
+    LHS(n) = 2^0 + 2^1 + ... + 2^n
+    RHS(n) = 2^(n+1) - 1
 
 To prove that P(n) holds for some nonnegative integer n, we must
-show ?.
+show LHS(n) = RHS(n).
 
 Prove using mathematical induction.
+
+Base case. We must prove that P(n) holds for the smallest n
+in our domain, which is n = 0. We have that LHS(0) = 2^0 = 1
+and that RHS(0) = 2^(1) - 1 = 1. So LHS(0) = RHS(0) = 1, and
+the base case holds.
+
+
+Inductive step. We assume the inductive hypothesis -- that
+P(k) holds for some nonnegative integer k. We must show that
+P(k+1) holds. Since P(k) holds, we have that LHS(k) = RHS(k).
+We have:
+    LHS(k+1) = 2^0 + 2^1 + ... + 2^k + 2^(k+1)
+            = LHS(k) + 2^(k+1)
+            = RHS(k) + 2^(k+1)
+            = 2^(k+1) - 1 + 2^(k+1)
+            = 2*(2^(k+1)) - 1
+            = 2^((k+1)+1) - 1
+            = RHS(k+1)
+
+So LHS(k+1) = RHS(k+1). The inductive step holds.
+
 
 ////////////////////////////////
 
@@ -140,6 +237,10 @@ f(n) = 2f(n-1) + 3, for n > 1
 
 
 What is f(3)?
+    f(3) = 2f(2) + 3 = 2*9 + 3 = 21
+
+    f(2) = 2f(1) + 3 = 2*3+ 3 = 9
+
 
 
 
@@ -151,6 +252,12 @@ What does this define?
 g(1) = 1
 g(n) = n * g(n-1), for n > 1
 
+n  | g(n)
+---------
+1  | 1
+2  | 2*g(1) = 2
+3  | 3*g(2) = 6
+
 
 
 //////////////////////////////////
@@ -159,6 +266,10 @@ Consider this pattern: 1, 2, 4, 7, 11, 16, 22, ...
 
 Write a recursive definition.
 
+Over natural numbers.
+
+f(1) = 1
+f(n) = f(n-1) + n-1, for n > 1
 
 
 ////////////////////////////////
@@ -174,11 +285,13 @@ Recursive case: x ∈ S ⋀ y ∈ S → xy ∈ S
 
 --> what are the elements in S?
 
+S = {1, 2, 4, 8, 16, ...}
 
+all powers of 2
 
-How to write it in set building notation?
+How to write it in set builder notation?
 
-
+{x : x = 2^k, k ∈ ℤ, k ≥ 0}
 
 
 ////////////////////////////////
@@ -219,6 +332,11 @@ Direct (conditional) proof
 
 --> how would we do this with natural deduction?
 
+Assume P
+...
+Q
+
+
 
 
 
@@ -242,6 +360,12 @@ Example: prove that the product of two even integers is even.
 If our domain is integers and we have the predicate Even(x), how
 would you write this statement in predicate logic?
 
+∀ x ∀ y (Even(x) ^ Even(y) -> Even(xy))
+
+Pick random j and k. Assume Even(j) and Even(k). ..... want:
+Even(jk).
+
+
 
 
 What's the idea of proving this in predicate logic?
@@ -251,11 +375,24 @@ What's the idea of proving this in predicate logic?
 
 Direct proof:
 
+Let j and k be even integers. We want to show that jk is even.
+If j is even, then j = 2a for some integer a. If k is even,
+then k = 2b for some integer b. We have that:
+    jk = (2a)(2b)
+        = 2(2ab)
+
+ Thus jk is even by definition, since jk = 2c where c is the integer
+ 2ab.
+
+
 
 
 --> How is our proof similar to natural deduction?
 
 //////////////////////////////
+
+
+///////////////////////
 
 ∀ ∃     ∈ ∉     ∅ ⋂ ⋃ ⊂ ⊆   ⋀ ⋁ ¬ →     ℕ ℤ     ≠ ≤ ≥
 
