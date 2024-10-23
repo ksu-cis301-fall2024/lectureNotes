@@ -1,0 +1,244 @@
+HW 8 due Tuesday, October 29
+
+////////////////
+
+Today:
+- more with direct proofs
+- contrapositive proofs
+- proofs by contradiction
+- proofs with sets
+
+/////////////////
+
+Example.
+
+The square of any odd integer is odd.
+
+How can we write this in predicate logic?
+
+
+
+Direct proof:
+
+
+
+
+////////////////////////////////
+∀ ∃     ∈ ∉     ∅ ⋂ ⋃ ⊂ ⊆   ⋀ ⋁ ¬ →     ℕ ℤ     ≠ ≤ ≥
+/////////////////////////////////
+
+Proof by contrapositive
+
+--> Also for proving things of the form "If P, then Q"
+
+What is the contrapositive of P → Q?
+
+
+
+
+
+Proof by contrapositive template:
+
+Assume ¬Q
+...
+Goal: ¬P
+
+
+//////////////////////////////////////////
+
+Example (contrapositive)
+
+If x^2 is odd for an integer x, then x is odd.
+
+Think of as P->Q
+    P: ?
+    Q: ?
+
+Contrapositive?
+
+Try direct proof first.
+
+
+
+
+
+
+Proof (contrapositive).
+
+
+--> best to indicate in proof that you are using contrapositive
+
+////////////////////////////////
+
+Mistakes in proofs.
+
+We want to "prove" that 1 = 2.
+
+
+"Proof:"
+Let a and b be two equal positive integers. We have that:
+
+    1) a = b                    (premise)
+
+    2) a^2 = ab                 (reason?)
+
+    3) a^2 - b^2 = ab - b^2     (reason?)
+
+    4) (a-b)(a+b) = b(a-b)      (reason?)
+
+    5) a+b = b                  (reason?)
+
+    6) 2b = b                   (reason? how do a and b compare?)
+
+    7) 2 = 1                    (reason?)
+
+
+What went wrong?
+
+//////////////////////////////////////
+
+Proof by contradiction.
+
+- same idea as PbC in natural deduction
+
+- assume that what you are trying to prove is not true
+
+- try to get a contradiction
+
+- conclude what you are trying to prove is true after all
+
+
+
+
+/////////////////////////
+
+Proof by contradiction template 1 (trying to prove P)
+
+
+Suppose, for the sake of contradiction, ¬P.
+...
+C ^ ¬C.
+
+We have a contradiction between C and ¬C, so P must hold.
+
+
+
+
+
+//////////////////////////
+
+Proof by contradiction template 2 (trying to prove If P, then Q):
+
+
+Suppose P.
+Assume, for the sake of contradiction, ¬Q.
+...
+C ^ ¬C.
+We have a contradiction between C and ¬C, so Q must hold.
+
+
+
+
+
+///////////////////////////
+
+Example (use proof by contradiction):
+
+If x^2 is even for an integer x, then x is even.
+
+(which template?)
+
+
+
+
+
+//////////////////////////
+
+Definitions: "rational" / "irrational"
+
+A number r is *rational* if r = p/q for some integers p and q,
+where q ≠ 0.
+
+
+
+Any number that is not rational is irrational,
+and any number that is not irrational is rational.
+
+//////////////////////////
+
+Example: use proof by contradiction to prove that sqrt(2)
+is irrational.
+
+(which template?)
+
+
+
+/////////////////////////////////
+∀ ∃     ∈ ∉     ∅ ⋂ ⋃ ⊂ ⊆   ⋀ ⋁ ¬ →     ℕ ℤ     ≠ ≤ ≥
+/////////////////////////////////
+
+Proofs with sets.
+
+Prove that A ⊆ B?
+    --> how would we express this in predicate logic?
+
+
+    --> proof template?
+
+
+Prove that A = B?
+
+
+///////////////////////////////
+
+Example.
+
+Prove that {x : x = 4k + 2, k ∈ ℤ} ⊆ {x : x = 2a, a ∈ ℤ}
+
+A = {x : x = 4k + 2, k ∈ ℤ}
+B = {x : x = 2a, a ∈ ℤ}
+
+A: what elements?
+B: what elements?
+
+
+
+///////////////////////////////
+
+Definition: "divides"
+
+Suppose a and b are integers. We say that a *divides* b,
+written a | b, if b = ak for some k ∈ Z.
+
+In this case we also say that:
+    a is a *divisor* of b
+    a is a *factor* of b
+    b is a *multiple* of a.
+
+
+3 divides 12, 3 | 12
+
+3 is a divisor of 12, 12 is a multiple of 3
+
+(how do we know, by using definition?)
+    12 = ??
+
+///////////////////////////////
+
+⋂: means?
+
+
+
+Prove that {x : x ∈ ℤ, 2|x} ⋂ {x : x ∈ ℤ, 3|x} = {x : x = 6a, a ∈ ℤ}
+
+Let A = {x : x ∈ ℤ, 2|x} (A is all even numbers)
+Let B = {x : x ∈ ℤ, 3|x} (B is all multiples of 3)
+Let C = {x : x = 6a, a ∈ ℤ} (C is all multiples of 6)
+
+
+
+
+//////////////////////////////
+
+
+Next time: begin programming logic
