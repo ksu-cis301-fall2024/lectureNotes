@@ -242,3 +242,4 @@ Let C = {x : x = 6a, a ∈ ℤ} (C is all multiples of 6)
 
 
 Next time: begin programming logic
+    (last major unit)
