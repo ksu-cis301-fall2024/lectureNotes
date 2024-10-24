@@ -14,13 +14,23 @@ Example.
 
 The square of any odd integer is odd.
 
-How can we write this in predicate logic?
 
 
+If an integer is odd then its square is odd
+
+(for all integers x, if x is odd, then x^2 is odd)
 
 Direct proof:
 
+Let x be an odd integer. If x is odd, then x = 2k + 1 where k
+is some integer. Squaring both sides of x = 2k +1, we have:
+    x^2 = (2k+1)^2
+        = 4k^2 + 4k + 1
+        = 2(2k^2 + 2k) + 1
 
+
+Thus x^2 = 2b + 1 where b is the integer 2k^2 + 2k, and so
+x^2 is odd.
 
 
 ////////////////////////////////
@@ -31,7 +41,11 @@ Proof by contrapositive
 
 --> Also for proving things of the form "If P, then Q"
 
+
 What is the contrapositive of P → Q?
+    ¬Q → ¬P
+
+
 
 
 
@@ -50,20 +64,42 @@ Example (contrapositive)
 
 If x^2 is odd for an integer x, then x is odd.
 
-Think of as P->Q
-    P: ?
-    Q: ?
+Think of as P → Q
+    P: x^2 is odd (where x is an integer)
+    Q: x is odd
 
 Contrapositive?
+    If x is an integer that is not odd, then x^2 is not odd
+
 
 Try direct proof first.
+    trying to prove: If x^2 is odd for an integer x, then x is odd.
 
+Direct proof. Assume x^2 is odd for some integer x. If x^2 is odd,
+then x^2 = 2k + 1 for some integer k.
+
+    we get stuck: would need to take sqrt of x^2, and
+    that gives us something messy
+
+...(want: x is odd, so need x = 2m + 1 where m is an integer)
 
 
 
 
 
 Proof (contrapositive).
+(If x is an integer that is not odd, then x^2 is not odd)
+
+Let x be an integer that is not odd. Since x is not odd, it must
+be even, and so x = 2k where k is an integer. Squaring both
+sides of x = 2k, we have:
+    x^2 = 4k^2
+        = 2(2k^2)
+
+Thus x^2 = 2b where b is the integer 2k^2, and so x^2 is even.
+Since x^2 is not odd, it must be even.
+
+
 
 
 --> best to indicate in proof that you are using contrapositive
@@ -80,20 +116,25 @@ Let a and b be two equal positive integers. We have that:
 
     1) a = b                    (premise)
 
-    2) a^2 = ab                 (reason?)
+    2) a^2 = ab                 (reason -
+                                multiplied both sides by a)
 
-    3) a^2 - b^2 = ab - b^2     (reason?)
+    3) a^2 - b^2 = ab - b^2     (reason -
+                                subtract b^2 from both sides)
 
-    4) (a-b)(a+b) = b(a-b)      (reason?)
+    4) (a-b)(a+b) = b(a-b)      (reason - factored both sides)
 
-    5) a+b = b                  (reason?)
+    5) a+b = b                  (reason - divide both sides by
+                                    a-b)
 
-    6) 2b = b                   (reason? how do a and b compare?)
+    6) 2b = b                   (reason? how do a and b compare?
+                                we had assumed a = b)
 
-    7) 2 = 1                    (reason?)
+    7) 2 = 1                    (reason? - divided by b)
 
 
-What went wrong?
+What went wrong? we got to step 5 by dividing by a-b,
+but a = b and so we were dividing by 0
 
 //////////////////////////////////////
 
@@ -130,8 +171,8 @@ We have a contradiction between C and ¬C, so P must hold.
 Proof by contradiction template 2 (trying to prove If P, then Q):
 
 
-Suppose P.
-Assume, for the sake of contradiction, ¬Q.
+Assume P.
+Suppose, for the sake of contradiction, ¬Q.
 ...
 C ^ ¬C.
 We have a contradiction between C and ¬C, so Q must hold.
@@ -146,9 +187,23 @@ Example (use proof by contradiction):
 
 If x^2 is even for an integer x, then x is even.
 
-(which template?)
+(which template?) 2
 
+Assume x^2 is even for some integer x. Suppose, for the sake of
+contradiction, that x is not even. If x is not even, it must
+be odd, and so x = 2k + 1 where k is an integer. Squaring
+both sides of x = 2k + 1, we have:
+    x^2 = (2k + 1)^2
+        = 4k^2 + 4k + 1
+        = 2(2k^2 + 2k) + 1
 
+Thus x^2 = 2b + 1 where b is the integer 2k^2 + 2k, and so
+x^2 is odd by definition. If x^2 is odd, then it is not even,
+which contradicts with our previous assumption that x^2 is even.
+
+Thus x must be even.
+
+...(want: a contradiction)
 
 
 
@@ -169,9 +224,38 @@ and any number that is not irrational is rational.
 Example: use proof by contradiction to prove that sqrt(2)
 is irrational.
 
-(which template?)
+(which template? 1)
 
+Suppose, for the sake of contradiction, that sqrt(2) is rational.
+If sqrt(2) is rational, then sqrt(2) = p/q where p and q are
+integers and q != 0. We pick p and q to share no common factors,
+so that p/q is fully reduced.
 
+Squaring both sides of sqrt(2) = p/q, we get:
+    2 = p^2/q^2
+
+Multiplying both sides by q^2, we have:
+    2q^2 = p^2
+
+Thus p^2 = 2b where b is the integer q^2, and so p^2 is even
+by definition. Thus p is also even by our previous proof.
+If p is even, then p = 2k where k is some integer.
+
+Plugging in p = 2k to 2q^2 = p^2, we have:
+    2q^2 = (2k)^2
+         = 4k^2
+
+Dividing both sides by 2, we get:
+    q^2 = 2k^2
+
+Thus q^2 = 2a where a is the integer k^2, and so q^2 is even.
+We know q must also be even by our previous proof.
+
+This gives us that both p and q are even, which means they
+must share 2 as a common factor. This contradicts with our previous
+assumption that p and q didn't share any common factors.
+
+Thus sqrt(2) is irrational.
 
 /////////////////////////////////
 ∀ ∃     ∈ ∉     ∅ ⋂ ⋃ ⊂ ⊆   ⋀ ⋁ ¬ →     ℕ ℤ     ≠ ≤ ≥
@@ -182,11 +266,15 @@ Proofs with sets.
 Prove that A ⊆ B?
     --> how would we express this in predicate logic?
 
+∀ x ∈ A → x ∈ B
 
     --> proof template?
 
+Pick a random individual. Assume the random individual is an
+element in A, prove that the random individual is an element in B.
 
-Prove that A = B?
+
+Prove that A = B? Prove A ⊆ B and then that B ⊆ A
 
 
 ///////////////////////////////
@@ -198,8 +286,24 @@ Prove that {x : x = 4k + 2, k ∈ ℤ} ⊆ {x : x = 2a, a ∈ ℤ}
 A = {x : x = 4k + 2, k ∈ ℤ}
 B = {x : x = 2a, a ∈ ℤ}
 
-A: what elements?
-B: what elements?
+A: what elements? all numbers that are 2 bigger than some multiple
+    of 4
+
+
+B: what elements? all even numbers
+
+
+Proof that A ⊆ B.
+
+Let x ∈ A. If x is in A, then x = 4k + 2 where k is an integer.
+We have that:
+    x = 4k + 2
+      = 2(2k+1)
+
+Thus x = 2a where is integer 2k+1, and so x ∈ B.
+
+Thus A ⊆ B.
+
 
 
 
@@ -221,7 +325,10 @@ In this case we also say that:
 3 is a divisor of 12, 12 is a multiple of 3
 
 (how do we know, by using definition?)
-    12 = ??
+    12 = 3*4 where 4 is an integer
+
+
+2 | 7 - no! 2 is not a factor of 7.
 
 ///////////////////////////////
 
@@ -236,7 +343,8 @@ Let B = {x : x ∈ ℤ, 3|x} (B is all multiples of 3)
 Let C = {x : x = 6a, a ∈ ℤ} (C is all multiples of 6)
 
 
-
+Prove A ⋂ B ⊆ C.
+Let x ∈ A ⋂ B. Thus x ∈ A and x ∈ B.
 
 //////////////////////////////
 
