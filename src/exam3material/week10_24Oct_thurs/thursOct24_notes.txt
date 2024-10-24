@@ -346,6 +346,13 @@ Let C = {x : x = 6a, a ∈ ℤ} (C is all multiples of 6)
 Prove A ⋂ B ⊆ C.
 Let x ∈ A ⋂ B. Thus x ∈ A and x ∈ B.
 
+(...then use what we know about x being in A
+and x being in B, and then show that x matches
+the format of C).
+
+
+...then we would need to prove C ⊆ A ⋂ B.
+
 //////////////////////////////
 
 
