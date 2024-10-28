@@ -1,0 +1,424 @@
+HW 8 due tonight
+
+Recursive definitions.
+
+Consider function f(n) = 10n + 3 over natural numbers
+Rewrite with a recursive definition:
+
+
+
+
+
+Give recursive definition of set of odd positive integers.
+
+
+
+/////////
+
+Use proof by contradiction to prove that the sum of a rational and
+irrational number is irrational.
+
+How to write as an IF/THEN?
+
+
+Rational: ?
+
+
+How to start the proof?
+
+
+
+//////////////////
+
+HW 9 will be posted after class, due next Tues
+
+//////////////////
+
+Today:
+- begin programming logic
+
+//////////////////
+
+Apply proof techniques and similar reasoning to prove correctness
+of basic programs.
+
+(Why does this matter?)
+
+
+
+
+
+
+////////////////////////////
+
+Programs are written in Slang, which is a subset of Scala
+    - variables (boolean, int, sequences)
+    - printing and user input
+    - math operations
+    - conditional operations
+    - if and if/else statements
+    - while loops
+    - functions
+
+
+--> Logika/Slang were created by the Santos lab in the CS dept.
+    --> has funding from DARPA, Air Force for model checking
+
+
+Basic program #1
+    - get user input number, add one to it, print it out
+
+Basic program #2
+    - get user input number, print whether it is positive or negative
+
+Basic program #3
+    - use a loop to print the numbers from 10 down to 1
+
+Basic program #4
+    - write a separate function to add all elements in a sequence
+    - create a sequence, call the function, print the result
+
+
+
+First: prove program correctness in "manual" mode
+    (we have to process the knowledge gained
+    in each statement)
+
+
+Then: prove program correctness in "auto" mode
+    - we provide function contracts and loop invariants
+    - checker can make sure our program meets our
+    specifications
+
+
+////////////////////////
+
+Preconditions: things we must assume about user input
+    or parameters to a function
+
+
+Postconditions: what we are claiming is true at some point in
+    our code (this is what we want to PROVE)
+
+
+/////
+
+assume statements
+    - lets us make assumptions about user input to pull
+        into a proof
+    (declaring preconditions about the input)
+
+/////
+
+assert statements
+    - what we want to prove is true after some code
+        (postconditions)
+    - must prove EXACTLY that statement before we assert it
+
+
+
+How are Logika asserts different from C# (and other languages)?
+
+
+
+
+
+////////////////////////
+
+Process of validating a program:
+
+
+
+(any assumptions needed about user input - assume)
+
+program statement
+
+(claims/asserts)
+
+program statement
+
+(claims/asserts)
+
+program statement
+
+(claims/asserts about output/results/postconditions)
+
+
+
+
+
+
+///////////////////////////////
+
+Claims go in "proof blocks", which look like:
+
+Deduce(
+    //line numbers with claims and justifications
+    //similar to prop/pred logic proofs
+
+    x ( claim ) by Justification(params)
+)
+
+//////////////////////////////
+
+Justifications (for now):
+
+Premise
+    - something from an assume
+    - a program assignment that was just executed
+        (use == to show equality in the claim)
+    - something shown in a previous proof block
+
+
+////
+
+Algebra*
+    1 ( x == 2 ) by Justification,
+    2 ( x >= 2 ) by Algebra*(1)
+    3 ( 4 > 0 ) by Algebra*()
+
+
+    - any algebraic manipulation on a previous claim
+    - include all relevant line numbers in whatever order
+        (might be zero or 3+)
+
+////
+
+ANY of your propositional/predicate logic justifications
+    (especially AndE1, AndE2, AndI, OrI1, OrI2)
+
+
+
+
+//////////////////////////////
+
+(add.sc)
+Example: write a program that creates a number, x, with value 2
+
+Create a value, y, that is initialized to x + 2
+
+We want to assert at the end that y is 4
+
+
+
+
+
+//////////////////////////////
+
+Example (max.sc):
+
+get 2 user inputs: x and y
+assume that x > y
+set a max variable to x
+
+want to assert that max is the biggest of our two inputs
+
+
+
+//////////////////////////////
+
+The Algebra* justification works for most mathematical manipulations
+
+Will not work on claims involving ∧, ∨, →, ∀, ∃
+
+Another justification: Subst
+
+
+
+
+
+
+
+
+
+/////////////////////////////
+
+Subst_<(m, n)
+
+
+
+Deduce(
+    ...
+    m ( LHS_M == RHS_M ),      //must be an equivalence
+    ...
+    n ( claim1 ),
+    ...
+    j ( claim2 )              by Subst_<(m, n)
+)
+
+claim2 rewrites claim1 by substituting all occurrences of
+    LHS_M with RHS_M
+
+
+Think of Subst_< as LHS <- RHS
+
+    (the RHS is coming in for each LHS)
+
+
+Example:
+
+Deduce(
+    ...
+    m ( x + 1 == y - 4 ),
+    ...
+    n ( x*(x + 1) == (x + 1) + y ),
+    ...
+    j ( ??? )     by Subst_<(m, n)
+)
+
+
+
+
+
+/////////////////////////////
+
+Subst_>(,m n)
+
+Deduce(
+    ...
+    m ( LHS_M == RHS_M ),      //must be an equivalence
+    ...
+    n ( claim1 ),
+    ...
+    j ( claim2 )             by Subst_>(m, n)
+)
+
+claim2 rewrites claim1 by substituting all occurrences of
+    RHS_M with LHS_M
+
+
+Think of Subst_> as LHS -> RHS
+
+    (the LHS is coming in for each RHS)
+
+
+Example:
+
+Deduce(
+    ...
+    m ( x + 1 == y )
+    ...
+    n ( y*(x + 1) == (x + 1) + y )
+    ...
+    j ( ??? ) by Subst_>(m, n)
+)
+
+
+
+
+
+/////////////////////////////////
+
+Example (code fragment):
+
+val num: Z = x + 2
+val answer: Z = 4*num + 8
+val another: Z = 5 - (x + 2)*3
+
+
+Deduce(
+    1 ( num == x + 2 )              by Premise,
+    2 ( answer == 4*num + 8 )       by Premise,
+    3 ( another == 5 - (x+2)*3 )    by Premise,
+
+    //substitute in for "num" in "answer"
+
+    //substitute in for "x+2" in "another"
+)
+
+
+//////////////////////////////
+
+Assignment with mutation
+
+
+var x: Z = 2
+
+//what could we put in a proof block here?
+
+
+
+x = x + 2       //what do we know about x?
+
+
+//what might we try to put in a proof block here?
+//would it make sense?
+
+
+
+x = x + 4
+
+
+
+
+//////////////////////////////
+
+If you change the value of variable "name", write that claim
+using:
+
+    Old(name)
+
+in the very next proof block. Only ONE "Old" value exists
+at a time.
+
+
+The Old(name) refers to value of the variable just before
+the latest update.
+
+Goal: state that variable's current value WITHOUT using Old
+by the end of next proof block
+
+
+y = y + 4
+
+Deduce(
+    ???
+)
+
+x = x + 3
+
+Deduce(
+    ???
+    //what "Old" values are available?
+)
+
+//////////////////////
+
+Example (add3.logika):
+
+- get an input number
+- save out an "orig" value that is equal to the input
+
+add 1 to the input number
+add 2 to the input number
+
+want to assert that the resulting number is 3 more than the orig value
+
+
+
+--> what if we added an assume that the input number
+    was positive?
+
+--> could we add to our assert that the resulting number
+    is positive?
+
+//////////////////////
+
+Example (swap.sc):
+
+
+inputs x and y (save their original values)
+
+//Example: x = 4, y = 7
+
+x = x + y         //x = ?, y = ?
+y = x - y         //x = ?, y = ?
+x = x - y         //x = ?, y = ?
+
+
+
+///////////////////////
+
+Next time:
+- verifying programs with modulus and division
+- begin verifying conditional statements
