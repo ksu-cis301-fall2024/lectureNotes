@@ -8,6 +8,10 @@ Rewrite with a recursive definition:
 
 
 
+Consider function multBy2(n) = 2n over nonnegative integers.
+Rewrite with a recursive definition:
+
+
 
 Give recursive definition of set of odd positive integers.
 
