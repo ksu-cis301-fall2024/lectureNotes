@@ -8,8 +8,9 @@ Rewrite with a recursive definition:
 
 
 
-Consider function multBy2(n) = 2n over nonnegative integers.
-Rewrite with a recursive definition:
+Give a recursive definition of the function multBy2(n), where
+multBy2(n) is the product of 2 and the nonnegative integer n.
+
 
 
 
@@ -55,7 +56,8 @@ of basic programs.
 
 ////////////////////////////
 
-Programs are written in Slang, which is a subset of Scala
+Programs are written in Slang, which is a subset of Scala. We will
+study:
     - variables (boolean, int, sequences)
     - printing and user input
     - math operations
@@ -67,6 +69,12 @@ Programs are written in Slang, which is a subset of Scala
 
 --> Logika/Slang were created by the Santos lab in the CS dept.
     --> has funding from DARPA, Air Force for model checking
+
+
+--> Can run on the JVM
+--> Slang can also be compiled to C
+--> can demonstrate program correctness down to machine code
+--> more info: https://slang.sireum.org/about/
 
 
 Basic program #1
@@ -81,6 +89,9 @@ Basic program #3
 Basic program #4
     - write a separate function to add all elements in a sequence
     - create a sequence, call the function, print the result
+
+
+--> see how to run programs
 
 
 
@@ -108,8 +119,9 @@ Postconditions: what we are claiming is true at some point in
 /////
 
 assume statements
-    - lets us make assumptions about user input to pull
-        into a proof
+    - lets us make assumptions about user input
+    - we can pull these assumptions into a proof
+
     (declaring preconditions about the input)
 
 /////
