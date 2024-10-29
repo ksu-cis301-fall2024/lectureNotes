@@ -156,7 +156,7 @@ assume statements
 
     (declaring preconditions about the input)
 
-    Assume(num > 0)
+    assume(num > 0)
 
 /////
 
@@ -166,7 +166,7 @@ assert statements
     - must prove EXACTLY that statement before we assert it
 
 
-Assert(some claim)
+assert(some claim)
 
 
 How are Logika asserts different from C# (and other languages)?
