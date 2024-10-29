@@ -5,16 +5,35 @@ Recursive definitions.
 Consider function f(n) = 10n + 3 over natural numbers
 Rewrite with a recursive definition:
 
+f(1) = 13
+f(n) = f(n-1) + 10, where n > 1
 
 
 
 Give a recursive definition of the function multBy2(n), where
 multBy2(n) is the product of 2 and the nonnegative integer n.
 
+multBy2(0) = 0
+multBy2(n) = multBy2(n-1) + 2, where n > 0
 
 
 
-Give recursive definition of set of odd positive integers.
+From the homework:
+
+Give a recursive definition of the function Product(m, n),
+where Product(m, n) is the product of the integer m and
+the nonnegative integer n:
+
+Product(m, 0)  just 0
+Product(m, n) - like above, but add m instead of adding 2
+            where n > 0
+
+
+
+Give recursive definition of set S of odd positive integers.
+
+1 is in S
+If x is in S, then x + 2 is in S
 
 
 
@@ -25,13 +44,26 @@ irrational number is irrational.
 
 How to write as an IF/THEN?
 
-
-Rational: ?
-
-
-How to start the proof?
+If I have a rational number and an irrational number, THEN
+their sum is irrational.
 
 
+Rational: A number r is rational if r = x / y where x and y
+are integers and y != 0.
+
+
+How to start the proof? assume the if part
+
+Suppose r is a rational number i is an irrational number.
+Suppose for the sake of contradiction that i + r is rational.
+
+i = (i+r) - r
+    = (some fraction) - (another fraction)
+    = (put the two fractions over a common denominator)
+
+Then i would fit the definition of rational - contradiction
+
+Thus i+r is irrational.
 
 //////////////////
 
@@ -124,6 +156,8 @@ assume statements
 
     (declaring preconditions about the input)
 
+    Assume(num > 0)
+
 /////
 
 assert statements
@@ -131,6 +165,8 @@ assert statements
         (postconditions)
     - must prove EXACTLY that statement before we assert it
 
+
+Assert(some claim)
 
 
 How are Logika asserts different from C# (and other languages)?
@@ -178,6 +214,8 @@ Deduce(
 //////////////////////////////
 
 Justifications (for now):
+
+x = 2
 
 Premise
     - something from an assume
@@ -237,6 +275,11 @@ The Algebra* justification works for most mathematical manipulations
 
 Will not work on claims involving ∧, ∨, →, ∀, ∃
 
+y == z
+x == 2 ^ x == y
+
+x == 2 ^ x == z
+
 Another justification: Subst
 
 
@@ -269,6 +312,7 @@ claim2 rewrites claim1 by substituting all occurrences of
 Think of Subst_< as LHS <- RHS
 
     (the RHS is coming in for each LHS)
+    (the < points at the value we are REPLACING)
 
 
 Example:
@@ -279,7 +323,7 @@ Deduce(
     ...
     n ( x*(x + 1) == (x + 1) + y ),
     ...
-    j ( ??? )     by Subst_<(m, n)
+    j ( x*(y-4) == (y-4) + y )     by Subst_<(m, n)
 )
 
 
@@ -306,6 +350,7 @@ claim2 rewrites claim1 by substituting all occurrences of
 Think of Subst_> as LHS -> RHS
 
     (the LHS is coming in for each RHS)
+    (the > points at the value we are REPLACING)
 
 
 Example:
@@ -316,7 +361,7 @@ Deduce(
     ...
     n ( y*(x + 1) == (x + 1) + y )
     ...
-    j ( ??? ) by Subst_>(m, n)
+    j ( (x+1)*(x + 1) == (x + 1) + x + 1 ) by Subst_>(m, n)
 )
 
 
@@ -338,10 +383,16 @@ Deduce(
     3 ( another == 5 - (x+2)*3 )    by Premise,
 
     //substitute in for "num" in "answer"
+    4 ( answer == 4*(x+2) + 8 ) by Subst_<(1, 2)
 
     //substitute in for "x+2" in "another"
+    5 ( another == 5 - (num)*3  ) by Subst_>(1, 3)
 )
 
+
+//////////////////////////////
+
+Stopped here, will continue on Thursday
 
 //////////////////////////////
 
