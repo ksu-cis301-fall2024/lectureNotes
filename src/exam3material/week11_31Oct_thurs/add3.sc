@@ -5,7 +5,6 @@ import org.sireum._
 import org.sireum.justification._
 import org.sireum.justification.natded.prop._
 
-
 var x: Z = Z.prompt("Enter a positive number: ")
 
 assume(x > 0)

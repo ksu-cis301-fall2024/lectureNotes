@@ -300,7 +300,7 @@ We have that:
     x = 4k + 2
       = 2(2k+1)
 
-Thus x = 2a where is integer 2k+1, and so x ∈ B.
+Thus x = 2a where a is integer 2k+1, and so x ∈ B.
 
 Thus A ⊆ B.
 
