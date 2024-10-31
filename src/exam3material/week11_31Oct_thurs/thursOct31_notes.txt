@@ -17,15 +17,17 @@ var x: Z = 2
 
 Deduce(
     //what could go here?
+
+    1 ( x == 2 ) by Premise,
 )
 
 x = x + 2       //what do we know about x?
 
 Deduce(
     //what could go here?
-)
 
-x = x + 4
+    1 ( x == x + 2 ) by Premise //NO! makes no sense, x has changed
+)
 
 
 
@@ -52,6 +54,7 @@ y = y + 4
 
 Deduce(
     ???
+    1 ( y == Old(y) + 4 )       by Premise
 )
 
 x = x + 3
@@ -59,6 +62,10 @@ x = x + 3
 Deduce(
     ???
     //what "Old" values are available?
+
+    1 ( x == Old(x) + 3 ) by Premise,
+    2 ( y == Old(y) + 4 )       by Premise //NO! only Old here
+                                            //is x
 )
 
 //////////////////////
@@ -86,10 +93,12 @@ assert that the result is 3 more than the orig value
 Programs with division.
 
 
-Only numerical type in our programs?
+Only numerical type we will be using: Z (int)
 
 
---> what does that mean about division?
+--> what does that mean about division? integer division
+
+7 / 4 is 1
 
 
 
@@ -98,13 +107,13 @@ Only numerical type in our programs?
 --> what do we need to demonstrate before using division?
 
 Deduce(
-    1 ??? //what should go here?
+    1 ( b != 0 ) //what should go here?
 )
 
 x = a / b
 
 Deduce(
-    1 ??? //what should go here?
+    1 ( 2 != 0 ) by Algebra*() //what should go here?
 )
 
 y = a / 2
@@ -113,24 +122,27 @@ y = a / 2
 
 --> consider this snippet:
 
+(pretend we already did 3 != 0
 
 val a: Z = num / 3
 val b: Z = num*3
 
-suppose num is 16, then a would be ?
+suppose num is 16, then a would be ? 5
 
-b would be?
+b would be? 48
 
 Deduce(
     1 ( a == num/3 ) by Premise,
 
     //is this true?
-    2 ( a*3 == num ) by Algebra*(1)
+    2 ( a*3 == num ) by Algebra*(1), //NO! would have lost the
+                                    //remainder in 1
 
     3 ( b == num*3 ) by Premise,
 
     //is this true?
-    4 ( b/3 == num ) by Algebra*(3)
+    4 ( b/3 == num ) by Algebra*(3) //YES, ok. b is a multiple
+                                    //of 3, so don't lose anything
 )
 
 /////////////////////////////
@@ -150,16 +162,15 @@ modulo is only defined for:
 
 
 
---> demonstrate ONE OF THESE before using modulo:
+--> demonstrate before using modulo:
 
-denominator > 0     //we'll use this one
 denominator != 0
 
 
 //what should go here?
 
 Deduce(
-    ???
+    ??? 2 != 0
 )
 
 x = a % 2
@@ -173,13 +184,15 @@ x = a % 2
 val test: Z = num/3
 
 //maybe num is 16
-//test = ??
+//test = ?? 5
 
 Deduce(
     1 ( test == num/3 ) by Premise,
 
     //is this OK?
     2 ( num == 3*test + num%3 ) by Algebra*(1)
+                    //YES, always ok - full times test goes
+                                    //in plus the remainder
 )
 
 
@@ -200,10 +213,16 @@ Example (mod.sc):
 
 /////////////////////////////
 
-When working with multiplication and division...
+When working with division...
 
-Try to avoid using division in logic blocks if you can
-help it. Try to express things with multiplication instead.
+x = num / 2
+
+Deduce(
+    1 ( x == num / 2 ) by Premise,
+    2 ( num == 2*x + num % 2 ) by Algebra*(1)
+)
+
+Make sure you don't forget about potential remainders
 
 //////////////////////////////////
 
@@ -249,11 +268,11 @@ Deduce(
 
 if (C) {
     Deduce(
-        1 ( P ) by Premise, //why?
-        2 ( C ) by Premise  //why?
+        1 ( P ) by Premise, //why? P was true, nothing has changed
+        2 ( C ) by Premise  //why? if condition was true
     )
 
-    claims
+    statements
 
     Deduce(
         1 ( Q ) by Justification,
@@ -262,11 +281,11 @@ if (C) {
 
 } else {
     Deduce(
-        1 ( P ) by Premise,     //why?
-        2 ( !(C) ) by Premise   //why?
+        1 ( P ) by Premise,     //why? P was true, nothing has changed
+        2 ( !(C) ) by Premise   //why? if-condition was false
     )
 
-    claims
+    statements
 
     Deduce(
         1 ( Q ) by Justification,
@@ -275,8 +294,8 @@ if (C) {
 }
 
 Deduce(
-    1 ( Q ) by Premise,     //why?
-    2 ( A V B ) by Premise  //why?
+    1 ( Q ) by Premise,     //why? was true in both if/else
+    2 ( A V B ) by Premise  //why? A from if, B from else
 )
 
 /////////////////////////////
@@ -299,3 +318,21 @@ Next week:
 - Verifying programs with nested conditionals
     (your last HW 9 problem is like this)
 - Verifying functions
+
+if (cond1) {
+    if (cond2) {
+        //know: cond1, cond2
+    } else {
+        //know: cond1, !cond2
+    }
+    //summary Deduce block for inner if/else
+} else {
+    if (cond2) {
+        //know: !cond1, cond2
+    } else {
+        //know: !cond1, !cond2
+    }
+    //summary Deduce block for inner if/else
+}
+
+summary of outer if/else
