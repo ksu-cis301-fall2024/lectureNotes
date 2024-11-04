@@ -1,0 +1,168 @@
+HW 9 due tonight
+
+HW 10 will be posted after class, due next Tues
+
+Exam 3 is Thursday, November 14
+    (more information will be posted this week)
+
+//////////////////////
+
+Today:
+- verification with nested conditionals
+- verifying programs with functions
+
+//////////////////////////////////
+
+Verify programs with nested conditionals.
+
+Max of 3 numbers
+
+-- see code
+
+-- in each branch, what do we know about max?
+
+-- finish verification
+
+//////////////////////////////////
+
+Function contracts - just under function definition:
+
+Contract(
+    Requires(
+        precondition,
+        precondition
+    ),
+    Ensures(
+        postcondition,
+        postcondition
+    )
+)
+
+
+Requires/preconditions:
+- any assumptions we need to make about the parameters
+- user must prove these requirements BEFORE calling the function
+- list preconditions as PREMISES in first proof block in function
+- can none or several preconditions
+
+
+///
+
+Ensures/postconditions:
+- describes what the function returns (or what it changes)
+    - use "Res[Z]" to mean return value (if returning Z)
+
+- function has to PROVE that it is fulfilling the postconditions
+
+- user can use a postcondition as a PREMISE in a proof block
+    after calling the function
+
+- can have several postconditions
+
+
+/////////////////////////////////
+
+Example: tickets.sc
+- find the total cost of tickets based on adult/child numbers
+- each adult ticket is $50, and each child ticket is $30
+
+- what do we need as preconditions?
+
+- what do we want as the postcondition?
+
+--> finish verification
+
+
+
+
+//////////////////////////////////
+
+Four steps:
+
+1) What should be done before calling the function?
+
+    suppose a precondition is (x is the param): x < 0 V x > 10
+    and we do:
+        function(a-2)
+
+    --> what would we need to do before the function call?
+
+
+
+
+2) What can the function itself do with the preconditions?
+
+
+
+3) What must the function do with the postconditions?
+
+    if a postcondition is: Res[Z] > 0
+
+    and we have:
+
+        return answer-y
+
+    what do we have to prove before returning?
+
+
+
+
+4) What can the calling code do with the postcondition after
+    the function returns?
+
+    x = function(b+7)
+
+
+
+
+
+
+
+/////////////////////////////////
+
+Example: put our abs code in a function (absFn.sc)
+
+/////////////////////////////////
+
+Recursive functions
+
+- exactly the same idea
+
+if (base case condition) {
+    answer = base case
+} else {
+
+    //prove the precondition for the recursive call
+
+    recursive call
+
+    //use its postcondition as a premise
+
+    answer = recursive call case
+}
+
+//if we want some postcondition, prove it in both if and else
+
+return answer
+
+
+
+Before making a recursive call, what do we have to do?
+
+
+
+After returning from the recursive call, what *can* we do?
+
+
+/////////////////////////////////
+
+Example (mult_rec.sc):
+
+- multiplication through repeated (recursive) addition
+- write function contract
+- do verification
+
+/////////////////////////////
+
+Next time:
+- verifying functions with loops
