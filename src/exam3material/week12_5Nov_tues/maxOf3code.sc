@@ -20,10 +20,6 @@ var max: Z = 0
 */
 
 if (a >= b) {
-  //finish code here
-
-  //what do we know is NOT the max? b
-
   if (a >= c) {
     max = a
 

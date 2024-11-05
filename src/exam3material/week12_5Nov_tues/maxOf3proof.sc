@@ -20,7 +20,15 @@ if (a >= b) {
     //want: max is a, and max >= a, b, c
     Deduce(
       //FILL IN
-
+      1 ( max == a ) by Premise,
+      2 ( a >= b ) by Premise, //outer if is true
+      3 (a >= c) by Premise, //inner if is true
+      4 ( max >= a) by Algebra*(1),
+      5 ( max >= b ) by Subst_>(1, 2),
+      6 (max >= c) by Subst_>(1, 3),
+      7 (max == a | max == b) by OrI1(1),
+      8 (max == a | max == b | max == c) by OrI1(7)
+      //max == a | max == b | max == c
     )
   } else {
     max = c
@@ -29,7 +37,14 @@ if (a >= b) {
     //want: max is c, and max >= a, b, c
     Deduce(
       //FILL IN
-
+      1 (max == c) by Premise,
+      2 (a >= b) by Premise, //outer if condition is true
+      3 (!(a >= c)) by Premise, //inner if condition is false
+      4 (max >= c) by Algebra*(1),
+      5 (max >= a)  by Algebra*(1, 3),
+      6 (max >= b) by Algebra*(2, 5),
+      7 ( max == a | max == b | max == c ) by OrI2(1)
+      //max == a | max == b | max == c
     )
   }
 
@@ -39,6 +54,10 @@ if (a >= b) {
     //what can we state as premises?
     //how do we get max == a V max == b V max == c?
 
+    1 ( max >= a) by Premise,
+    2 (max >= b) by Premise,
+    3 ( max >= c) by Premise,
+    4 ( max == a | max == b | max == c ) by Premise,
   )
 } else {
   //what do we know is NOT the max?
@@ -67,7 +86,6 @@ if (a >= b) {
       6 (max >= c) by Algebra*(3)
     )
   }
-
   //summary block
   Deduce(
     1 (max >= a) by Premise,
