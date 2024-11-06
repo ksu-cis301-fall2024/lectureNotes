@@ -1,0 +1,178 @@
+HW 10 due Tuesday, November 12
+
+Exam 3 is Thursday, November 14
+    (will post review info soon)
+
+///////////////////////
+
+Today:
+- review: function contracts
+- finish absolute value example
+- verifying recursive functions
+- loop invariants
+- verifying loops
+
+////////////////////////
+
+Function contract: lists preconditions and postconditions
+
+Contract(
+    Requires(list of preconditions),
+    Ensures(list of postconditions)
+)
+
+
+1) Before calling function, we must:
+
+
+2) What can we do with preconditions inside the function?
+
+
+3) Before returning from function, we must?
+
+
+4) What can we do with postconditions after calling function?
+
+
+///////////////////////
+
+Finish absolute value example
+
+/////////////////////////////////
+
+Recursive functions
+
+- exactly the same idea
+
+if (base case condition) {
+    answer = base case
+} else {
+
+    //what to do here?
+
+    recursive call
+
+    //what can we use here?
+
+    answer = recursive call case
+}
+
+//what if we want to show some postcondition about answer?
+
+return answer
+
+
+
+/////////////////////////////////
+
+Example (mult_rec.sc):
+
+- multiplication through repeated (recursive) addition
+- write function contract
+- do verification
+
+/////////////////////////////
+
+Validating loops.
+
+while (condition) {
+    statements
+}
+
+<-- number of iterations?
+
+We want to be able to make claims about our program after loop
+is done
+
+
+    ...why is this more challenging than an if-statement?
+
+
+
+//////////////////////////////
+
+Solution: kind of like mathematical induction
+
+Come up with a loop INVARIANT that summarizes the behavior
+in a loop
+
+- invariant should be true before loop begins
+- should be STILL true at the end of each iteration
+
+
+Steps to proving correctness of a loop:
+----------------------------------------
+
+1) Prove the invariant is true before the loop begins
+
+    (what is this like in mathematical induction?)
+
+
+2) Assume the invariant is true at the beginning of an iteration.
+    Prove the invariant still holds at the end of the iteration.
+
+    (what is this like in mathematical induction?)
+
+
+/////////////////////////
+
+When loop ends, you know two things:
+    1) About the invariant?
+
+
+
+    2) About the loop condition?
+
+
+
+If your loop is in a function, you can use those two pieces
+to prove the postcondition of the function.
+
+(And if you can't, you need to make your invariant stronger.)
+
+/////////////////////////
+
+Loop invariant block: just inside the loop
+
+
+//prove invariants here
+while (condition) {
+    Invariant(
+        Modifies(list all variables modified in loop)
+        invariant1,
+        invariant2,
+        ...
+    )
+
+    //use invariants as a premise
+
+    code for the loop
+
+    //prove the invariants still hold
+}
+
+
+/////////////////////////
+
+Example: see code for multiplication with repeated addition
+    using a loop (mult_loop.sc)
+
+--> can we use the function contract from recursive implementation?
+
+
+
+
+--> should the test cases/asserts be different?
+
+
+
+--> what if the loop condition was "i < y" instead?
+
+
+/////////////////////
+
+Next time:
+- more with loop invariants
+- writing recursive definitions for postconditions/
+    invariants
+- review for exam 3
