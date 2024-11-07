@@ -21,17 +21,27 @@ Contract(
     Ensures(list of postconditions)
 )
 
+preconditions: things we need to assume about our parameters
+postcondition: describes what function returns / impact of calling function
 
 1) Before calling function, we must:
+
+prove the preconditions based on what we are passing as parameters
 
 
 2) What can we do with preconditions inside the function?
 
+use them as premises
+
 
 3) Before returning from function, we must?
 
+prove the postconditions
+
 
 4) What can we do with postconditions after calling function?
+
+list the postconditions from the function as premises
 
 
 ///////////////////////
@@ -48,16 +58,21 @@ if (base case condition) {
     answer = base case
 } else {
 
-    //what to do here?
+    //what to do here? prove precondition for the parameters
+        //passed in that recursive call
 
     recursive call
 
     //what can we use here?
+    //use the postcondition from the recursive call in
+    //our reasoning
 
     answer = recursive call case
 }
 
 //what if we want to show some postcondition about answer?
+
+//prove postcondition
 
 return answer
 
@@ -79,13 +94,15 @@ while (condition) {
     statements
 }
 
-<-- number of iterations?
+<-- number of iterations? I don't know
 
 We want to be able to make claims about our program after loop
 is done
 
 
     ...why is this more challenging than an if-statement?
+
+    needs to be true no matter how many iterations
 
 
 
@@ -106,6 +123,7 @@ Steps to proving correctness of a loop:
 1) Prove the invariant is true before the loop begins
 
     (what is this like in mathematical induction?)
+    base case
 
 
 2) Assume the invariant is true at the beginning of an iteration.
@@ -114,14 +132,20 @@ Steps to proving correctness of a loop:
     (what is this like in mathematical induction?)
 
 
+    inductive step
+
 /////////////////////////
 
 When loop ends, you know two things:
     1) About the invariant?
 
+        it's true (list as premise)
+
 
 
     2) About the loop condition?
+
+        it's false
 
 
 

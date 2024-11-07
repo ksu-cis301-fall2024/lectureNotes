@@ -79,7 +79,19 @@ val ans: Z = absVal(x)
 Deduce(
   1 ( ans >= 0 ) by Premise, //from first postcondition
   2 ( ans == x | ans == -1 * x) by Premise, //from 2nd postcondition
-  3 ( x == -4 ) by Premise
+  3 ( x == -4 ) by Premise,
+  4 SubProof(
+    5 Assume( ans == x ),
+    6 ( F ) by Algebra*(1, 3, 5),
+    7 ( ans == 4 ) by BottomE(6)
+    //goal: ans == 4
+  ),
+  8 SubProof(
+    9 Assume (ans == -1 * x),
+    10 (ans == 4) by Algebra*(9, 3)
+    //goal: ans == 4
+  ),
+  11 (ans == 4 ) by OrE(2,4,8)
 
   //WILL FINISH ON THURSDAY
 )
