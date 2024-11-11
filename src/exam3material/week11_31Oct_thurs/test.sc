@@ -10,6 +10,10 @@ var y: Z = x
 
 x = x + 1
 
+Deduce(
+
+)
+
 //If I comment out the total line below,
 //I can't claim the two statements in the Deduce
 //block as premises anymore

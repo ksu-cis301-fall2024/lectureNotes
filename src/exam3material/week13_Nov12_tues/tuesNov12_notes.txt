@@ -1,0 +1,74 @@
+HW 10 due tonight
+    --> Logika will verify even if you don't
+        manually prove invariants hold before loop
+        begins and at end of each iteration
+    --> you can still get full HW points, but
+        you will have to do these parts on Exam 3
+
+Exam 3 is Thursday, November 14
+
+One more homework assignment: assigned next Tues,
+    due after fall break
+
+///////////////////
+
+Today:
+- more with loop invariants
+- review for exam 3
+
+///////////////////
+
+Loop invariants.
+
+- Summarize loop progress
+- Often describe the relationship between the variables that change
+- Used with the negation of loop condition to prove postconditions
+
+
+Example: doStuff.sc
+
+Example: nested.sc
+
+///////////////////
+
+Exam 3 review.
+
+--> Covers everything since Exam 2 (including today)
+--> Closed notes, closed computers
+
+Topics:
+- Predicate logic proofs emphasizing the existential quantifier
+- Recursive definitions
+- Proof techniques, including:
+    - Mathematical induction
+    - Direct (conditional) proofs
+    - Contrapositive proofs
+    - Proof by contradiction
+    - Proofs on sets
+    --> know the formal definition of even/odd numbers
+- Programming logic, including:
+    - Assumes and Asserts
+    - Subst and Algebra
+    - Verifying programs with:
+        - Variable assignments/expressions/updates
+        - If/else statements
+        - Functions (plus recursive functions and calling functions)
+        - Loops
+    - Function contracts (meaning of preconditions/posconditions)
+    - Loop invariants
+
+The exam will NOT involve programs that use modulus or division.
+
+
+Problems will be similar in format to Homework 7-10.
+
+
+When doing programming logic:
+    - use a proof block to process each variable update
+    - prove exactly the precondition(s) before any function call
+    - prove exactly the postcondition(s) before any function return
+    - prove loop invariants hold before the loop begins
+            and at end of each iteration
+
+
+Now, we will work through practice exam 3
