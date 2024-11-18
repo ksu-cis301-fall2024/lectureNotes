@@ -1,0 +1,151 @@
+Exam 3 results.
+
+(+2 extra credit for attending on 10/31)
+
+High: 102/100
+Median: 75/100
+    (Canvas reports a low average, but several students opted not
+    to take the exam, so it's a bit misleading)
+
+A (90-100): 22 students
+B (80-89): 17 students
+C (70-79): 15 students
+D (60-69): 12 students
+F (below 60): 28 students (again, includes a group of students
+                    who didn't take the exam)
+
+////////////////////////////
+
+HW 11 will be posted after class, due Tues Dec 3
+    (this is the last assignment)
+
+Final exam: Monday, December 9 2:00-3:50 pm
+
+/////////////////////////////
+
+Today:
+
+- Logika modes
+- Verifying programs with sequences
+
+
+Rest of semester:
+- Verifying programs with global invariants
+- See how to do similar function contracts in Java
+- If time, proving termination
+
+//////////////////////////////
+
+Logika modes.
+
+Default/manual mode - what we've been doing.
+
+auto mode - only needs function contracts and invariant blocks.
+    --> can do all intermediate reasoning itself.
+
+--> Mode is defined in your "starter" files at the top
+
+
+
+For manual:
+
+    //@Logika: --manual --background disabled
+
+For auto:
+
+    //@Logika: --background disabled
+
+**All HW 11 problems will use auto mode
+
+////////////////////////////
+
+Example: See what we can change in multiplication example
+    (mult_loop.sc)
+
+
+
+
+///////////////////////////
+
+Sequences. (like an array or list)
+
+--> see sequence operations (seqOp.sc)
+
+--> Want to ensure sequence position is always valid
+
+--> sequences are passed to a function by reference
+    --> postcondition should describe how a sequence changes
+
+///////////////////////////
+
+Making claims about sequences.
+
+Suppose "seq" is our sequence
+
+∀ (lower until upper)(k => some statement about seq(k) )
+    (does NOT include upper)
+
+∀ (lower to upper)(k => some statement about seq(k) )
+    (DOES include upper)
+
+Similarly, can use ∃
+
+
+///////////////////////////
+
+Writing function contract for function with a sequence:
+
+- Requires: include any requirements about sequence size
+    include any requirements about index parameters to make
+    sure they're in bounds.
+- Modifies: needed if the function changes a sequence
+- Ensures:
+    Describe the value of EVERY element in the sequence
+        by the end of the function call
+
+
+
+Use "In(seq)"" refers to the state of a sequence at the
+    beginning of the function call
+
+
+
+///////////////////////////
+
+Example: function that sets first element in a sequence to 0
+(seqZeroFirst.sc)
+
+
+///////////////////////////
+
+Example: function that sets some position in a sequence to 0
+(seqZeroPos.sc)
+
+//////////////////////////
+
+Example: swap function
+(swap.sc)
+
+///////////////////////////
+
+Functions with sequences and loops.
+--> same idea, but loop invariant block needs to:
+    - Describe what has been changed so far about the sequence
+    - (Often) describe what has NOT changed so far in the sequence
+    - Bound the loop counter
+
+
+Example: function that sets every position in a sequence to 10
+(seqAll10.sc)
+
+//////////////////////////
+
+--> what if instead setting everything to 10,
+    we added one to each element?
+
+//////////////////////////
+
+Next time:
+- More sequences and loops
+- Programs with multiple functions
+- Begin global invariants
