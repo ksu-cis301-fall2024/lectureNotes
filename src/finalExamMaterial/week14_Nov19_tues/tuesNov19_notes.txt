@@ -3,8 +3,8 @@ Exam 3 results.
 (+2 extra credit for attending on 10/31)
 
 High: 102/100
-Median: 75/100
-    (Canvas reports a low average, but several students opted not
+Average: 74/100
+    (Canvas reports a lower average, but several students opted not
     to take the exam, so it's a bit misleading)
 
 A (90-100): 22 students
@@ -82,25 +82,34 @@ Making claims about sequences.
 
 Suppose "seq" is our sequence
 
+
+
 ∀ (lower until upper)(k => some statement about seq(k) )
     (does NOT include upper)
+
+
+∀ (0 until seq.size)(k => seq(k) == 0 )
+    all elements in seq equal 0
 
 ∀ (lower to upper)(k => some statement about seq(k) )
     (DOES include upper)
 
 Similarly, can use ∃
 
+∃ (0 until seq.size)(k => seq(k) == 0 )
+    there is some element in seq that equals 0
 
 ///////////////////////////
 
 Writing function contract for function with a sequence:
 
-- Requires: include any requirements about sequence size
-    include any requirements about index parameters to make
-    sure they're in bounds.
+- Requires:
+    - Include any requirements about sequence size
+    - Include any requirements about index parameters to make
+        sure they're in bounds.
 - Modifies: needed if the function changes a sequence
 - Ensures:
-    Describe the value of EVERY element in the sequence
+    - Describe the value of EVERY element in the sequence
         by the end of the function call
 
 
@@ -139,6 +148,10 @@ Example: function that sets every position in a sequence to 10
 (seqAll10.sc)
 
 //////////////////////////
+
+Stopped here, will continue on Thursday
+
+///////////////////////////
 
 --> what if instead setting everything to 10,
     we added one to each element?

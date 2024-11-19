@@ -15,3 +15,4 @@ assert(seq == ZS(5,10,100))
 
 //getting the size of a sequence
 var len: Z = seq.size   //len will be 3
+assert(len == 3)
