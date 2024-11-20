@@ -1,0 +1,72 @@
+// @requires precondition;
+// @ensures postcondition;
+public returnType someMethod(someParameters) {
+
+}
+
+    - OR -
+
+/*@
+    requires precondition;
+    ensures postcondition;
+*/
+public returnType someMethod(someParameters) {
+
+}
+
+precondition/postcondition are predicate logic statements using
+    parameters, the return value, and/or public methods
+
+
+can have several @requires and several @ensures
+
+
+
+Use && for AND, || for OR, ! for NOT
+
+
+
+a ==> b - means a implies b
+
+a <==> b - means a iff (if and only if) b.
+    Equivalent to (a==>b) && (b==>a)
+
+
+
+\result - refers to the return value
+
+
+\old(something) - refers to the value of "something" at the beginning
+    of the method call
+
+
+These are handy for making statements about arrays:
+(\forall declaration; range; body)
+
+
+(\exists declaration; range; body)
+
+
+
+Basic example:
+
+/*@
+    requires adults >= 0 && kids >= 0;
+    ensures \result == adults*50 + kids*30;
+    ensures \result >= 0;
+*/
+public static int ticketCost(int adults, int kids) {
+    return adults*50 + kids*30;
+}
+
+
+
+Array example:
+
+// @requires nums != null;
+// @ensures (\forall int k; 0 <= k && k < nums.length; nums[k] == \old(nums[k]) * 2));
+public static void doubleEach(int[] nums) {
+    for (int i = 0; i < nums.length; i++) {
+        nums[i] = nums[i] * 2;
+    }
+}

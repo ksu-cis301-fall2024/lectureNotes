@@ -1,0 +1,209 @@
+HW 11 due Tues Dec 3
+    (this is the last assignment)
+
+Final exam: Monday, December 9 2:00-3:50 pm
+
+/////////////////////////////
+
+Today:
+- More with sequences
+- Global invariants
+
+/////////////////////////////
+
+Reminder: function contracts for sequences
+
+    What should we require?
+
+    When do we put "Modifies"?
+
+    What should we ensure?
+
+
+////////////////////////////
+
+Reminder: loop invariants with sequences
+
+    "Modifies" includes...
+
+    What do we need as invariants?
+        FIRST: bound loop counters
+        NEXT: describe what has changed/work so far
+            describe what hasn't changed
+
+////////////////////////////
+
+Example: plusOneSeq.sc
+
+--> why do we have to say which element haven't changed?
+
+--> need to add that the size doesn't change in
+    our loop invariant
+
+////////////////////////////
+
+Example: seqMin.sc
+
+////////////////////////////
+
+Example: containsElem.sc
+
+////////////////////////////
+
+Global variables and global invariants.
+
+- Multiple functions might share the same global variables
+- (true for fields/properties when writing general classes)
+
+- Will add GLOBAL INVARIANTS specifying what must always be true
+    about global variables
+
+
+--> global invariants  must be true initially
+
+--> the global invariants become both a precondition and a postcondition
+    for all functions
+
+
+What does this mean?
+
+
+////////////////////////////////
+
+Idea: suppose you are representing a clock
+
+global variables for: seconds, minutes, hours
+
+--> what might the global invariants be?
+
+
+
+////////////////////////////////
+
+What needs to be true before we call a function?
+
+
+
+What can the function itself assume about the global invariants?
+
+
+
+What must the function do with the global invariants before returning?
+
+
+
+What can the calling code assume about the global invariants after
+    a function call?
+
+
+
+/////////////////////////////////////
+
+Function contracts when considering global variables/invariants:
+    - Requires: don't allow parameters that could cause
+        global invariants to be violated
+    - Modifies: list any global variables that are changed
+    - Ensures: describe impact of function on global variables
+        Use In(globalVariable) to reference global variable
+        value at beginning of function
+
+
+
+/////////////////////////////////////
+
+Bank example (bank.sc)
+
+Global variables:
+    - account balance
+    - "elite" status (a boolean for whether the balance is >= 1 million)
+
+Global invariants:
+    - balance should be non-negative
+    - elite status should reflect balance
+
+
+
+////////////////////////////////////
+
+Problem 3 on HW 11: reverse a sequence
+
+loops while i < seq.size/2
+    swaps elements at i, seq.size-i-1
+
+
+What does it mean to be reversed?
+
+
+After i iterations of the loop:
+    what has changed?
+    what is the same?
+
+///////////////////////////////////
+
+Problem 6 on HW 11: Fan specification
+
+Fan speeds: 0-5
+Fan can be on (speeds 1-5) or off (speed 0)
+Fan can optionally rotate (but ONLY at speeds 3-5)
+
+Think of it as having two controls:
+    1) speed knob (becomes on when 1-5, off when 0)
+        --> can only change one speed level at a time
+
+    2) rotation lever
+
+--> since rotation is a DIFFERENT control, changing
+    speed can't change rotation
+
+
+Initially:
+    fan off
+    speed 0
+    rotate off
+
+Global invariants:
+    curSpeed >= 0,
+    curSpeed <= 5,
+    fanOn == true -> curSpeed > 0,
+    fanOn == false -> curSpeed == 0,
+    rotateOn == true -> curSpeed >= 3
+
+
+Functions:
+    setSpeed(speed: Z)
+    turnOn()
+    makeRotate()
+    stopRotate()
+
+
+
+    Fan on, speed 3, rotate on. Can we call setSpeed(2)?
+
+    Fan off, speed 0, rotate off. Can we call setSpeed(1)?
+
+    Fan on, speed 2, rotate off. Can we call setSpeed(0)?
+
+    Fan on, speed 3, rotate on. Can we call setSpeed(4)?
+
+    Fan on, speed 3, rotate on. Can we call makeRotate()?
+
+    Fan on, speed 5, rotate off. Can we call setSpeed(5)?
+
+    Fan on, speed 5, rotate off. Can we call setSpeed(6)?
+
+    Fan on, speed 1, rotate off. Can we call setSpeed(0)?
+
+
+What considerations when setting the speed?
+    preconditions?
+
+
+////////////////////////////////////
+
+Next time:
+- look at program specification in Java
+- termination
+
+
+
+
