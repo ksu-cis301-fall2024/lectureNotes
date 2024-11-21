@@ -3,6 +3,9 @@ HW 11 due Tues Dec 3
 
 Final exam: Monday, December 9 2:00-3:50 pm
 
+Looking for at least one CIS 301 UTA for Spring 2025
+    email me before fall break if you are interested
+
 /////////////////////////////
 
 Today:
@@ -14,28 +17,46 @@ Today:
 Reminder: function contracts for sequences
 
     What should we require?
+        think about what parameters could potentially cause
+            an out of bounds issue
 
-    When do we put "Modifies"?
+    When do we put "Modifies"? if I am changing a sequence
+        parameter in the function
 
     What should we ensure?
+        is the function changing the sequence?
+            describe exactly how each element was changed
+            should be possible to know the value of each
+                position in the sequence
+        are we returning something?
+            describe what Res is in relation to the sequence
 
 
 ////////////////////////////
 
 Reminder: loop invariants with sequences
 
-    "Modifies" includes...
+    "Modifies" includes...the sequence
+        (as well as loop counter, any other variable that changes)
 
     What do we need as invariants?
-        FIRST: bound loop counters
-        NEXT: describe what has changed/work so far
-            describe what hasn't changed
+        about the loop counters?
+            bound them (provide upper and lower bounds)
+            should be clear that it's not possible to go past
+                bounds of sequence
+
+        about the progress with the sequence?
+            if we are changing it:
+                describe what section has changed, and how
+                often, need to describe what hasn't changed
+            if we are not, describe what part of the sequence
+                we've looked at
 
 ////////////////////////////
 
 Example: plusOneSeq.sc
 
---> why do we have to say which element haven't changed?
+--> why do we have to say which elements haven't changed?
 
 --> need to add that the size doesn't change in
     our loop invariant
@@ -76,6 +97,8 @@ global variables for: seconds, minutes, hours
 
 --> what might the global invariants be?
 
+seconds >= 0
+seconds <= 59
 
 
 ////////////////////////////////
@@ -100,9 +123,10 @@ What can the calling code assume about the global invariants after
 /////////////////////////////////////
 
 Function contracts when considering global variables/invariants:
-    - Requires: don't allow parameters that could cause
-        global invariants to be violated
+    - Requires: what kind of parameters should we not allow?
+
     - Modifies: list any global variables that are changed
+
     - Ensures: describe impact of function on global variables
         Use In(globalVariable) to reference global variable
         value at beginning of function
@@ -122,6 +146,10 @@ Global invariants:
     - elite status should reflect balance
 
 
+
+////////////////////////////////////
+
+<-- stopped here, will finish on Tues Dec 3
 
 ////////////////////////////////////
 
@@ -178,20 +206,28 @@ Functions:
 
 
     Fan on, speed 3, rotate on. Can we call setSpeed(2)?
+        no - fan can't rotate at speeds below 3
 
     Fan off, speed 0, rotate off. Can we call setSpeed(1)?
+        yes (and should also turn fan on)
 
     Fan on, speed 2, rotate off. Can we call setSpeed(0)?
+        no - can't change speeds by more than 1
 
     Fan on, speed 3, rotate on. Can we call setSpeed(4)?
+        yes (and rotate stays on)
 
     Fan on, speed 3, rotate on. Can we call makeRotate()?
+        no - fan is already rotating
 
     Fan on, speed 5, rotate off. Can we call setSpeed(5)?
+        no - already at that speed
 
     Fan on, speed 5, rotate off. Can we call setSpeed(6)?
+        no - speed of 6 is not allowed
 
     Fan on, speed 1, rotate off. Can we call setSpeed(0)?
+        yes (and also turns fan off)
 
 
 What considerations when setting the speed?

@@ -14,8 +14,20 @@ val eliteMin: Z = 1000000 // $1M is the minimum balance for elite members
 
 def deposit(amount: Z): Unit = {
   //what can we assume about the global invariants here?
+  Contract(
+    Requires(amount >= 0),
+    Modifies(balance, elite),
+    Ensures(
+      balance == In(balance) + amount
+    )
+  )
 
   //write code
+  balance = balance + amount
+
+  if (balance >= eliteMin) {
+    elite = true
+  }
 
   //then do verification
 
@@ -23,7 +35,37 @@ def deposit(amount: Z): Unit = {
 }
 
 def withdraw(amount: Z): Unit = {
+  Contract(
+    Requires(
+      //amount >= 0,
+      balance >= amount
+    ),
+    Modifies(balance, elite),
+    Ensures(
+      balance == In(balance) - amount
+    )
+  )
+
   //write code
+
+  balance = balance - amount
+
+  //NOTE: can use this simplified update,
+  //but only if we include the "amount >= 0" precondition
+  //(which shouldn't be needed, as the global invariant where the
+  //balance needs to be nonnegative together with "balance >= amount"
+  //implies that the amount must be >= 0)
+  /*
+  if (balance < eliteMin) {
+    elite = false
+  }
+  */
+
+  if (balance >= eliteMin) {
+    elite = true
+  } else {
+    elite = false
+  }
 
   //then do verification
 }
