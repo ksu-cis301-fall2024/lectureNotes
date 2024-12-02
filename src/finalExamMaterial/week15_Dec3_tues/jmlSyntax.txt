@@ -1,11 +1,3 @@
-// @requires precondition;
-// @ensures postcondition;
-public returnType someMethod(someParameters) {
-
-}
-
-    - OR -
-
 /*@
     requires precondition;
     ensures postcondition;
@@ -63,8 +55,10 @@ public static int ticketCost(int adults, int kids) {
 
 Array example:
 
-// @requires nums != null;
-// @ensures (\forall int k; 0 <= k && k < nums.length; nums[k] == \old(nums[k]) * 2));
+/*@
+    requires nums != null;
+    ensures (\forall int k; 0 <= k && k < nums.length; nums[k] == \old(nums[k]) * 2));
+*/
 public static void doubleEach(int[] nums) {
     for (int i = 0; i < nums.length; i++) {
         nums[i] = nums[i] * 2;

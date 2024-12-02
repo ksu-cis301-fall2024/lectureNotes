@@ -1,11 +1,85 @@
+HW 11 due today
+
+Final exam is Monday, December 9 2:00-3:50 pm
+
+See announcement for repo of practice problems
+
+We'll review on Thursday
+
+////////////////////////////////////
+
+Problem 3 on HW 11: reverse a sequence
+
+loops while i < seq.size/2
+    swaps elements at i, seq.size-i-1
+
+
+What does it mean to be reversed?
+
+
+After i iterations of the loop:
+    what has changed?
+    what is the same?
+
+///////////////////////////////////
+
+Problem 6 on HW 11: Fan specification
+
+Fan speeds: 0-5
+Fan can be on (speeds 1-5) or off (speed 0)
+Fan can optionally rotate (but ONLY at speeds 3-5)
+
+Think of it as having two controls:
+    1) speed knob (becomes on when 1-5, off when 0)
+        --> can only change one speed level at a time
+
+    2) rotation lever
+
+--> since rotation is a DIFFERENT control, changing
+    speed can't change rotation
+
+
+Initially:
+    fan off
+    speed 0
+    rotate off
+
+Global invariants:
+    curSpeed >= 0,
+    curSpeed <= 5,
+    fanOn == true -> curSpeed > 0,
+    fanOn == false -> curSpeed == 0,
+    rotateOn == true -> curSpeed >= 3
+
+
+Functions:
+    setSpeed(speed: Z)
+    turnOn()
+    makeRotate()
+    stopRotate()
 
 
 
-///////////////////////////
+    Fan on, speed 3, rotate on. Can we call setSpeed(2)?
 
-Design by contract
+    Fan off, speed 0, rotate off. Can we call setSpeed(1)?
 
-When is this useful? When is it less useful?
+    Fan on, speed 2, rotate off. Can we call setSpeed(0)?
+
+    Fan on, speed 3, rotate on. Can we call setSpeed(4)?
+
+    Fan on, speed 3, rotate on. Can we call makeRotate()?
+
+    Fan on, speed 5, rotate off. Can we call setSpeed(5)?
+
+    Fan on, speed 5, rotate off. Can we call setSpeed(6)?
+
+    Fan on, speed 1, rotate off. Can we call setSpeed(0)?
+
+
+setSpeed() preconditions?
+
+
 
 
 
@@ -18,13 +92,10 @@ Binary search bug.
 
 
 --> what's the problem? how to fix?
-    integer overflow
-
-    int mid = low + (high-low)/2
 
 
 --> how long was it there? original C++ (in 80s)
-    in Java until 2002
+    in Java until 2006
 
 
 
@@ -32,7 +103,8 @@ Binary search bug.
 
 Timsort bug (Java's Collections sort / Arrays.sort / Python's sort)
     - developed in 2002
-    - breaks array into series of runs that are separately sorted and merged
+    - breaks array into series of runs that are separately sorted
+        and merged
 
 
 --> bug discovered when researchers tried to use formal verification
@@ -48,6 +120,33 @@ http://envisage-project.eu/proving-android-java-and-python-sorting-algorithm-is-
 
 ///////////////////////////
 
+Java Modeling Language (JML)
+
+    --> There are tools (OpenJML and KeY) that can do
+        formal verification of Java programs
+
+    - can verify correctness if you provide JML specifications for:
+        - function contracts
+        - for loops:
+            - loop invariants
+            - termination measure
+
+    https://www.openjml.org/tutorial/
+    https://www.key-project.org/applications/program-verification/
+
+    --> They are sometimes used to verify Java library functions
+
+
+///////////////////////////////
+
+JML specification syntax.
+
+See jmlSyntax.txt for a primer
+
+
+////////////////////////////////
+
+
 Complete formal verification is not practical in many cases
 
 Halfway option
@@ -58,31 +157,21 @@ Halfway option
 - Check postconditions
 - (Check invariants)
 
-
-//////////////////////////
-
-Java Modeling Language (JML)
-
-(background)
-
-See jmlSyntax.txt for a primer
-
+/////////////////////////////////
 
 Whose job is it to check preconditions?
 
     --> ...can we enforce in practice?
-    --> what to do if preconditions not met?
 
-    throw an exception in the function if the precondition is not met
 
-What should a function do if its preconditions are not met?
-    - return a dummy value?
+    --> What to do if preconditions not met? Should we return a dummy
+        value?
 
 
 
-How to enforce postconditions?
 
-    assert our postcondition before returning
+How to check postconditions?
+
 
 
 
@@ -96,7 +185,7 @@ IntelliJML - does some JML syntax checking
 
 https://gitlab.utwente.nl/fmt/intellijml/-/releases
 
-Download the IntelliJ-1.1.6.jar file
+Download the IntelliJ-1.1.8.jar file
 
 In IntelliJ, File->Settings->Plugins, click the gear, select
     "Load Plugin from Disk", find the jar file
@@ -108,56 +197,20 @@ In IntelliJ, File->Settings->Plugins, click the gear, select
 JMLExample.java
 
 
-- add our function contract checks
+- add function contract checks to each method
 
-
-
-- do full contract + checks on mult example
 
 
 ///////////////////////////////////////
-
-Example: Write a method that returns an array whose
-    elements correspond to the sizes of each
-    string in a parameter array
-
---> specification?
-
-
-///////////////////////////////////////
-
-Example: write specification for indexOf method:
-
-/*@
-    requires arr != null;
-    ensures (\result == -1 <==> \forall(int k; k >= 0 && k < arr.length; arr[k] != num));
-    ensures (\result >= 0 && \result < arr.length <==>
-                (\exists(int k; k >= 0 && k < arr.length; arr[k] == num && \result == k));
-    ensures (\result >= 0 && \result < arr.length <==>
-                (\forall(int k; k >= 0 && k < \result; arr[k] != num );
-*/
-public static int indexOf(int[] arr, int num) {
-    for (int i = 0; i < arr.length; i++) {
-        if (arr[i] == num) return i;
-    }
-
-    return -1;
-}
-
-
-
---> any ambiguity?
-
-
-
-////////////////////////////
 
 Review: global invariants.
 
 If a class has global invariants
 - those invariants should hold when an object is created
+
 - it is an unlisted precondition of each method that the global
     invariants hold
+
 - it is an unlisted postcondition of each method that the global
     invariants STILL hold
 
@@ -167,68 +220,20 @@ If a class has global invariants
 in a class with global invariants, write a globalsAssert method
     - where should we call it?
 
-    at the beginning of a method
-    at the end of a method
 
 
 ///////////////////////////////////////
-
-Global invariants in JML:
-
-//@public invariant (say something about public members);
-
-////////////////////////////
-
-Enforcing global invariants AND function specifications:
-
-public returnType method(params) {
-    //assert that the global invariants hold here
-    //if the preconditions don't hold, throw an exception
-
-    code for the method
-
-    //assert that the global invariants still hold
-    //assert that the postconditions hold
-}
-
---> add checks to withdraw and deposit
-
-
-//////////////////////////////////////
 
 See Account example (similar to what we did with Logika)
 
 //////////////////////////////////////
 
-//////////////////////////////////////
-
 Best practices outside class
 
-
-    E.g., what if we had a Clock class?
-
-    minutes
-    hours
-    seconds
-    AM/PM
-
-    minutes/seconds - 0-59
-    hours: 1-12
-
-
-
-    tick() - go to next second
-
-
-
-Highly recommend:
 - write global invariants
     - considerations for method parameters?
-        require parameters be so that they don't violate global
-        invariants
 
     - considerations for method code?
-        guides the code so global invariants aren't violated
 
 
 
@@ -266,12 +271,6 @@ or function is EXACTLY the same approach we used in Logika.
 
 --> What approach is that?
 
-    prove loop invariants hold before loop begins
-
-    prove loop invariants still hold at the end of each iteration
-
-    use the invariants and !(loop condition) to
-        prove the postconditions
 
 
 /////////////////////////////////////
@@ -305,10 +304,9 @@ Termination with a loop.
     - see example
 
 
+
 Termination with recursion.
-    - use induction
-    ...what does this mean about our preconditions?
-    - see example
+    - can use induction
 
 
 
@@ -340,36 +338,11 @@ We write:
         if (Halt(Function, Function)) loop forever
         else exit
 
-Consider DoOpposite(DoOpposite):
-    Case 1: loops forever. Means Halt(DoOpposite, DoOpposite)
-        return true. Thus DoOpposite(DoOpposite) halts.
-
-    Case 2: exits.  Means Halt(DoOpposite, DoOpposite) returns
-        false. Thus DoOpposite(DoOpposite) loops forever.
-
- Both cases led to a contradiction.
-   So we can't write a Halt function.
+Consider DoOpposite(DoOpposite).
 
 
 
 //////////////////////////////////
-
-//////////////////////////////////
-
-OpenJML
-
-- can verify total correctness if you:
-    - provide function contracts
-    - for loops, provide loop invariants and termination measure
-
---> see online tutorial/documentation
-
-
-https://www.openjml.org/tutorial/
-
-
-
-/////////////////////////////
 
 Next time:
 - review for final

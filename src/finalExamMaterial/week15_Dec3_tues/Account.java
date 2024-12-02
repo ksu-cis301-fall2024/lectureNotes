@@ -4,7 +4,6 @@ public class Account {
     private int _balance;
     private boolean _elite;
 
-    //what do we need for the private fields?
     public int getBalance() {
         return _balance;
     }
@@ -13,11 +12,13 @@ public class Account {
         return _elite;
     }
 
-    //write global invariants
-    //@public invariant getBalance() >= 0;
-    //@public invariant isElite() == (getBalance() >= 1000000);
+    //global invariants
+    /*@
+        public invariant getBalance() >= 0;
+        public invariant isElite() == (getBalance() >= 1000000);
+    */
 
-    //write globalAsserts method
+    //asserts the global invariants
     private void globalAsserts() {
         assert getBalance() >= 0;
         assert isElite() == (getBalance() >= 1000000);
@@ -26,24 +27,16 @@ public class Account {
     public Account() {
         _balance = 0;
         _elite = false;
+
+        //what should we do here?
     }
-
-    //write withdrawal and deposit methods + specifications
-
     /*@
         requires amount >= 0;
         ensures getBalance() == \old(getBalance()) + amount;
     */
     public void deposit(int amount) {
-        //global invariants should hold
-        globalAsserts();
+        //what do we do here?
 
-        //enforce precondition
-        if (amount < 0) {
-            throw new IllegalArgumentException("amount must be nonnegative");
-        }
-
-        //save current balance for postcondition check
         int oldBalance = _balance;
 
         _balance += amount;
@@ -52,12 +45,7 @@ public class Account {
             _elite = true;
         }
 
-        //assert postcondition
-        assert getBalance() == oldBalance + amount;
-
-
-        //assert global invariants hold
-        globalAsserts();
+        //what do we do here?
     }
 
     /*@
@@ -66,10 +54,8 @@ public class Account {
         ensures getBalance() == \old(getBalance()) - amount;
      */
     public void withdraw(int amount) {
-        //global invariants should hold
-        globalAsserts();
+        //what do we do here?
 
-        //save current balance for postcondition check
         int oldBalance = _balance;
 
         _balance -= amount;
@@ -78,12 +64,6 @@ public class Account {
             _elite = false;
         }
 
-        //assert postcondition
-        assert getBalance() == oldBalance - amount;
-
-
-        //assert global invariants hold
-        globalAsserts();
+        //what do we do here?
     }
-
 }
