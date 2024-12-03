@@ -10,7 +10,7 @@ precondition/postcondition are predicate logic statements using
     parameters, the return value, and/or public methods
 
 
-can have several @requires and several @ensures
+can have several requires and several ensures
 
 
 

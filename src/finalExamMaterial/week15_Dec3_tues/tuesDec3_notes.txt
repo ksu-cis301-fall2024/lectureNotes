@@ -81,6 +81,13 @@ setSpeed() preconditions?
 
 
 
+///////////////////////////
+
+Today:
+- program specification in practice
+- specifying Java programs with JML
+- termination
+- Halting problem
 
 
 ///////////////////////////
@@ -110,7 +117,7 @@ Timsort bug (Java's Collections sort / Arrays.sort / Python's sort)
 --> bug discovered when researchers tried to use formal verification
     to prove correctness in 2015...and were unsuccessful
 
---> would crash in certain cases when the run lengths become smaller
+--> would crash in certain cases when the run lengths became smaller
     than expected
 
 
@@ -155,7 +162,7 @@ Halfway option
     *could* be used with a verification tool
 - Enforce preconditions
 - Check postconditions
-- (Check invariants)
+
 
 /////////////////////////////////
 

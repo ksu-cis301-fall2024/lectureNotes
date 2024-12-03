@@ -2,18 +2,23 @@ package finalExamMaterial.week15_Dec3_tues;
 
 public class JMLExample {
     /*@
-        requires x >= 0;
-        ensures \result == x+1;
-        ensures \result >= 1;
+        requires y >= 0;
+        ensures \result == x*y;
     */
-    public static int plusOne(int x) {
+    public static int mult(int x, int y) {
         //what should we do here?
 
-        int ans = x + 1;
+        int sum = 0;
+        int count = 0;
+
+        while (count < y) {
+            sum = sum + x;
+            count = count + 1;
+        }
 
         //what should we do here?
 
-        return ans;
+        return sum;
     }
 
     /*@
