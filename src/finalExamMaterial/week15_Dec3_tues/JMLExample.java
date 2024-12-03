@@ -23,40 +23,21 @@ public class JMLExample {
 
     /*@
         requires nums != null;
-        ensures (\forall int k; 0 <= k && k < nums.length; nums[k] == \old(nums[k]) * 2);
+        requires nums.length >= 2;
+        ensures (nums[0] == \old(nums[nums.length-1]));
+        ensures (nums[nums.length-1] == \old(nums[0]));
+        ensures (\forall int k; 1 <= k && k < nums.length-1; nums[k] == \old(nums[k]));
     */
-    public static void doubleEach(int[] nums) {
+    public static void changeArray(int[] nums) {
         //what should we do here?
 
         int[] oldElem = new int[nums.length];
         System.arraycopy(nums, 0, oldElem, 0, nums.length);
 
-        for (int i = 0; i < nums.length; i++) {
-            nums[i] = nums[i] * 2;
-        }
+        int temp = nums[0];
+        nums[0] = nums[nums.length-1];
+        nums[nums.length-1] = temp;
 
         //what should we do here?
-    }
-
-    /*@
-        requires orig != null;
-        ensures orig.length == \result.length;
-        ensures ((\forall int k; k >= 0 && k < orig.length; \result[k] == orig[k].length()));
-     */
-    public static int[] getStringLengths(String[] orig) {
-        //what should we do here?
-
-        if (orig == null) {
-            throw new IllegalArgumentException("precondition violated: array shouldn't be null");
-        }
-
-        int[] resultArray = new int[orig.length];
-        for (int i = 0; i < orig.length; i++) {
-            resultArray[i] = orig[i].length();
-        }
-
-        //what should we do here?
-
-        return resultArray;
     }
 }
