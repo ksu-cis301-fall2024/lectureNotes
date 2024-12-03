@@ -16,10 +16,23 @@ loops while i < seq.size/2
 
 What does it mean to be reversed?
 
+the element at position i equals the original element
+    at position seq.size-i-1
+
 
 After i iterations of the loop:
     what has changed?
-    what is the same?
+        elements up to i have been swapped
+
+
+    what is the same? the middle
+        from position i up to seq.size-i
+
+///////////////////////////////////
+
+Problem 4 on HW 11 (sorted): it's OK to add a precondition
+
+    feel free to require that the sequence be a certain size
 
 ///////////////////////////////////
 
@@ -61,23 +74,34 @@ Functions:
 
 
     Fan on, speed 3, rotate on. Can we call setSpeed(2)?
+        NO - we wouldn't be going fast enough to rotate.
 
     Fan off, speed 0, rotate off. Can we call setSpeed(1)?
+        YES - and the fan would end up being on
 
     Fan on, speed 2, rotate off. Can we call setSpeed(0)?
+        NO - can't skip speeds
 
     Fan on, speed 3, rotate on. Can we call setSpeed(4)?
+        YES
 
     Fan on, speed 3, rotate on. Can we call makeRotate()?
+        NO - the fan is already rotating
 
     Fan on, speed 5, rotate off. Can we call setSpeed(5)?
+        NO - we have to change the speed
 
     Fan on, speed 5, rotate off. Can we call setSpeed(6)?
+        NO - 6 is too high
 
     Fan on, speed 1, rotate off. Can we call setSpeed(0)?
+        YES - and the fan is marked as off
 
-
-setSpeed() preconditions?
+setSpeed(speed: Z) preconditions?
+    speed must be between 0 and 5
+    speed can't be the current speed
+    speed must be exactly one away from current speed
+    speed must be 3 or higher if rotate is currently on
 
 
 
@@ -99,6 +123,8 @@ Binary search bug.
 
 
 --> what's the problem? how to fix?
+
+    int mid = low + (high-low)/2;
 
 
 --> how long was it there? original C++ (in 80s)
@@ -347,7 +373,15 @@ We write:
 
 Consider DoOpposite(DoOpposite).
 
+Case 1: DoOpposite(DoOpposite) loops forever. Then
+    Halt(DoOpposite, DoOpposite) must have returned true. Thus
+    DoOpposite(DoOpposite) halts.
 
+Case 2: DoOpposite(DoOpposite) exits (halts). Then
+    Halt(DoOpposite, DoOpposite) must have returned false. Then
+    DoOpposite(DoOpposite) didn't halt.
+
+Both cases end in a contradiction. Thus we cannot write a Halt function.
 
 //////////////////////////////////
 

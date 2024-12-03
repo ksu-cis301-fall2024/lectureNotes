@@ -37,6 +37,14 @@ public class Account {
     public void deposit(int amount) {
         //what do we do here?
 
+        //check the preconditions
+        if (amount < 0) {
+            throw new IllegalArgumentException("deposit amount must be nonnegative");
+        }
+
+        //global invariants should be true
+        globalAsserts();
+
         int oldBalance = _balance;
 
         _balance += amount;
@@ -46,6 +54,11 @@ public class Account {
         }
 
         //what do we do here?
+        //global invariants should still hold
+        globalAsserts();
+
+        //assert postconditions
+        assert getBalance() == oldBalance + amount;
     }
 
     /*@

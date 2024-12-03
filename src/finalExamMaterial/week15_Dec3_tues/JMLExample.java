@@ -8,6 +8,10 @@ public class JMLExample {
     public static int mult(int x, int y) {
         //what should we do here?
 
+        if (y < 0) {
+            throw new IllegalArgumentException("second parameter must be nonnegative");
+        }
+
         int sum = 0;
         int count = 0;
 
@@ -17,6 +21,7 @@ public class JMLExample {
         }
 
         //what should we do here?
+        assert sum == x*y;
 
         return sum;
     }
@@ -31,6 +36,10 @@ public class JMLExample {
     public static void changeArray(int[] nums) {
         //what should we do here?
 
+        if (nums == null || nums.length < 2) {
+            throw new IllegalArgumentException("array must be non-null with size at least 2");
+        }
+
         int[] oldElem = new int[nums.length];
         System.arraycopy(nums, 0, oldElem, 0, nums.length);
 
@@ -39,5 +48,10 @@ public class JMLExample {
         nums[nums.length-1] = temp;
 
         //what should we do here?
+        for (int i = 1; i < nums.length-1; i++) {
+            assert nums[i] == oldElem[i];
+        }
+        assert nums[0] == oldElem[nums.length-1];
+        assert nums[nums.length-1] == oldElem[0];
     }
 }
