@@ -1,0 +1,10 @@
+Complete the following propositional logic proof:
+
+( (p ∧ q) → r, r → s, q ∧ ¬s ) ⊢ ( ¬p )
+Proof(
+  1 ( (p ∧ q) → r ) by Premise,
+  2 ( r → s ) by Premise,
+  3 ( q ∧ ¬s ) by Premise,
+
+  //COMPLETE THE PROOF
+)

@@ -1,0 +1,24 @@
+Suppose we have the following predicates:
+
+P(x, y): person x is partners with person y
+CS(x): person x is a CS major
+ECE(x): person x is an ECE major
+KS(x): person x is from Kansas
+
+
+For each statement:
+a) Translate it to English
+b) Negate it, showing your work (any OR statement should be converted to an ->)
+c) Translate your negation to English
+
+
+
+
+1. ∀ x (KS(x) V ¬CS(x))
+
+
+
+
+
+
+2. ∃ x (ECE(x) ^ ∀ y (KS(y) → P(x, y)))

@@ -1,0 +1,30 @@
+1. Use set builder notation to describe the set 1, 3, 9, 27, etc.
+
+
+
+
+
+
+2. List the elements in the set {x : x = 2k, k ∈ ℤ} ∩ B, where B is defined
+by the following recursive definition:
+
+    2, 7 ∈ B
+    If x, y ∈ B and x + y ≤ 20, then x + y ∈ B
+
+
+
+
+3. What can we say about sets A and B if we know:
+    a) A ∪ B = A?
+
+
+    b) A - B = A?
+
+
+    c) A - B = B - A?
+
+
+    d) A ∩ B = A?
+
+
+    e) A ∩ B = B ∩ A

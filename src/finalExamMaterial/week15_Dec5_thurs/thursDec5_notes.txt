@@ -1,0 +1,21 @@
+Final exam: Monday, December 9 2:00-3:50 in DUE 1109 (here)
+
+Closed notes, closed computers
+
+Cumulative. Similar format as previous exams.
+
+- recommend reviewing previous exams and practice exams
+
+- final exam practice problems
+    --> these don't include all possible problem types
+    --> all topics include:
+        - all topics listed for Exam 1
+        - all topics listed for Exam 2
+        - all topics listed for Exam 3
+        - verifying programs with sequences
+        - verifying programs with global variables and global invariants
+
+
+(How to find list of topics from previous exams?)
+
+//////////////////////////////////

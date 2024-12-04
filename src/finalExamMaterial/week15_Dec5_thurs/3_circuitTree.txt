@@ -1,0 +1,11 @@
+Draw a circuit for the following propositional logic statement:
+
+(p V q) ^ (¬p V ¬r)
+
+
+
+
+
+Draw a parse tree for the following propositional logic statement:
+
+p V q ^ r → ¬p

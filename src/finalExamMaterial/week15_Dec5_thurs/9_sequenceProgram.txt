@@ -1,0 +1,30 @@
+In the program below, complete the function contract and loop invariant block so the
+program (including the assert at the bottom) would be verified in Logika's auto mode.
+
+def addToNeg(a: ZS, pos: Z): Unit = {
+    Contract(
+        //COMPLETE THE FUNCTION CONTRACT
+
+    )
+    var i: Z = pos
+
+    while (i < a.size) {
+        Invariant(
+            //COMPLETE THE LOOP INVARIANT BLOCK
+
+        )
+
+        if (a(i) < 0) {
+            a(i) = a(i) + 1
+        }
+
+        i = i + 1
+    }
+}
+
+/////// Test code ////////////
+var test: ZS = ZS(-3, -4, 0, 1, -1, 5, 6, -7)
+
+addToNeg(test, 3)
+
+assert (test == ZS(-3, -4, 0, 1, 0, 5, 6, -6))

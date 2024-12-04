@@ -1,0 +1,15 @@
+Complete the following predicate logic proof:
+
+(
+  ∀ ((x: T) => (P(x) ∨ Q(x)) ),
+  ¬(∃ ((x: T) => Q(x) ))
+)
+⊢
+(  ∀ ((x: T) => P(x)  ))
+
+Proof(
+  1 ( ∀ ((x: T) => (P(x) ∨ Q(x)) ) ) by Premise,
+  2 ( ¬(∃ ((x: T) => Q(x) )) ) by Premise,
+
+  //COMPLETE THE PROOF
+)
