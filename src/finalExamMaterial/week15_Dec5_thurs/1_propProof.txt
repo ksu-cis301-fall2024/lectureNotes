@@ -7,4 +7,17 @@ Proof(
   3 ( q ∧ ¬s ) by Premise,
 
   //COMPLETE THE PROOF
+  4 ( q ) by AndE1(3),
+  5 ( ¬s ) by AndE2(3),
+
+  6 SubProof(
+    7 Assume ( p ),
+    8 ( p ∧ q ) by AndI(7, 4),
+    9 ( r ) by ImplyE(1, 8),
+    10 ( s ) by ImplyE(2, 9),
+    11 ( F ) by NegE(10, 5)
+    //goal: contradiction
+  ),
+  12 ( ¬p ) by NegI(6)
+  //use NegI to conclude ¬p
 )

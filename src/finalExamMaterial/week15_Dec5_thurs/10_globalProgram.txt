@@ -17,6 +17,16 @@ var cand2: Z = 0
 def castVotes(candNum: Z, numVotes: Z) : Unit = {
     Contract(
         //COMPLETE THE FUNCTION CONTRACT
+        Requires(
+            candNum == 1 V candNum == 2,
+            numVotes >= 0
+        ),
+        Modifies(cand1, cand2, total),
+        Ensures(
+            total == In(total) + numVotes,
+            candNum == 1 -> cand1 == In(cand1) + numVotes,
+            candNum == 2 -> cand2 == In(cand2) + numVotes
+        )
     )
 
     if (candNum == 1) {

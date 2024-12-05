@@ -12,13 +12,38 @@ b) Negate it, showing your work (any OR statement should be converted to an ->)
 c) Translate your negation to English
 
 
-
-
 1. ∀ x (KS(x) V ¬CS(x))
 
+Translation: All people are from KS or aren't CS majors
+    (equivalently, all CS majors are from KS)
 
+Negation:
 
+    !(∀ x (KS(x) V ¬CS(x)))
+    E x !(KS(x) V ¬CS(x))
+    E x (!KS(x) ^ CS(x))
 
+Translation of negation:
+There is a person who isn't from KS and is a CS major
 
 
 2. ∃ x (ECE(x) ^ ∀ y (KS(y) → P(x, y)))
+
+Translation: There is an ECE major who is partners with everyone from KS
+
+
+p → q is equivalent to ¬p V q
+
+Negation:
+
+¬(∃ x (ECE(x) ^ ∀ y (KS(y) → P(x, y))))
+∀ x !(ECE(x) ^ ∀ y (KS(y) → P(x, y))))
+∀ x (!ECE(x) V ¬(∀ y (KS(y) → P(x, y))))
+∀ x (!ECE(x) V (∃ y ¬(KS(y) → P(x, y))))
+∀ x (!ECE(x) V (∃ y ¬(¬KS(y) V P(x, y))))
+∀ x (!ECE(x) V (∃ y (KS(y) ^ ¬P(x, y))))
+∀ x (!ECE(x) V (∃ y (KS(y) ^ ¬P(x, y))))
+∀ x (ECE(x) → (∃ y (KS(y) ^ ¬P(x, y))))
+
+Translation of negation: All ECE majors have a person from KS that
+they are not partners with.

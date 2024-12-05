@@ -5,3 +5,28 @@ Conclusion: p → ¬r
 
 
 Explain from your results why we know the argument is valid.
+
+proving argument valid: show that every truth assignment that makes
+each premise true also makes the conclusion true
+
+proving argument invalid: find one truth assignment that makes
+all premises true but the conclusion false
+
+           *       *            *
+-------------------------------------
+p q r # ( p → q, q → ¬r ) |-  p → ¬r
+-------------------------------------
+T T T #    T       F            F
+T T F #    T       T            T
+T F T #    F       T            F
+T F F #    F       T            T
+F T T #    T       F            T
+F T F #    T       T            T
+F F T #    T       T            T
+F F F #    T       T            T
+---------------------------------------
+
+Valid [T T F] [F T F] [F F T] [F F F]
+
+We can see that every truth assignment that makes all the premises
+true also makes the conclusion true
